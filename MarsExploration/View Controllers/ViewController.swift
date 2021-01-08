@@ -9,12 +9,6 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    // MARK: Constants
-    
-    // You can start using this key to make web service requests. Simply pass your key in the URL when making a web request.
-    // Here's an example: https://api.nasa.gov/planetary/apod?api_key=maiBleq3ql7plddEDkigXNisbFgXdMBpdCjLgGIO
-    private let NASA_API_KEY = "maiBleq3ql7plddEDkigXNisbFgXdMBpdCjLgGIO"
-
     // MARK: View Lifecycle
 
     override func viewDidLoad() {
@@ -30,15 +24,15 @@ class ViewController: UIViewController {
     // MARK: Network Requests
         
     private func fetchData() {
-        let url = URL(string: "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=maiBleq3ql7plddEDkigXNisbFgXdMBpdCjLgGIO")!
-
-        let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
-            guard let data = data else { return }
-
-            print(String(data: data, encoding: .utf8)!)
+        NetworkManager.shared.fetchManifest(for: .spirit) { result in
+            switch result {
+            case .success(let mission):
+                print(mission.name)
+                print("Success!")
+            case .failure(let error):
+                print("Failed to fetch mission manifest: \(error)")
+            }
         }
-
-        task.resume()
     }
 
     // MARK: Setup Views
