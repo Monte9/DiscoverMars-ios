@@ -16,6 +16,7 @@
 		0CAA95D225A8780800905808 /* Mission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAA95D125A8780800905808 /* Mission.swift */; };
 		0CAA95DA25A87A5500905808 /* RequestPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAA95D925A87A5500905808 /* RequestPath.swift */; };
 		0CBC4C0E25A87CEE00D68545 /* NetworkManagerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CBC4C0D25A87CEE00D68545 /* NetworkManagerError.swift */; };
+		0CBC4C1625A8927500D68545 /* MissionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CBC4C1525A8927500D68545 /* MissionCard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		0CAA95D125A8780800905808 /* Mission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mission.swift; sourceTree = "<group>"; };
 		0CAA95D925A87A5500905808 /* RequestPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestPath.swift; sourceTree = "<group>"; };
 		0CBC4C0D25A87CEE00D68545 /* NetworkManagerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerError.swift; sourceTree = "<group>"; };
+		0CBC4C1525A8927500D68545 /* MissionCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionCard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 				0CAA95D025A877E900905808 /* Models */,
 				0CAA95CF25A877DB00905808 /* Managers */,
 				0CBC4C1225A8878F00D68545 /* View Controllers */,
+				0CBC4C1325A8925900D68545 /* Views */,
 				0CAA95BC25A86A0500905808 /* Assets.xcassets */,
 				0CAA95BE25A86A0500905808 /* LaunchScreen.storyboard */,
 				0CAA95C125A86A0500905808 /* Info.plist */,
@@ -98,6 +101,14 @@
 				0CAA95B725A86A0300905808 /* ViewController.swift */,
 			);
 			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		0CBC4C1325A8925900D68545 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0CBC4C1525A8927500D68545 /* MissionCard.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -169,6 +180,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0CBC4C1625A8927500D68545 /* MissionCard.swift in Sources */,
 				0CAA95DA25A87A5500905808 /* RequestPath.swift in Sources */,
 				0CAA95CD25A8776400905808 /* NetworkManager.swift in Sources */,
 				0CAA95B825A86A0300905808 /* ViewController.swift in Sources */,

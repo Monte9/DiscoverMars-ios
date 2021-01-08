@@ -7,8 +7,26 @@
 
 import Foundation
 
+enum Rover: String, CaseIterable {
+    case curiosity
+    case opportunity
+    case spirit
+    
+    func missionName() -> String {
+        switch self {
+        case .curiosity:
+            return "Mars Science Laboratory"
+        case .opportunity:
+            return "Mars Exploration Rover - Opportunity"
+        case .spirit:
+            return "Mars Exploration Rover - Spirit"
+        }
+    }
+}
+
 class Mission: NSObject, Decodable {
-    let name: String
+    let missionName: String
+    let roverName: String
     let landingDate: String
     let launchDate: String
     let status: String
@@ -26,8 +44,9 @@ class Mission: NSObject, Decodable {
         case totalPhotos = "total_photos"
     }
     
-    init(name: String, landingDate: String, launchDate: String, status: String, maxSol: Int, maxDate: String, totalPhotos: Int) {
-        self.name = name
+    init(missionName: String, roverName: String, landingDate: String, launchDate: String, status: String, maxSol: Int, maxDate: String, totalPhotos: Int) {
+        self.missionName = missionName
+        self.roverName = roverName
         self.landingDate = landingDate
         self.launchDate = launchDate
         self.status = status
@@ -39,7 +58,15 @@ class Mission: NSObject, Decodable {
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
-        name = try container.decode(String.self, forKey: .name)
+        roverName = try container.decode(String.self, forKey: .name)
+        
+        // Get the Mission Name based on the Rover
+        if let rover = Rover.init(rawValue: roverName.lowercased()) {
+            missionName = rover.missionName()
+        } else {
+            missionName = "Mission"
+        }
+        
         landingDate = try container.decode(String.self, forKey: .landingDate)
         launchDate = try container.decode(String.self, forKey: .launchDate)
         status = try container.decode(String.self, forKey: .status)
@@ -47,4 +74,5 @@ class Mission: NSObject, Decodable {
         maxDate = try container.decode(String.self, forKey: .maxDate)
         totalPhotos = try container.decode(Int.self, forKey: .totalPhotos)
     }
+    
 }

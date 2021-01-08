@@ -9,15 +9,36 @@
 
 import Foundation
 
-enum Rover: String {
-    case curiosity
-    case opportunity
-    case spirit
-}
-
 class NetworkManager {
     
     static let shared = NetworkManager()
+    
+    func fetchMissions(completionHandler: @escaping ((Result<[Mission], Error>) -> Void)) {
+        let missionsDispatchGroup = DispatchGroup()
+        var missions = [Mission]()
+        
+        for rover in Rover.allCases {
+            missionsDispatchGroup.enter()
+            
+            fetchManifest(for: rover) { result in
+                switch result {
+                case .success(let mission):
+                    missions.append(mission)
+                case .failure(let error):
+                    print("Failed to fetch mission manifest for \(rover): \(error)")
+                }
+                missionsDispatchGroup.leave()
+            }
+        }
+        
+        missionsDispatchGroup.notify(queue: .main) {
+            if missions.count == Rover.allCases.count {
+                completionHandler(.success(missions))
+            } else {
+                completionHandler(.failure(NetworkManagerError.missingData))
+            }
+        }
+    }
     
     func fetchManifest(for rover: Rover, completionHandler: @escaping ((Result<Mission, Error>) -> Void)) {
         let url = URL(string: RequestPath.baseURL + RequestPath.manifestURL + rover.rawValue + "?" + RequestPath.apiKey)!
@@ -47,7 +68,10 @@ class NetworkManager {
                 
                 let missionData = try JSONSerialization.data(withJSONObject: missionJSON, options: .prettyPrinted)
                 let mission = try JSONDecoder().decode(Mission.self, from: missionData)
-                completionHandler(.success(mission))
+                
+                DispatchQueue.main.async {
+                    completionHandler(.success(mission))
+                }
             } catch {
                 completionHandler(.failure(error))
             }

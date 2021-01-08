@@ -9,8 +9,10 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    private var missions: [Mission]?
+    
     // MARK: View Lifecycle
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.init(named: "background")
@@ -22,42 +24,69 @@ class ViewController: UIViewController {
     }
     
     // MARK: Network Requests
-        
+    
     private func fetchData() {
-        NetworkManager.shared.fetchManifest(for: .spirit) { result in
+        NetworkManager.shared.fetchMissions() { result in
             switch result {
-            case .success(let mission):
-                print(mission.name)
-                print("Success!")
+            case .success(let missions):
+                self.missions = missions
+                
+                self.populateData()
             case .failure(let error):
-                print("Failed to fetch mission manifest: \(error)")
+                print("Failed to fetch missions: \(error)")
             }
         }
     }
-
-    // MARK: Setup Views
-        
-    private func setupViews() {
-        view.addSubview(titleLabel)
+    
+    // MARK: Populate Data
+    
+    private func populateData() {
+        missions?.forEach({ mission in
+            let missionCard = MissionCard()
+            missionCard.missionLabel.text = mission.missionName
+            missionCard.roverLabel.text = mission.roverName
+            missionCard.heightAnchor.constraint(equalToConstant: 250).isActive = true
+            
+            stackView.addArrangedSubview(missionCard)
+        })
     }
-
+    
+    // MARK: Setup Views
+    
+    private func setupViews() {
+        view.addSubview(scrollView)
+        scrollView.addSubview(stackView)
+    }
+    
     // MARK: Setup Constraints
     
     private func setupConstraints() {
         NSLayoutConstraint.activate([
-            titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            titleLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+            scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            stackView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            stackView.leadingAnchor.constraint(equalTo: view.readableContentGuide.leadingAnchor),
+            stackView.trailingAnchor.constraint(equalTo: view.readableContentGuide.trailingAnchor),
+            stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor)
         ])
     }
-
+    
     // MARK: UI Components
     
-    private let titleLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Hello Mars"
-        label.textColor = UIColor.init(named: "text")
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
+    private let scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        return scrollView
     }()
     
+    private let stackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.spacing = 25
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        return stackView
+    }()
 }
