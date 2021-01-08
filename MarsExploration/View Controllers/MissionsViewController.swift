@@ -12,6 +12,8 @@ class MissionsViewController: UIViewController {
     
     private var missions: [Mission]?
     
+    private var activityView: UIActivityIndicatorView!
+    
     // MARK: View Lifecycle
     
     override func viewDidLoad() {
@@ -19,16 +21,29 @@ class MissionsViewController: UIViewController {
         view.backgroundColor = UIColor.init(named: "background")
         title = "All Missions"
         
+        setupActivityIndicatory()
         fetchData()
         
         setupViews()
         setupConstraints()
     }
     
+    // MARK: Activity Indicator
+    
+    func setupActivityIndicatory() {
+        activityView = UIActivityIndicatorView(style: .large)
+        activityView.center = self.view.center
+        self.view.addSubview(activityView)
+    }
+    
     // MARK: Network Requests
     
     private func fetchData() {
+        activityView.startAnimating()
+        
         NetworkManager.shared.fetchMissions() { result in
+            self.activityView.stopAnimating()
+            
             switch result {
             case .success(let missions):
                 self.missions = missions
