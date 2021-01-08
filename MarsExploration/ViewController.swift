@@ -12,6 +12,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        view.backgroundColor = UIColor.init(named: "background")
+        
         setupViews()
         setupConstraints()
     }
@@ -36,6 +38,7 @@ class ViewController: UIViewController {
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.text = "Hello Mars"
+        label.textColor = UIColor.init(named: "text")
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
