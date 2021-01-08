@@ -1,13 +1,14 @@
 //
-//  ViewController.swift
+//  MissionsViewController.swift
 //  MarsExploration
 //
-//  Created by Monte Thakkar on 1/8/21.
+//  Created by Monte Thakkar on 1/9/21.
 //
 
+import Foundation
 import UIKit
 
-class ViewController: UIViewController {
+class MissionsViewController: UIViewController {
     
     private var missions: [Mission]?
     
@@ -16,6 +17,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.init(named: "background")
+        title = "All Missions"
         
         fetchData()
         
@@ -41,7 +43,19 @@ class ViewController: UIViewController {
     // MARK: Populate Data
     
     private func populateData() {
-        missions?.forEach({ mission in
+        guard let missions = missions else {
+            return
+        }
+        
+        for index in 0..<missions.count {
+            let mission = missions[index]
+            
+            // Add extra padding to the top of the first card
+            if (index == 0) {
+                let spacerView = UIView(frame: CGRect(x: 0, y: 0, width: stackView.frame.width, height: 24))
+                stackView.addArrangedSubview(spacerView)
+            }
+            
             let missionCard = MissionCard()
             missionCard.missionLabel.text = mission.missionName
             missionCard.roverLabel.text = "Rover: \(mission.roverName)"
@@ -56,7 +70,13 @@ class ViewController: UIViewController {
             missionCard.heightAnchor.constraint(equalToConstant: 320).isActive = true
             
             stackView.addArrangedSubview(missionCard)
-        })
+            
+            // Add extra padding to the bottom of the last card
+            if index == (missions.count - 1) {
+                let spacerView = UIView(frame: CGRect(x: 0, y: 0, width: stackView.frame.width, height: 24))
+                stackView.addArrangedSubview(spacerView)
+            }
+        }
     }
     
     // MARK: Setup Views
@@ -97,3 +117,4 @@ class ViewController: UIViewController {
         return stackView
     }()
 }
+

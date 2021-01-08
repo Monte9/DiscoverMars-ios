@@ -36,6 +36,7 @@ enum Rover: String, CaseIterable {
 }
 
 class Mission: NSObject, Decodable {
+    
     let roverImage: String
     let missionName: String
     let roverName: String
