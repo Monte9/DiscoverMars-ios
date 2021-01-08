@@ -53,7 +53,7 @@ class ViewController: UIViewController {
                     print("Failed to load image: \(error)")
                 }
             }
-            missionCard.heightAnchor.constraint(equalToConstant: 250).isActive = true
+            missionCard.heightAnchor.constraint(equalToConstant: 320).isActive = true
             
             stackView.addArrangedSubview(missionCard)
         })
@@ -78,7 +78,6 @@ class ViewController: UIViewController {
             stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
             stackView.leadingAnchor.constraint(equalTo: view.readableContentGuide.leadingAnchor),
             stackView.trailingAnchor.constraint(equalTo: view.readableContentGuide.trailingAnchor),
-            stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor)
         ])
     }
     
