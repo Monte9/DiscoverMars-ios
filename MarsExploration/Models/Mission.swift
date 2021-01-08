@@ -17,14 +17,26 @@ enum Rover: String, CaseIterable {
         case .curiosity:
             return "Mars Science Laboratory"
         case .opportunity:
-            return "Mars Exploration Rover - Opportunity"
+            return "Mars Exploration Rovers"
         case .spirit:
-            return "Mars Exploration Rover - Spirit"
+            return "Mars Exploration Rovers"
+        }
+    }
+    
+    func roverImage() -> String {
+        switch self {
+        case .curiosity:
+            return "https://mars.nasa.gov/system/feature_items/images/6037_msl_banner.jpg"
+        case .opportunity:
+            return "https://www.extremetech.com/wp-content/uploads/2016/01/Opportunity.jpg"
+        case .spirit:
+            return "https://www.universetoday.com/wp-content/uploads/2008/10/five_years_on_mars-4_10240768.jpg"
         }
     }
 }
 
 class Mission: NSObject, Decodable {
+    let roverImage: String
     let missionName: String
     let roverName: String
     let landingDate: String
@@ -44,7 +56,8 @@ class Mission: NSObject, Decodable {
         case totalPhotos = "total_photos"
     }
     
-    init(missionName: String, roverName: String, landingDate: String, launchDate: String, status: String, maxSol: Int, maxDate: String, totalPhotos: Int) {
+    init(roverImage: String, missionName: String, roverName: String, landingDate: String, launchDate: String, status: String, maxSol: Int, maxDate: String, totalPhotos: Int) {
+        self.roverImage = roverImage
         self.missionName = missionName
         self.roverName = roverName
         self.landingDate = landingDate
@@ -65,6 +78,13 @@ class Mission: NSObject, Decodable {
             missionName = rover.missionName()
         } else {
             missionName = "Mission"
+        }
+        
+        // Get the Rover Image based on the Rover
+        if let rover = Rover.init(rawValue: roverName.lowercased()) {
+            roverImage = rover.roverImage()
+        } else {
+            roverImage = "https://mars.nasa.gov/system/feature_items/images/6037_msl_banner.jpg"
         }
         
         landingDate = try container.decode(String.self, forKey: .landingDate)

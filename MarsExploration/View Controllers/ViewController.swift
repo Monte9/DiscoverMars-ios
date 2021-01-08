@@ -44,7 +44,15 @@ class ViewController: UIViewController {
         missions?.forEach({ mission in
             let missionCard = MissionCard()
             missionCard.missionLabel.text = mission.missionName
-            missionCard.roverLabel.text = mission.roverName
+            missionCard.roverLabel.text = "Rover: \(mission.roverName)"
+            missionCard.roverImage.loadImage(urlString: mission.roverImage) { (result) in
+                switch result {
+                case .success():
+                    print("Image loaded")
+                case .failure(let error):
+                    print("Failed to load image: \(error)")
+                }
+            }
             missionCard.heightAnchor.constraint(equalToConstant: 250).isActive = true
             
             stackView.addArrangedSubview(missionCard)
@@ -85,7 +93,7 @@ class ViewController: UIViewController {
     private let stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
-        stackView.spacing = 25
+        stackView.spacing = 16
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()

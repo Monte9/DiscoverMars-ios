@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C60A2BF25A8D15100EFD7FF /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C60A2BE25A8D15100EFD7FF /* ImageView.swift */; };
 		0CAA95B425A86A0300905808 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAA95B325A86A0300905808 /* AppDelegate.swift */; };
 		0CAA95B625A86A0300905808 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAA95B525A86A0300905808 /* SceneDelegate.swift */; };
 		0CAA95B825A86A0300905808 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAA95B725A86A0300905808 /* ViewController.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0C60A2BE25A8D15100EFD7FF /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
 		0CAA95B025A86A0300905808 /* MarsExploration.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarsExploration.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CAA95B325A86A0300905808 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0CAA95B525A86A0300905808 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				0CBC4C1525A8927500D68545 /* MissionCard.swift */,
+				0C60A2BE25A8D15100EFD7FF /* ImageView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -186,6 +189,7 @@
 				0CAA95B825A86A0300905808 /* ViewController.swift in Sources */,
 				0CAA95B425A86A0300905808 /* AppDelegate.swift in Sources */,
 				0CAA95D225A8780800905808 /* Mission.swift in Sources */,
+				0C60A2BF25A8D15100EFD7FF /* ImageView.swift in Sources */,
 				0CBC4C0E25A87CEE00D68545 /* NetworkManagerError.swift in Sources */,
 				0CAA95B625A86A0300905808 /* SceneDelegate.swift in Sources */,
 			);
