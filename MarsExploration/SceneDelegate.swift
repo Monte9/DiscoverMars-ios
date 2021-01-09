@@ -7,6 +7,11 @@
 
 import UIKit
 
+// Shared Design Assets
+// SF Symbols List: https://hotpot.ai/free-icons?s=sfSymbols
+// Mars Default Color Palette: https://www.color-hex.com/color-palette/7276
+// Mars Pale Color Palette: https://www.color-hex.com/color-palette/7175
+
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
@@ -19,11 +24,32 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
-        let rootNavigationController = UINavigationController()
+        
+        // Setup NavigationController
         let missionsViewController = MissionsViewController()
-        rootNavigationController.viewControllers = [missionsViewController]
-        window?.rootViewController = rootNavigationController
+        let missionsNavigationController = UINavigationController(rootViewController: missionsViewController)
+        
+        // Setup NavigationController
+        let marsViewController = MarsViewController()
+        let marsNavigationController = UINavigationController(rootViewController: marsViewController)
+        
+        // Setup TabBarController
+        let rootTabBarController = UITabBarController()
+        rootTabBarController.viewControllers = [missionsNavigationController, marsNavigationController]
+        
+        // Setup TabBarItem for Mission Tab
+        rootTabBarController.tabBar.items?[0].title = "Missions"
+        rootTabBarController.tabBar.items?[0].image = UIImage(systemName: "flag")
+        rootTabBarController.tabBar.items?[0].selectedImage = UIImage(systemName: "flag.fill")
+        
+        // Setup TabBarItem for Mission Tab
+        rootTabBarController.tabBar.items?[1].title = "Mars"
+        rootTabBarController.tabBar.items?[1].image = UIImage(systemName: "sun.min")
+        rootTabBarController.tabBar.items?[1].selectedImage = UIImage(systemName: "sun.min.fill")
+        
+        window?.rootViewController = rootTabBarController
         window?.makeKeyAndVisible()
+        window?.tintColor = UIColor(named: "martianRed")
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

@@ -19,7 +19,7 @@ class MissionsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.init(named: "background")
-        title = "All Missions"
+        navigationItem.title = "All Missions"
         
         setupActivityIndicatory()
         fetchData()
