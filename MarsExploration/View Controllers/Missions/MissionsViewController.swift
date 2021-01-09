@@ -13,6 +13,7 @@ class MissionsViewController: UIViewController {
     private var missions: [Mission]?
     
     private var activityView: UIActivityIndicatorView!
+    private var networkRetryCount: Int = 0
     
     // MARK: View Lifecycle
     
@@ -26,6 +27,13 @@ class MissionsViewController: UIViewController {
         
         setupViews()
         setupConstraints()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        // Remove the Back Button Label for all Child VCs
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
     
     // MARK: Activity Indicator
@@ -51,6 +59,7 @@ class MissionsViewController: UIViewController {
                 self.populateData()
             case .failure(let error):
                 print("Failed to fetch missions: \(error)")
+                self.displayNetworkRetryAlert()
             }
         }
     }
@@ -71,19 +80,8 @@ class MissionsViewController: UIViewController {
                 stackView.addArrangedSubview(spacerView)
             }
             
-            let missionCard = MissionCard()
-            missionCard.missionLabel.text = mission.missionName
-            missionCard.roverLabel.text = "Rover: \(mission.roverName)"
-            missionCard.roverImage.loadImage(urlString: mission.roverImage) { (result) in
-                switch result {
-                case .success():
-                    print("Image loaded")
-                case .failure(let error):
-                    print("Failed to load image: \(error)")
-                }
-            }
-            missionCard.heightAnchor.constraint(equalToConstant: 320).isActive = true
-            
+            // Setup and add MissionCard to the StackView
+            let missionCard = setupMissionCard(for: mission)
             stackView.addArrangedSubview(missionCard)
             
             // Add extra padding to the bottom of the last card
@@ -116,6 +114,64 @@ class MissionsViewController: UIViewController {
         ])
     }
     
+    // MARK: Actions
+    
+    @objc func missionCardTapped(_ sender: MissionCard) {
+        let missionDetailsViewController = MissionDetailsViewController(for: sender.mission)
+        missionDetailsViewController.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(missionDetailsViewController, animated: true)
+    }
+    
+    // MARK: Helpers
+    
+    private func setupMissionCard(for mission: Mission) -> MissionCard {
+        let missionCard = MissionCard(for: mission)
+        
+        missionCard.missionLabel.text = mission.missionName
+        missionCard.roverLabel.text = "Rover: \(mission.roverName)"
+        
+        // Add roverImage
+        missionCard.roverImage.loadImage(urlString: mission.roverImage) { (result) in
+            switch result {
+            case .success():
+                print("Image loaded")
+            case .failure(let error):
+                print("Failed to load image: \(error)")
+            }
+        }
+        
+        // Setup height
+        missionCard.heightAnchor.constraint(equalToConstant: 320).isActive = true
+        
+        // Setup tap action
+        missionCard.isUserInteractionEnabled = true
+        missionCard.addTarget(self, action: #selector(missionCardTapped(_:)), for: .touchUpInside)
+        
+        return missionCard
+    }
+    
+    private func displayNetworkRetryAlert() {
+        let alert = UIAlertController(title: "Unable to Connect", message: "Something went wrong. Please try again!", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Retry", style: .default, handler: handleNetworkRetry))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    private func displayNetworkAlert() {
+        let alert = UIAlertController(title: "Unable to Connect", message: "Please try again after sometime!", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    private func handleNetworkRetry(alert: UIAlertAction) {
+        guard networkRetryCount < 1  else {
+            displayNetworkAlert()
+            return
+        }
+        
+        networkRetryCount += 1
+        fetchData()
+    }
+    
     // MARK: UI Components
     
     private let scrollView: UIScrollView = {
@@ -128,8 +184,9 @@ class MissionsViewController: UIViewController {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.spacing = 16
+        stackView.isUserInteractionEnabled = true
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
+    
 }
-

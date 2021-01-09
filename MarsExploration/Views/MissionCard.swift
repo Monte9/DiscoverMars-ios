@@ -8,12 +8,15 @@
 import Foundation
 import UIKit
 
-class MissionCard: UIView {
+class MissionCard: UIControl {
     
     // MARK: Initialization
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    let mission: Mission
+    
+    init(for mission: Mission) {
+        self.mission = mission
+        super.init(frame: .zero)
         
         backgroundColor = UIColor.white
         layer.cornerRadius = 10.0
@@ -31,7 +34,7 @@ class MissionCard: UIView {
             blurEffectView.frame = bounds
             blurEffectView.alpha = 0.8
             blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-            
+            blurEffectView.isUserInteractionEnabled = false
             addSubview(blurEffectView)
         }
         
@@ -77,6 +80,7 @@ class MissionCard: UIView {
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         imageView.layer.masksToBounds = true
+        imageView.isUserInteractionEnabled = false
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -86,6 +90,7 @@ class MissionCard: UIView {
         label.numberOfLines = 0
         label.textColor = UIColor.white
         label.font = .systemFont(ofSize: 24)
+        label.isUserInteractionEnabled = false
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -95,6 +100,7 @@ class MissionCard: UIView {
         label.numberOfLines = 0
         label.textColor = UIColor.white
         label.font = .systemFont(ofSize: 18)
+        label.isUserInteractionEnabled = false
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
