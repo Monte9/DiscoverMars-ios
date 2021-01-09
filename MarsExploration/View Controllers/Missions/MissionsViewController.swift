@@ -13,7 +13,6 @@ class MissionsViewController: UIViewController {
     private var missions: [Mission]?
     
     private var activityView: UIActivityIndicatorView!
-    private var networkRetryCount: Int = 0
     
     // MARK: View Lifecycle
     
@@ -59,7 +58,7 @@ class MissionsViewController: UIViewController {
                 self.populateData()
             case .failure(let error):
                 print("Failed to fetch missions: \(error)")
-                self.displayNetworkRetryAlert()
+                self.displayErrorView()
             }
         }
     }
@@ -67,10 +66,15 @@ class MissionsViewController: UIViewController {
     // MARK: Populate Data
     
     private func populateData() {
+        // No missions to display
         guard let missions = missions else {
             return
         }
         
+        // Setup StackView
+        scrollView.addSubview(stackView)
+        
+        // Add Missions to the StackView
         for index in 0..<missions.count {
             let mission = missions[index]
             
@@ -90,13 +94,35 @@ class MissionsViewController: UIViewController {
                 stackView.addArrangedSubview(spacerView)
             }
         }
+        
+        // Setup Constraints
+        NSLayoutConstraint.activate([
+            stackView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            stackView.leadingAnchor.constraint(equalTo: view.readableContentGuide.leadingAnchor),
+            stackView.trailingAnchor.constraint(equalTo: view.readableContentGuide.trailingAnchor),
+        ])
+    }
+    
+    // MARK: Error View
+    
+    private func displayErrorView() {
+        scrollView.addSubview(errorTitleLabel)
+        scrollView.addSubview(retryButton)
+        
+        // Setup Constraints
+        NSLayoutConstraint.activate([
+            errorTitleLabel.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
+            errorTitleLabel.centerYAnchor.constraint(equalTo: scrollView.centerYAnchor),
+            retryButton.topAnchor.constraint(equalTo: errorTitleLabel.bottomAnchor, constant: 4),
+            retryButton.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
+        ])
     }
     
     // MARK: Setup Views
     
     private func setupViews() {
         view.addSubview(scrollView)
-        scrollView.addSubview(stackView)
     }
     
     // MARK: Setup Constraints
@@ -107,10 +133,6 @@ class MissionsViewController: UIViewController {
             scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            stackView.topAnchor.constraint(equalTo: scrollView.topAnchor),
-            stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
-            stackView.leadingAnchor.constraint(equalTo: view.readableContentGuide.leadingAnchor),
-            stackView.trailingAnchor.constraint(equalTo: view.readableContentGuide.trailingAnchor),
         ])
     }
     
@@ -120,6 +142,12 @@ class MissionsViewController: UIViewController {
         let missionDetailsViewController = MissionDetailsViewController(for: sender.mission)
         missionDetailsViewController.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(missionDetailsViewController, animated: true)
+    }
+    
+    @objc func retryNetworkRequest(_ sender: UIButton) {
+        scrollView.subviews.map { $0.removeFromSuperview() }
+        
+        fetchData()
     }
     
     // MARK: Helpers
@@ -150,28 +178,6 @@ class MissionsViewController: UIViewController {
         return missionCard
     }
     
-    private func displayNetworkRetryAlert() {
-        let alert = UIAlertController(title: "Unable to Connect", message: "Something went wrong. Please try again!", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Retry", style: .default, handler: handleNetworkRetry))
-        self.present(alert, animated: true, completion: nil)
-    }
-    
-    private func displayNetworkAlert() {
-        let alert = UIAlertController(title: "Unable to Connect", message: "Please try again after sometime!", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
-    }
-    
-    private func handleNetworkRetry(alert: UIAlertAction) {
-        guard networkRetryCount < 1  else {
-            displayNetworkAlert()
-            return
-        }
-        
-        networkRetryCount += 1
-        fetchData()
-    }
-    
     // MARK: UI Components
     
     private let scrollView: UIScrollView = {
@@ -189,4 +195,23 @@ class MissionsViewController: UIViewController {
         return stackView
     }()
     
+    private let errorTitleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Unable to Connect"
+        label.numberOfLines = 0
+        label.textColor = UIColor(named: "text")
+        label.font = .systemFont(ofSize: 20)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private lazy var retryButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("RETRY", for: .normal)
+        button.setTitleColor(UIColor(named: "martianRed"), for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: 16)
+        button.addTarget(self, action: #selector(retryNetworkRequest), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
 }
