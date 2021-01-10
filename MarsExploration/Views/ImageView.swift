@@ -14,7 +14,7 @@ class ImageView: UIImageView {
     
     var imageUrlSting: String?
     
-    func loadImage(urlString: String, completionHandler: @escaping ((Result<Void, Error>) -> Void)) {
+    func loadImage(urlString: String, completionHandler: ((Result<Void, Error>) -> Void)? = nil) {
         let url = URL(string: urlString)!
         
         image = nil
@@ -28,17 +28,17 @@ class ImageView: UIImageView {
         
         let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
             if let error = error {
-                completionHandler(.failure(error))
+                completionHandler?(.failure(error))
                 return
             }
             
             guard (response as? HTTPURLResponse) != nil else {
-                completionHandler(.failure(NetworkManagerError.noResponse))
+                completionHandler?(.failure(NetworkManagerError.noResponse))
                 return
             }
             
             guard let data = data else {
-                completionHandler(.failure(NetworkManagerError.missingData))
+                completionHandler?(.failure(NetworkManagerError.missingData))
                 return
             }
             

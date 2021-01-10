@@ -43,11 +43,17 @@ class MissionDetailsViewController: UIViewController {
         let status = setupLabel(with: mission.status)
         let maxDate = setupLabel(with: mission.maxDate)
         let launchDate = setupLabel(with: mission.launchDate)
+        let launchVehicle = setupLabel(with: mission.launchVehicle)
+        let launchLocation = setupLabel(with: mission.launchLocation)
         let landingDate = setupLabel(with: mission.landingDate)
+        let landingSite = setupLabel(with: mission.landingSite)
         let maxSol = setupLabel(with: String(mission.maxSol.withCommas()))
         let totalPhotos = setupLabel(with: String(mission.totalPhotos.withCommas()))
         
-        [missionLabel, roverName, status, maxDate, launchDate, landingDate, maxSol, totalPhotos].forEach{
+        [missionLabel, roverName, status, maxDate,
+         launchDate, launchVehicle, launchLocation,
+         landingDate, landingSite,
+         maxSol, totalPhotos].forEach {
             stackView.addArrangedSubview($0)
         }
     }
@@ -56,6 +62,7 @@ class MissionDetailsViewController: UIViewController {
     
     private func setupViews() {
         view.addSubview(scrollView)
+        scrollView.addSubview(headerImage)
         scrollView.addSubview(stackView)
     }
     
@@ -67,7 +74,11 @@ class MissionDetailsViewController: UIViewController {
             scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            stackView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            headerImage.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            headerImage.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            headerImage.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            headerImage.heightAnchor.constraint(equalToConstant: 300),
+            stackView.topAnchor.constraint(equalTo: headerImage.bottomAnchor),
             stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
             stackView.leadingAnchor.constraint(equalTo: view.readableContentGuide.leadingAnchor),
             stackView.trailingAnchor.constraint(equalTo: view.readableContentGuide.trailingAnchor),
@@ -87,10 +98,21 @@ class MissionDetailsViewController: UIViewController {
     
     // MARK: UI Views
     
-    private let scrollView: UIScrollView = {
+    private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         return scrollView
+    }()
+    
+    private lazy var headerImage: ImageView = {
+        let imageView = ImageView()
+        imageView.loadImage(urlString: mission.roverImage)
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
+        imageView.layer.masksToBounds = true
+        imageView.isUserInteractionEnabled = false
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
     }()
     
     private let stackView: UIStackView = {

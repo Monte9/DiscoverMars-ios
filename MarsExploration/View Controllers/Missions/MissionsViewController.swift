@@ -165,14 +165,7 @@ class MissionsViewController: UIViewController {
         missionCard.roverLabel.text = "Rover: \(mission.roverName)"
         
         // Add roverImage
-        missionCard.roverImage.loadImage(urlString: mission.roverImage) { (result) in
-            switch result {
-            case .success():
-                print("Image loaded")
-            case .failure(let error):
-                print("Failed to load image: \(error)")
-            }
-        }
+        missionCard.roverImage.loadImage(urlString: mission.roverImage)
         
         // Setup height
         missionCard.heightAnchor.constraint(equalToConstant: 320).isActive = true
