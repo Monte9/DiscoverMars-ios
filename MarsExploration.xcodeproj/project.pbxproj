@@ -20,6 +20,8 @@
 		0CBC4C1625A8927500D68545 /* MissionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CBC4C1525A8927500D68545 /* MissionCard.swift */; };
 		0CC529A425A984CF0022DE6A /* MarsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC529A325A984CF0022DE6A /* MarsViewController.swift */; };
 		0CC529A825A984F60022DE6A /* MissionDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC529A725A984F60022DE6A /* MissionDetailsViewController.swift */; };
+		0CEC21A925AAF21B000171B7 /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEC21A825AAF21B000171B7 /* Formatters.swift */; };
+		0CEC21AD25AAF429000171B7 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEC21AC25AAF429000171B7 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +40,8 @@
 		0CBC4C1525A8927500D68545 /* MissionCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionCard.swift; sourceTree = "<group>"; };
 		0CC529A325A984CF0022DE6A /* MarsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarsViewController.swift; sourceTree = "<group>"; };
 		0CC529A725A984F60022DE6A /* MissionDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionDetailsViewController.swift; sourceTree = "<group>"; };
+		0CEC21A825AAF21B000171B7 /* Formatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatters.swift; sourceTree = "<group>"; };
+		0CEC21AC25AAF429000171B7 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +80,7 @@
 				0CAA95CF25A877DB00905808 /* Managers */,
 				0CBC4C1225A8878F00D68545 /* View Controllers */,
 				0CBC4C1325A8925900D68545 /* Views */,
+				0CEC21A725AAF208000171B7 /* Shared */,
 				0CAA95BC25A86A0500905808 /* Assets.xcassets */,
 				0CAA95BE25A86A0500905808 /* LaunchScreen.storyboard */,
 				0CAA95C125A86A0500905808 /* Info.plist */,
@@ -134,6 +139,15 @@
 				0CC529A725A984F60022DE6A /* MissionDetailsViewController.swift */,
 			);
 			path = Missions;
+			sourceTree = "<group>";
+		};
+		0CEC21A725AAF208000171B7 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				0CEC21AC25AAF429000171B7 /* Extensions.swift */,
+				0CEC21A825AAF21B000171B7 /* Formatters.swift */,
+			);
+			path = Shared;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -211,7 +225,9 @@
 				0CC529A825A984F60022DE6A /* MissionDetailsViewController.swift in Sources */,
 				0CC529A425A984CF0022DE6A /* MarsViewController.swift in Sources */,
 				0CAA95B425A86A0300905808 /* AppDelegate.swift in Sources */,
+				0CEC21A925AAF21B000171B7 /* Formatters.swift in Sources */,
 				0C60A2C925A8E0F200EFD7FF /* MissionsViewController.swift in Sources */,
+				0CEC21AD25AAF429000171B7 /* Extensions.swift in Sources */,
 				0CAA95D225A8780800905808 /* Mission.swift in Sources */,
 				0C60A2BF25A8D15100EFD7FF /* ImageView.swift in Sources */,
 				0CBC4C0E25A87CEE00D68545 /* NetworkManagerError.swift in Sources */,

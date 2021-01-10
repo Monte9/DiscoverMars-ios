@@ -12,7 +12,7 @@ class MissionsViewController: UIViewController {
     
     private var missions: [Mission]?
     
-    private var activityView: UIActivityIndicatorView!
+    private var activityView: UIActivityIndicatorView?
     
     // MARK: View Lifecycle
     
@@ -21,7 +21,6 @@ class MissionsViewController: UIViewController {
         view.backgroundColor = UIColor.init(named: "background")
         navigationItem.title = "All Missions"
         
-        setupActivityIndicatory()
         fetchData()
         
         setupViews()
@@ -37,24 +36,31 @@ class MissionsViewController: UIViewController {
     
     // MARK: Activity Indicator
     
-    func setupActivityIndicatory() {
+    func showActivityIndicator() {
         activityView = UIActivityIndicatorView(style: .large)
-        activityView.center = self.view.center
-        self.view.addSubview(activityView)
+        activityView?.center = self.view.center
+        self.view.addSubview(activityView!)
+        activityView?.startAnimating()
+    }
+
+    func hideActivityIndicator(){
+        if (activityView != nil){
+            activityView?.stopAnimating()
+        }
     }
     
     // MARK: Network Requests
     
     private func fetchData() {
-        activityView.startAnimating()
+        showActivityIndicator()
         
         NetworkManager.shared.fetchMissions() { result in
-            self.activityView.stopAnimating()
-            
+            self.hideActivityIndicator()
+
             switch result {
             case .success(let missions):
                 self.missions = missions
-                
+
                 self.populateData()
             case .failure(let error):
                 print("Failed to fetch missions: \(error)")
@@ -178,7 +184,7 @@ class MissionsViewController: UIViewController {
         return missionCard
     }
     
-    // MARK: UI Components
+    // MARK: UI Views
     
     private let scrollView: UIScrollView = {
         let scrollView = UIScrollView()

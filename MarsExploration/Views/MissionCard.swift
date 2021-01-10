@@ -73,7 +73,7 @@ class MissionCard: UIControl {
         ])
     }
     
-    // MARK: UI Components
+    // MARK: UI Views
     
     let roverImage: ImageView = {
         let imageView = ImageView()
