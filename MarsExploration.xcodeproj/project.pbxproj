@@ -23,6 +23,10 @@
 		0CC529A825A984F60022DE6A /* MissionDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC529A725A984F60022DE6A /* MissionDetailsViewController.swift */; };
 		0CEC21A925AAF21B000171B7 /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEC21A825AAF21B000171B7 /* Formatters.swift */; };
 		0CEC21AD25AAF429000171B7 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEC21AC25AAF429000171B7 /* Extensions.swift */; };
+		0CEF5D1925AB63550090FCBF /* PhotosSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEF5D1825AB63550090FCBF /* PhotosSectionView.swift */; };
+		0CEF5D1D25AB83D90090FCBF /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEF5D1C25AB83D90090FCBF /* Camera.swift */; };
+		0CEF5D2125AB85900090FCBF /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEF5D2025AB85900090FCBF /* Photo.swift */; };
+		0CEF5D2425AB85C40090FCBF /* Rover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEF5D2325AB85C40090FCBF /* Rover.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +48,10 @@
 		0CC529A725A984F60022DE6A /* MissionDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionDetailsViewController.swift; sourceTree = "<group>"; };
 		0CEC21A825AAF21B000171B7 /* Formatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatters.swift; sourceTree = "<group>"; };
 		0CEC21AC25AAF429000171B7 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		0CEF5D1825AB63550090FCBF /* PhotosSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosSectionView.swift; sourceTree = "<group>"; };
+		0CEF5D1C25AB83D90090FCBF /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
+		0CEF5D2025AB85900090FCBF /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		0CEF5D2325AB85C40090FCBF /* Rover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rover.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +69,7 @@
 			isa = PBXGroup;
 			children = (
 				0C5A30D925AB465F00A53A14 /* InfoView.swift */,
+				0CEF5D1825AB63550090FCBF /* PhotosSectionView.swift */,
 			);
 			path = "Mission Details";
 			sourceTree = "<group>";
@@ -119,7 +128,10 @@
 		0CAA95D025A877E900905808 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				0CEF5D1C25AB83D90090FCBF /* Camera.swift */,
 				0CAA95D125A8780800905808 /* Mission.swift */,
+				0CEF5D2025AB85900090FCBF /* Photo.swift */,
+				0CEF5D2325AB85C40090FCBF /* Rover.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -238,6 +250,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0CEF5D1D25AB83D90090FCBF /* Camera.swift in Sources */,
 				0CBC4C1625A8927500D68545 /* MissionCard.swift in Sources */,
 				0CAA95DA25A87A5500905808 /* RequestPath.swift in Sources */,
 				0CAA95CD25A8776400905808 /* NetworkManager.swift in Sources */,
@@ -247,11 +260,14 @@
 				0C5A30DA25AB465F00A53A14 /* InfoView.swift in Sources */,
 				0CEC21A925AAF21B000171B7 /* Formatters.swift in Sources */,
 				0C60A2C925A8E0F200EFD7FF /* MissionsViewController.swift in Sources */,
+				0CEF5D2125AB85900090FCBF /* Photo.swift in Sources */,
 				0CEC21AD25AAF429000171B7 /* Extensions.swift in Sources */,
 				0CAA95D225A8780800905808 /* Mission.swift in Sources */,
 				0C60A2BF25A8D15100EFD7FF /* ImageView.swift in Sources */,
+				0CEF5D2425AB85C40090FCBF /* Rover.swift in Sources */,
 				0CBC4C0E25A87CEE00D68545 /* NetworkManagerError.swift in Sources */,
 				0CAA95B625A86A0300905808 /* SceneDelegate.swift in Sources */,
+				0CEF5D1925AB63550090FCBF /* PhotosSectionView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

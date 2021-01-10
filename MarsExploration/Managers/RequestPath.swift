@@ -13,5 +13,7 @@ import Foundation
 class RequestPath: NSObject {
     static let baseURL = "https://api.nasa.gov/mars-photos/api/v1/"
     static let manifestURL = "manifests/"
+    static let roversURL = "rovers/"
+    static let photosURL = "/photos"
     static let apiKey = "api_key=maiBleq3ql7plddEDkigXNisbFgXdMBpdCjLgGIO"
 }

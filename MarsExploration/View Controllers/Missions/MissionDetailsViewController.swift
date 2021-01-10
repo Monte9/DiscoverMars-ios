@@ -33,6 +33,27 @@ class MissionDetailsViewController: UIViewController {
         setupConstraints()
         
         populateData()
+        fetchData()
+    }
+    
+    // MARK: Network Requests
+    
+    private func fetchData() {
+//        showActivityIndicator()
+        
+        NetworkManager.shared.fetchPhotos(for: .curiosity, and: 2000) { result in
+//            self.hideActivityIndicator()
+
+            switch result {
+            case .success(let photos):
+                print(photos.count)
+                print(photos.first?.camera.fullName)
+                print(photos.first?.url)
+            case .failure(let error):
+                print("Failed to fetch missions: \(error)")
+//                self.displayErrorView()
+            }
+        }
     }
     
     // MARK: Populate Data
@@ -73,6 +94,7 @@ class MissionDetailsViewController: UIViewController {
         view.addSubview(scrollView)
         scrollView.addSubview(headerImage)
         scrollView.addSubview(stackView)
+        scrollView.addSubview(photosSectionView)
     }
     
     // MARK: Setup Constraints
@@ -88,9 +110,12 @@ class MissionDetailsViewController: UIViewController {
             headerImage.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             headerImage.heightAnchor.constraint(equalToConstant: 300),
             stackView.topAnchor.constraint(equalTo: headerImage.bottomAnchor),
-            stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
             stackView.leadingAnchor.constraint(equalTo: view.readableContentGuide.leadingAnchor),
             stackView.trailingAnchor.constraint(equalTo: view.readableContentGuide.trailingAnchor),
+            photosSectionView.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 24),
+            photosSectionView.leadingAnchor.constraint(equalTo: view.readableContentGuide.leadingAnchor),
+            photosSectionView.trailingAnchor.constraint(equalTo: view.readableContentGuide.trailingAnchor),
+            photosSectionView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
         ])
     }
     
@@ -131,6 +156,12 @@ class MissionDetailsViewController: UIViewController {
         label.textColor = UIColor(named: "text")
         label.font = .systemFont(ofSize: 26, weight: .heavy)
         return label
+    }()
+    
+    private let photosSectionView: PhotosSectionView = {
+        let view = PhotosSectionView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
     }()
     
 }
