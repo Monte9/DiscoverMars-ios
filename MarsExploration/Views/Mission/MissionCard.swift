@@ -89,7 +89,7 @@ class MissionCard: UIControl {
         let label = UILabel()
         label.numberOfLines = 0
         label.textColor = UIColor.white
-        label.font = .systemFont(ofSize: 24)
+        label.font = .systemFont(ofSize: 24, weight: .black)
         label.isUserInteractionEnabled = false
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -99,7 +99,7 @@ class MissionCard: UIControl {
         let label = UILabel()
         label.numberOfLines = 0
         label.textColor = UIColor.white
-        label.font = .systemFont(ofSize: 18)
+        label.font = .systemFont(ofSize: 18, weight: .medium)
         label.isUserInteractionEnabled = false
         label.translatesAutoresizingMaskIntoConstraints = false
         return label

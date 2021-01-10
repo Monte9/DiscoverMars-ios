@@ -38,24 +38,34 @@ class MissionDetailsViewController: UIViewController {
     // MARK: Populate Data
     
     private func populateData() {
-        let missionLabel = setupLabel(with: mission.missionName)
-        let roverName = setupLabel(with: mission.roverName)
-        let status = setupLabel(with: mission.status)
-        let maxDate = setupLabel(with: mission.maxDate)
-        let launchDate = setupLabel(with: mission.launchDate)
-        let launchVehicle = setupLabel(with: mission.launchVehicle)
-        let launchLocation = setupLabel(with: mission.launchLocation)
-        let landingDate = setupLabel(with: mission.landingDate)
-        let landingSite = setupLabel(with: mission.landingSite)
-        let maxSol = setupLabel(with: String(mission.maxSol.withCommas()))
-        let totalPhotos = setupLabel(with: String(mission.totalPhotos.withCommas()))
+//        let landingDate = setupLabel(with: mission.landingDate)
+//        let landingSite = setupLabel(with: mission.landingSite)
+//        let maxSol = setupLabel(with: String(mission.maxSol.withCommas()))
+//        let totalPhotos = setupLabel(with: String(mission.totalPhotos.withCommas()))
         
-        [missionLabel, roverName, status, maxDate,
-         launchDate, launchVehicle, launchLocation,
-         landingDate, landingSite,
-         maxSol, totalPhotos].forEach {
-            stackView.addArrangedSubview($0)
-        }
+        // Mission Overview
+        let typeInfoView = InfoView(title: "Mission Type".uppercased(), subtitle: "Rover: \"\(mission.roverName)\"")
+        
+        // Misson Status
+        let statusInfoView = InfoView(title: "Mission Status".uppercased(), subtitle: mission.status)
+        let lastContactInfoView = InfoView(title: "Last Contact".uppercased(), subtitle: mission.maxDate)
+        
+        // Launch Summary
+        let launchDateInfoView = InfoView(title: "Launch".uppercased(), subtitle: mission.launchDate)
+        let launchVehicleInfoView = InfoView(title: "Launch Vehicle".uppercased(), subtitle: mission.launchVehicle)
+        let launchLocationInfoView = InfoView(title: "Launch Location".uppercased(), subtitle: mission.launchLocation)
+        
+        // Landing Summary
+        let landingDateInfoView = InfoView(title: "Landing".uppercased(), subtitle: mission.landingDate)
+        let landingSiteInfoView = InfoView(title: "Landing Site".uppercased(), subtitle: mission.landingSite)
+        
+        [spacerView, missionLabel, typeInfoView, statusInfoView, lastContactInfoView,
+         launchDateInfoView, launchVehicleInfoView, launchLocationInfoView,
+         landingDateInfoView, landingSiteInfoView
+        ].forEach { stackView.addArrangedSubview($0) }
+        
+        stackView.setCustomSpacing(32.0, after: lastContactInfoView)
+        stackView.setCustomSpacing(32.0, after: launchLocationInfoView)
     }
     
     // MARK: Setup Views
@@ -122,6 +132,17 @@ class MissionDetailsViewController: UIViewController {
         stackView.isUserInteractionEnabled = true
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
+    }()
+    
+    private lazy var spacerView = UIView(frame: CGRect(x: 0, y: 0, width: stackView.frame.width, height: 24))
+    
+    private lazy var missionLabel: UILabel = {
+        let label = UILabel()
+        label.text = mission.missionName
+        label.numberOfLines = 0
+        label.textColor = UIColor(named: "text")
+        label.font = .systemFont(ofSize: 26, weight: .heavy)
+        return label
     }()
     
 }

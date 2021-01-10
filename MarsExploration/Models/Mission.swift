@@ -41,7 +41,7 @@ enum Rover: String, CaseIterable {
     func launchVehicle() -> String {
         switch self {
         case .curiosity:
-            return "Atlas V"
+            return "Atlas V 541"
         case .opportunity:
             return "Delta II 7925H (Delta II Heavy)"
         case .spirit:

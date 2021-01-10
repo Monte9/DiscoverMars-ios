@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C5A30DA25AB465F00A53A14 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5A30D925AB465F00A53A14 /* InfoView.swift */; };
 		0C60A2BF25A8D15100EFD7FF /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C60A2BE25A8D15100EFD7FF /* ImageView.swift */; };
 		0C60A2C925A8E0F200EFD7FF /* MissionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C60A2C825A8E0F200EFD7FF /* MissionsViewController.swift */; };
 		0CAA95B425A86A0300905808 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAA95B325A86A0300905808 /* AppDelegate.swift */; };
@@ -25,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0C5A30D925AB465F00A53A14 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		0C60A2BE25A8D15100EFD7FF /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
 		0C60A2C825A8E0F200EFD7FF /* MissionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionsViewController.swift; sourceTree = "<group>"; };
 		0CAA95B025A86A0300905808 /* MarsExploration.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarsExploration.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -55,6 +57,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0C5A30D725AB458900A53A14 /* Mission Details */ = {
+			isa = PBXGroup;
+			children = (
+				0C5A30D925AB465F00A53A14 /* InfoView.swift */,
+			);
+			path = "Mission Details";
+			sourceTree = "<group>";
+		};
+		0C5A30D825AB462F00A53A14 /* Mission */ = {
+			isa = PBXGroup;
+			children = (
+				0CBC4C1525A8927500D68545 /* MissionCard.swift */,
+			);
+			path = Mission;
+			sourceTree = "<group>";
+		};
 		0CAA95A725A86A0300905808 = {
 			isa = PBXGroup;
 			children = (
@@ -118,7 +136,8 @@
 		0CBC4C1325A8925900D68545 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				0CBC4C1525A8927500D68545 /* MissionCard.swift */,
+				0C5A30D825AB462F00A53A14 /* Mission */,
+				0C5A30D725AB458900A53A14 /* Mission Details */,
 				0C60A2BE25A8D15100EFD7FF /* ImageView.swift */,
 			);
 			path = Views;
@@ -225,6 +244,7 @@
 				0CC529A825A984F60022DE6A /* MissionDetailsViewController.swift in Sources */,
 				0CC529A425A984CF0022DE6A /* MarsViewController.swift in Sources */,
 				0CAA95B425A86A0300905808 /* AppDelegate.swift in Sources */,
+				0C5A30DA25AB465F00A53A14 /* InfoView.swift in Sources */,
 				0CEC21A925AAF21B000171B7 /* Formatters.swift in Sources */,
 				0C60A2C925A8E0F200EFD7FF /* MissionsViewController.swift in Sources */,
 				0CEC21AD25AAF429000171B7 /* Extensions.swift in Sources */,
