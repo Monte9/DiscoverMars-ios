@@ -70,11 +70,24 @@ enum Rover: String, CaseIterable {
             return "Gusev Crater, Mars"
         }
     }
+    
+    func missionOverview() -> String {
+        switch self {
+        case .curiosity:
+            return "Curiosity set out to answer the question: Did Mars ever have the right environmental conditions to support small life forms called microbes? Early in its mission, Curiosity's scientific tools found chemical and mineral evidence of past habitable environments on Mars. It continues to explore the rock record from a time when Mars could have been home to microbial life.\n\nCuriosity carries the biggest, most advanced instruments for scientific studies ever sent to the Martian surface. The history of Martian climate and geology is written in the chemistry and structure of the rocks and soil. Curiosity reads this record by analyzing powdered samples drilled from rocks. It also measures the chemical fingerprints present in different rocks and soils to determine their composition and history, especially their past interactions with water."
+        case .opportunity:
+            return "In January 2004, two robotic geologists named Spirit and Opportunity landed on opposite sides of the red planet. With far greater mobility than the 1997 Mars Pathfinder rover, these robotic explorers have trekked for miles across the Martian surface, conducting field geology and making atmospheric observations. Carrying identical, sophisticated sets of science instruments, both rovers have found evidence of ancient Martian environments where intermittently wet and habitable conditions existed.\n\nWith data from the rovers, mission scientists have reconstructed an ancient past when Mars was awash in water. Spirit and Opportunity each found evidence for past wet conditions that possibly could have supported microbial life. Opportunity's study of 'Eagle' and 'Endurance' craters revealed evidence for past inter-dune playa lakes that evaporated to form sulfate-rich sands. The sands were reworked by water and wind, solidified into rock, and soaked by groundwater.\n\nBoth rovers exceeded their planned 90-day mission lifetimes by many years. Spirit lasted 20 times longer than its original design until its final communication to Earth on March 22, 2010. Opportunity continues to operate more than a decade after launch. In 2015, Opportunity broke the record for extraterrestrial travel by rolling greater than the distance of a 26-mile (42-kilometer) marathon."
+        case .spirit:
+            return "In January 2004, two robotic geologists named Spirit and Opportunity landed on opposite sides of the red planet. With far greater mobility than the 1997 Mars Pathfinder rover, these robotic explorers have trekked for miles across the Martian surface, conducting field geology and making atmospheric observations. Carrying identical, sophisticated sets of science instruments, both rovers have found evidence of ancient Martian environments where intermittently wet and habitable conditions existed.\n\nWith data from the rovers, mission scientists have reconstructed an ancient past when Mars was awash in water. Spirit and Opportunity each found evidence for past wet conditions that possibly could have supported microbial life. Opportunity's study of 'Eagle' and 'Endurance' craters revealed evidence for past inter-dune playa lakes that evaporated to form sulfate-rich sands. The sands were reworked by water and wind, solidified into rock, and soaked by groundwater.\n\nBoth rovers exceeded their planned 90-day mission lifetimes by many years. Spirit lasted 20 times longer than its original design until its final communication to Earth on March 22, 2010. Opportunity continues to operate more than a decade after launch. In 2015, Opportunity broke the record for extraterrestrial travel by rolling greater than the distance of a 26-mile (42-kilometer) marathon."
+        }
+    }
+
 }
 
 class Mission: NSObject, Decodable {
     
     // Mission Overview
+    let overview: String
     let missionName: String
     let roverName: String
     let roverImage: String
@@ -106,11 +119,12 @@ class Mission: NSObject, Decodable {
         case totalPhotos = "total_photos"
     }
     
-    init(missionName: String, roverName: String, roverImage: String,
+    init(overview: String, missionName: String, roverName: String, roverImage: String,
          status: String, maxDate: String,
          launchDate: String, launchVehicle: String, launchLocation: String,
          landingDate: String, landingSite: String,
          maxSol: Int, totalPhotos: Int) {
+        self.overview = overview
         self.missionName = missionName
         self.roverName = roverName
         self.roverImage = roverImage
@@ -133,6 +147,9 @@ class Mission: NSObject, Decodable {
         
         // Rover Type
         let rover = Rover.init(fromRawValue: roverName.lowercased())
+        
+        // Mission Overview
+        overview = rover.missionOverview()
         
         // Mission Name based on Rover
         missionName = rover.missionName()

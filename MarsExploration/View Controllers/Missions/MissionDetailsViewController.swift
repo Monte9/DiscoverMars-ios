@@ -38,11 +38,6 @@ class MissionDetailsViewController: UIViewController {
     // MARK: Populate Data
     
     private func populateData() {
-//        let landingDate = setupLabel(with: mission.landingDate)
-//        let landingSite = setupLabel(with: mission.landingSite)
-//        let maxSol = setupLabel(with: String(mission.maxSol.withCommas()))
-//        let totalPhotos = setupLabel(with: String(mission.totalPhotos.withCommas()))
-        
         // Mission Overview
         let typeInfoView = InfoView(title: "Mission Type".uppercased(), subtitle: "Rover: \"\(mission.roverName)\"")
         
@@ -59,13 +54,17 @@ class MissionDetailsViewController: UIViewController {
         let landingDateInfoView = InfoView(title: "Landing".uppercased(), subtitle: mission.landingDate)
         let landingSiteInfoView = InfoView(title: "Landing Site".uppercased(), subtitle: mission.landingSite)
         
+        // Mission Overview
+        let overviewInfoView = InfoView(title: "Overview".uppercased(), subtitle: mission.overview)
+        
         [spacerView, missionLabel, typeInfoView, statusInfoView, lastContactInfoView,
          launchDateInfoView, launchVehicleInfoView, launchLocationInfoView,
-         landingDateInfoView, landingSiteInfoView
+         landingDateInfoView, landingSiteInfoView, overviewInfoView
         ].forEach { stackView.addArrangedSubview($0) }
         
         stackView.setCustomSpacing(32.0, after: lastContactInfoView)
         stackView.setCustomSpacing(32.0, after: launchLocationInfoView)
+        stackView.setCustomSpacing(32.0, after: landingSiteInfoView)
     }
     
     // MARK: Setup Views
@@ -93,17 +92,6 @@ class MissionDetailsViewController: UIViewController {
             stackView.leadingAnchor.constraint(equalTo: view.readableContentGuide.leadingAnchor),
             stackView.trailingAnchor.constraint(equalTo: view.readableContentGuide.trailingAnchor),
         ])
-    }
-    
-    // MARK: Helpers
-    
-    private func setupLabel(with text: String) -> UILabel {
-        let label = UILabel()
-        label.text = text
-        label.numberOfLines = 0
-        label.textColor = UIColor(named: "text")
-        label.font = .systemFont(ofSize: 20)
-        return label
     }
     
     // MARK: UI Views
