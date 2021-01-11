@@ -49,7 +49,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         rootTabBarController.tabBar.items?[1].image = UIImage(systemName: "sun.min")
         rootTabBarController.tabBar.items?[1].selectedImage = UIImage(systemName: "sun.min.fill")
         
-        window?.rootViewController = rootTabBarController
+        window?.rootViewController = missionsViewController
         window?.makeKeyAndVisible()
         window?.tintColor = UIColor(named: "martianRed")
     }

@@ -18,25 +18,12 @@ class MissionCard: UIControl {
         self.mission = mission
         super.init(frame: .zero)
         
-        backgroundColor = UIColor.white
-        layer.cornerRadius = 10.0
-        layer.borderColor = UIColor.gray.cgColor
-        layer.borderWidth = 0.5
-        clipsToBounds = true
-        
-        // only apply the blur if the user hasn't disabled transparency effects
-        if !UIAccessibility.isReduceTransparencyEnabled {
-            backgroundColor = .clear
-            
-            let blurEffect = UIBlurEffect(style: .systemUltraThinMaterialDark)
-            let blurEffectView = UIVisualEffectView(effect: blurEffect)
-            //always fill the view
-            blurEffectView.frame = bounds
-            blurEffectView.alpha = 0.8
-            blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-            blurEffectView.isUserInteractionEnabled = false
-            addSubview(blurEffectView)
-        }
+        // Adds the shadow effect to the backgrond
+        backgroundColor = UIColor.clear
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowOffset = .zero
+        layer.shadowOpacity = 0.2
+        layer.shadowRadius = 20
         
         setupViews()
         setupConstraints()
@@ -49,60 +36,73 @@ class MissionCard: UIControl {
     // MARK: Setup Views
     
     private func setupViews() {
-        addSubview(roverImage)
-        addSubview(missionLabel)
-        addSubview(roverLabel)
-        
-        sendSubviewToBack(roverImage)
+        addSubview(containerView)
+        containerView.addSubview(bottomView)
+        containerView.addSubview(roverLabel)
+        containerView.addSubview(roverImage)
     }
     
     // MARK: Setup Constraints
     
     private func setupConstraints() {
         NSLayoutConstraint.activate([
-            roverImage.topAnchor.constraint(equalTo: topAnchor),
-            roverImage.bottomAnchor.constraint(equalTo: bottomAnchor),
-            roverImage.leadingAnchor.constraint(equalTo: leadingAnchor),
-            roverImage.trailingAnchor.constraint(equalTo: trailingAnchor),
-            missionLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-            missionLabel.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor, constant: -16),
-            missionLabel.bottomAnchor.constraint(equalTo: roverLabel.topAnchor, constant: -8),
-            roverLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-            roverLabel.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor, constant: -16),
-            roverLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16)
+            containerView.topAnchor.constraint(equalTo: topAnchor),
+            containerView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            containerView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            containerView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            bottomView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
+            bottomView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+            bottomView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
+            bottomView.heightAnchor.constraint(equalToConstant: 83),
+            roverLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 24),
+            roverLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 24),
+            roverImage.heightAnchor.constraint(equalToConstant: 217),
+            roverImage.widthAnchor.constraint(equalToConstant: 361),
+            roverImage.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 20),
+            roverImage.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 55),
         ])
     }
     
     // MARK: UI Views
     
-    let roverImage: ImageView = {
-        let imageView = ImageView()
-        imageView.contentMode = .scaleAspectFill
-        imageView.clipsToBounds = true
-        imageView.layer.masksToBounds = true
-        imageView.isUserInteractionEnabled = false
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        return imageView
+    private lazy var containerView: UIView = {
+        let view = UIView()
+        view.frame = bounds
+        view.backgroundColor = UIColor(named: "orange")
+        view.layer.cornerRadius = 16
+        view.layer.masksToBounds = true
+        view.isUserInteractionEnabled = false
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
     }()
     
-    let missionLabel: UILabel = {
-        let label = UILabel()
-        label.numberOfLines = 0
-        label.textColor = UIColor.white
-        label.font = .systemFont(ofSize: 24, weight: .black)
-        label.isUserInteractionEnabled = false
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
+    let bottomView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor(named: "orange.light")
+        view.clipsToBounds = true
+        view.layer.cornerRadius = 16.0
+        view.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
+        view.isUserInteractionEnabled = false
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
     }()
     
     let roverLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        label.textColor = UIColor.white
-        label.font = .systemFont(ofSize: 18, weight: .medium)
+        label.textColor = UIColor(named: "cream")
+        label.font = UIFont(name: "Futura-Medium", size: 36)
         label.isUserInteractionEnabled = false
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
+    }()
+    
+    let roverImage: ImageView = {
+        let imageView = ImageView()
+        imageView.contentMode = .scaleAspectFill
+        imageView.isUserInteractionEnabled = false
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
     }()
     
 }

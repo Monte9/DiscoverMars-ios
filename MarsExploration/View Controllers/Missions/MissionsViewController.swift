@@ -18,7 +18,7 @@ class MissionsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.init(named: "background")
+        view.backgroundColor = UIColor.init(named: "orange")
         navigationItem.title = "All Missions"
         
         fetchData()
@@ -105,8 +105,8 @@ class MissionsViewController: UIViewController {
         NSLayoutConstraint.activate([
             stackView.topAnchor.constraint(equalTo: scrollView.topAnchor),
             stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
-            stackView.leadingAnchor.constraint(equalTo: view.readableContentGuide.leadingAnchor),
-            stackView.trailingAnchor.constraint(equalTo: view.readableContentGuide.trailingAnchor),
+            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
+            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
         ])
     }
     
@@ -161,14 +161,13 @@ class MissionsViewController: UIViewController {
     private func setupMissionCard(for mission: Mission) -> MissionCard {
         let missionCard = MissionCard(for: mission)
         
-        missionCard.missionLabel.text = mission.missionName
-        missionCard.roverLabel.text = "Rover: \(mission.roverName)"
+        missionCard.roverLabel.text = mission.roverName
         
         // Add roverImage
-        missionCard.roverImage.loadImage(urlString: mission.roverImage)
+        missionCard.roverImage.image = UIImage(named: mission.roverName.lowercased())
         
         // Setup height
-        missionCard.heightAnchor.constraint(equalToConstant: 320).isActive = true
+        missionCard.heightAnchor.constraint(equalToConstant: 232).isActive = true
         
         // Setup tap action
         missionCard.isUserInteractionEnabled = true
@@ -181,6 +180,7 @@ class MissionsViewController: UIViewController {
     
     private let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
+        scrollView.showsVerticalScrollIndicator = false
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         return scrollView
     }()
@@ -188,7 +188,7 @@ class MissionsViewController: UIViewController {
     private let stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
-        stackView.spacing = 16
+        stackView.spacing = 24
         stackView.isUserInteractionEnabled = true
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
