@@ -33,6 +33,16 @@ class MissionCard: UIControl {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        NSLayoutConstraint.activate([
+            roverImage.widthAnchor.constraint(equalToConstant: frame.width * 0.9),
+            roverImage.heightAnchor.constraint(equalToConstant: frame.height * 0.9),
+            roverImage.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: frame.width/6.7),
+        ])
+    }
+    
     // MARK: Setup Views
     
     private func setupViews() {
@@ -56,10 +66,7 @@ class MissionCard: UIControl {
             bottomView.heightAnchor.constraint(equalToConstant: 83),
             roverLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 24),
             roverLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 24),
-            roverImage.heightAnchor.constraint(equalToConstant: 217),
-            roverImage.widthAnchor.constraint(equalToConstant: 361),
-            roverImage.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 20),
-            roverImage.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 55),
+            roverImage.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: 5)
         ])
     }
     
