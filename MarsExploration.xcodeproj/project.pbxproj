@@ -28,6 +28,7 @@
 		0CEF5D2125AB85900090FCBF /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEF5D2025AB85900090FCBF /* Photo.swift */; };
 		0CEF5D2425AB85C40090FCBF /* Rover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEF5D2325AB85C40090FCBF /* Rover.swift */; };
 		0CEF5D2B25ADD5AC0090FCBF /* InteractivePopRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEF5D2A25ADD5AC0090FCBF /* InteractivePopRecognizer.swift */; };
+		0CEF5D2E25AE29DB0090FCBF /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEF5D2D25AE29DB0090FCBF /* HeaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,7 @@
 		0CEF5D2025AB85900090FCBF /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		0CEF5D2325AB85C40090FCBF /* Rover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rover.swift; sourceTree = "<group>"; };
 		0CEF5D2A25ADD5AC0090FCBF /* InteractivePopRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractivePopRecognizer.swift; sourceTree = "<group>"; };
+		0CEF5D2D25AE29DB0090FCBF /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +73,7 @@
 			isa = PBXGroup;
 			children = (
 				0C5A30D925AB465F00A53A14 /* InfoView.swift */,
+				0CEF5D2D25AE29DB0090FCBF /* HeaderView.swift */,
 				0CEF5D1825AB63550090FCBF /* PhotosSectionView.swift */,
 			);
 			path = "Mission Details";
@@ -268,6 +271,7 @@
 				0CEC21AD25AAF429000171B7 /* Extensions.swift in Sources */,
 				0CAA95D225A8780800905808 /* Mission.swift in Sources */,
 				0C60A2BF25A8D15100EFD7FF /* ImageView.swift in Sources */,
+				0CEF5D2E25AE29DB0090FCBF /* HeaderView.swift in Sources */,
 				0CEF5D2425AB85C40090FCBF /* Rover.swift in Sources */,
 				0CBC4C0E25A87CEE00D68545 /* NetworkManagerError.swift in Sources */,
 				0CAA95B625A86A0300905808 /* SceneDelegate.swift in Sources */,

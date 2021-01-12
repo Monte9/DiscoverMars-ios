@@ -29,6 +29,11 @@ class MissionDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Set the background color for the status bar
+        navigationController?.setStatusBar(backgroundColor: UIColor(named: "orange"))
+        
+        // Set the background color for the view
         view.backgroundColor = UIColor.init(named: "background")
         
         setupViews()
@@ -82,6 +87,9 @@ class MissionDetailsViewController: UIViewController {
     // MARK: Populate Data
     
     private func populateData() {
+        // Add roverImage to headerView
+        headerView.roverImage.image = UIImage(named: mission.roverName.lowercased())
+        
         // Mission Overview
         let typeInfoView = InfoView(title: "Mission Type".uppercased(), subtitle: "Rover: \"\(mission.roverName)\"")
         
@@ -114,25 +122,29 @@ class MissionDetailsViewController: UIViewController {
     // MARK: Setup Views
     
     private func setupViews() {
+        view.addSubview(backButton)
         view.addSubview(scrollView)
-        scrollView.addSubview(headerImage)
+        scrollView.addSubview(headerView)
         scrollView.addSubview(stackView)
         scrollView.addSubview(photosSectionView)
+        
+        view.bringSubviewToFront(backButton)
     }
     
     // MARK: Setup Constraints
     
     private func setupConstraints() {
         NSLayoutConstraint.activate([
+            backButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 24),
+            backButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
             scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            headerImage.topAnchor.constraint(equalTo: scrollView.topAnchor),
-            headerImage.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            headerImage.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            headerImage.heightAnchor.constraint(equalToConstant: 300),
-            stackView.topAnchor.constraint(equalTo: headerImage.bottomAnchor),
+            headerView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            headerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            headerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            stackView.topAnchor.constraint(equalTo: headerView.bottomAnchor),
             stackView.leadingAnchor.constraint(equalTo: view.readableContentGuide.leadingAnchor),
             stackView.trailingAnchor.constraint(equalTo: view.readableContentGuide.trailingAnchor),
             photosSectionView.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 24),
@@ -142,23 +154,43 @@ class MissionDetailsViewController: UIViewController {
         ])
     }
     
+    // MARK: Actions
+    
+    @objc private func backButtonTapped(_ sender: UIButton) {
+        navigationController?.popViewController(animated: true)
+    }
+    
     // MARK: UI Views
+    
+    private let backButton: UIButton = {
+        let button = UIButton(type: .custom)
+        button.widthAnchor.constraint(equalToConstant: 40).isActive = true
+        button.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        button.layer.cornerRadius = 20
+        button.backgroundColor = UIColor(named: "orange.light")
+        button.layer.masksToBounds = false
+        button.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
+        
+        // Setup Back Icon Image
+        let backIcon = UIImage(systemName:"chevron.left")?.withRenderingMode(.alwaysTemplate)
+        button.setImage(backIcon, for: .normal)
+        button.tintColor = UIColor(named: "text")
+        
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
     
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
+        scrollView.showsVerticalScrollIndicator = false
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         return scrollView
     }()
     
-    private lazy var headerImage: ImageView = {
-        let imageView = ImageView()
-        imageView.loadImage(urlString: mission.roverImage)
-        imageView.contentMode = .scaleAspectFill
-        imageView.clipsToBounds = true
-        imageView.layer.masksToBounds = true
-        imageView.isUserInteractionEnabled = false
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        return imageView
+    private let headerView: HeaderView = {
+        let view = HeaderView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
     }()
     
     private let stackView: UIStackView = {
