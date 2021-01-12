@@ -47,7 +47,7 @@ class PhotosSectionView: UIView {
         label.text = "Photos"
         label.numberOfLines = 0
         label.textColor = UIColor(named: "text")
-        label.font = .systemFont(ofSize: 26, weight: .heavy)
+        label.font = UIFont(name: "Futura-Medium", size: 26)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()

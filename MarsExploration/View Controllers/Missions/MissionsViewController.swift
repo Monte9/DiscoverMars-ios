@@ -19,19 +19,11 @@ class MissionsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.init(named: "orange")
-        navigationItem.title = "All Missions"
         
         fetchData()
         
         setupViews()
         setupConstraints()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        // Remove the Back Button Label for all Child VCs
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
     
     // MARK: Activity Indicator

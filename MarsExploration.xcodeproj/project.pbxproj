@@ -27,6 +27,7 @@
 		0CEF5D1D25AB83D90090FCBF /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEF5D1C25AB83D90090FCBF /* Camera.swift */; };
 		0CEF5D2125AB85900090FCBF /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEF5D2025AB85900090FCBF /* Photo.swift */; };
 		0CEF5D2425AB85C40090FCBF /* Rover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEF5D2325AB85C40090FCBF /* Rover.swift */; };
+		0CEF5D2B25ADD5AC0090FCBF /* InteractivePopRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEF5D2A25ADD5AC0090FCBF /* InteractivePopRecognizer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 		0CEF5D1C25AB83D90090FCBF /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
 		0CEF5D2025AB85900090FCBF /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		0CEF5D2325AB85C40090FCBF /* Rover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rover.swift; sourceTree = "<group>"; };
+		0CEF5D2A25ADD5AC0090FCBF /* InteractivePopRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractivePopRecognizer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,6 +179,7 @@
 			children = (
 				0CEC21AC25AAF429000171B7 /* Extensions.swift */,
 				0CEC21A825AAF21B000171B7 /* Formatters.swift */,
+				0CEF5D2A25ADD5AC0090FCBF /* InteractivePopRecognizer.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -256,6 +259,7 @@
 				0CAA95CD25A8776400905808 /* NetworkManager.swift in Sources */,
 				0CC529A825A984F60022DE6A /* MissionDetailsViewController.swift in Sources */,
 				0CC529A425A984CF0022DE6A /* MarsViewController.swift in Sources */,
+				0CEF5D2B25ADD5AC0090FCBF /* InteractivePopRecognizer.swift in Sources */,
 				0CAA95B425A86A0300905808 /* AppDelegate.swift in Sources */,
 				0C5A30DA25AB465F00A53A14 /* InfoView.swift in Sources */,
 				0CEC21A925AAF21B000171B7 /* Formatters.swift in Sources */,

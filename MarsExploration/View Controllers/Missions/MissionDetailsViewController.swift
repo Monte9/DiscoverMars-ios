@@ -10,6 +10,9 @@ import UIKit
 
 class MissionDetailsViewController: UIViewController {
     
+    private weak var defaultGestureRecognizerDelegate: UIGestureRecognizerDelegate?
+    private var customPopRecognizer: InteractivePopRecognizer?
+    
     // MARK: Initialization
     
     private let mission: Mission
@@ -27,13 +30,33 @@ class MissionDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.init(named: "background")
-        title = mission.missionName
         
         setupViews()
         setupConstraints()
         
         populateData()
         fetchData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        // Enable swipe back gesture from child VC to root VC
+        if let navigationController = navigationController {
+            // Saves the default gestureRecognizerDelegate of the UINavigationController so it can be restored later
+            defaultGestureRecognizerDelegate = navigationController.interactivePopGestureRecognizer?.delegate
+
+            // Set the custom gestureRecognizerDelegate on the UINavigationController to enable swipe back gesture for RN Screens
+            customPopRecognizer = InteractivePopRecognizer(navController: navigationController)
+            navigationController.interactivePopGestureRecognizer?.delegate = customPopRecognizer
+        }
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+
+        // Restore the default gestureRecognizerDelegate on the UINavigationController
+        navigationController?.interactivePopGestureRecognizer?.delegate = defaultGestureRecognizerDelegate
     }
     
     // MARK: Network Requests
@@ -154,7 +177,7 @@ class MissionDetailsViewController: UIViewController {
         label.text = mission.missionName
         label.numberOfLines = 0
         label.textColor = UIColor(named: "text")
-        label.font = .systemFont(ofSize: 26, weight: .heavy)
+        label.font = UIFont(name: "Futura-Medium", size: 26)
         return label
     }()
     

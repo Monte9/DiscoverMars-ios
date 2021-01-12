@@ -64,7 +64,7 @@ class InfoView: UIView {
         label.text = title
         label.numberOfLines = 0
         label.textColor = UIColor(named: "text")
-        label.font = .systemFont(ofSize: 16, weight: .black)
+        label.font = UIFont(name: "Futura-Medium", size: 14)
         return label
     }()
     
@@ -73,7 +73,7 @@ class InfoView: UIView {
         label.text = subtitle
         label.numberOfLines = 0
         label.textColor = UIColor(named: "text")
-        label.font = .systemFont(ofSize: 20, weight: .regular)
+        label.font = UIFont(name: "Futura-Medium", size: 16)
         return label
     }()
     
