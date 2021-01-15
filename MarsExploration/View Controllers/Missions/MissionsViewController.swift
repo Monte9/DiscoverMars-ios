@@ -97,8 +97,8 @@ class MissionsViewController: UIViewController {
         NSLayoutConstraint.activate([
             stackView.topAnchor.constraint(equalTo: scrollView.topAnchor),
             stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
-            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
-            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
+            stackView.leadingAnchor.constraint(equalTo: view.readableContentGuide.leadingAnchor),
+            stackView.trailingAnchor.constraint(equalTo: view.readableContentGuide.trailingAnchor),
         ])
     }
     
@@ -159,7 +159,7 @@ class MissionsViewController: UIViewController {
         missionCard.roverImage.image = UIImage(named: mission.roverName.lowercased())
         
         // Setup height
-        missionCard.heightAnchor.constraint(equalToConstant: 232).isActive = true
+        missionCard.heightAnchor.constraint(equalToConstant: Constants.isIpad ? 330 : 232).isActive = true
         
         // Setup tap action
         missionCard.isUserInteractionEnabled = true

@@ -11,6 +11,7 @@ import UIKit
 // SF Symbols List: https://hotpot.ai/free-icons?s=sfSymbols
 // Mars Default Color Palette: https://www.color-hex.com/color-palette/7276
 // Mars Pale Color Palette: https://www.color-hex.com/color-palette/7175
+// iOS Fonts: https://gist.github.com/tadija/cb4ec0cbf0a89886d488d1d8b595d0e9
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     

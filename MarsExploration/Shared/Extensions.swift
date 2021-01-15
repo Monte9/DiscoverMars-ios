@@ -48,3 +48,12 @@ extension Int {
     }
     
 }
+
+/// Shared constants used across the app
+class Constants {
+    
+    static var isIpad: Bool = {
+        return UIDevice.current.userInterfaceIdiom == .pad
+    }()
+    
+}

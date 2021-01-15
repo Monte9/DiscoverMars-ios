@@ -21,6 +21,9 @@
 		0CBC4C1625A8927500D68545 /* MissionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CBC4C1525A8927500D68545 /* MissionCard.swift */; };
 		0CC529A425A984CF0022DE6A /* MarsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC529A325A984CF0022DE6A /* MarsViewController.swift */; };
 		0CC529A825A984F60022DE6A /* MissionDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC529A725A984F60022DE6A /* MissionDetailsViewController.swift */; };
+		0CC809D725B18EE500691B28 /* Inter-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0CC809D425B18EE400691B28 /* Inter-Bold.ttf */; };
+		0CC809D825B18EE500691B28 /* Inter-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0CC809D525B18EE500691B28 /* Inter-Medium.ttf */; };
+		0CC809D925B18EE500691B28 /* Inter-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0CC809D625B18EE500691B28 /* Inter-Regular.ttf */; };
 		0CEC21A925AAF21B000171B7 /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEC21A825AAF21B000171B7 /* Formatters.swift */; };
 		0CEC21AD25AAF429000171B7 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEC21AC25AAF429000171B7 /* Extensions.swift */; };
 		0CEF5D1925AB63550090FCBF /* PhotosSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEF5D1825AB63550090FCBF /* PhotosSectionView.swift */; };
@@ -29,6 +32,7 @@
 		0CEF5D2425AB85C40090FCBF /* Rover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEF5D2325AB85C40090FCBF /* Rover.swift */; };
 		0CEF5D2B25ADD5AC0090FCBF /* InteractivePopRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEF5D2A25ADD5AC0090FCBF /* InteractivePopRecognizer.swift */; };
 		0CEF5D2E25AE29DB0090FCBF /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEF5D2D25AE29DB0090FCBF /* HeaderView.swift */; };
+		0CEF5D3125AE43C60090FCBF /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEF5D3025AE43C60090FCBF /* PhotoCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +52,9 @@
 		0CBC4C1525A8927500D68545 /* MissionCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionCard.swift; sourceTree = "<group>"; };
 		0CC529A325A984CF0022DE6A /* MarsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarsViewController.swift; sourceTree = "<group>"; };
 		0CC529A725A984F60022DE6A /* MissionDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionDetailsViewController.swift; sourceTree = "<group>"; };
+		0CC809D425B18EE400691B28 /* Inter-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Bold.ttf"; sourceTree = "<group>"; };
+		0CC809D525B18EE500691B28 /* Inter-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Medium.ttf"; sourceTree = "<group>"; };
+		0CC809D625B18EE500691B28 /* Inter-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Regular.ttf"; sourceTree = "<group>"; };
 		0CEC21A825AAF21B000171B7 /* Formatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatters.swift; sourceTree = "<group>"; };
 		0CEC21AC25AAF429000171B7 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		0CEF5D1825AB63550090FCBF /* PhotosSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosSectionView.swift; sourceTree = "<group>"; };
@@ -56,6 +63,7 @@
 		0CEF5D2325AB85C40090FCBF /* Rover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rover.swift; sourceTree = "<group>"; };
 		0CEF5D2A25ADD5AC0090FCBF /* InteractivePopRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractivePopRecognizer.swift; sourceTree = "<group>"; };
 		0CEF5D2D25AE29DB0090FCBF /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		0CEF5D3025AE43C60090FCBF /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,8 +80,9 @@
 		0C5A30D725AB458900A53A14 /* Mission Details */ = {
 			isa = PBXGroup;
 			children = (
-				0C5A30D925AB465F00A53A14 /* InfoView.swift */,
 				0CEF5D2D25AE29DB0090FCBF /* HeaderView.swift */,
+				0C5A30D925AB465F00A53A14 /* InfoView.swift */,
+				0CEF5D3025AE43C60090FCBF /* PhotoCollectionViewCell.swift */,
 				0CEF5D1825AB63550090FCBF /* PhotosSectionView.swift */,
 			);
 			path = "Mission Details";
@@ -106,6 +115,7 @@
 		0CAA95B225A86A0300905808 /* MarsExploration */ = {
 			isa = PBXGroup;
 			children = (
+				0CAA95BE25A86A0500905808 /* LaunchScreen.storyboard */,
 				0CAA95B325A86A0300905808 /* AppDelegate.swift */,
 				0CAA95B525A86A0300905808 /* SceneDelegate.swift */,
 				0CAA95D025A877E900905808 /* Models */,
@@ -114,7 +124,7 @@
 				0CBC4C1325A8925900D68545 /* Views */,
 				0CEC21A725AAF208000171B7 /* Shared */,
 				0CAA95BC25A86A0500905808 /* Assets.xcassets */,
-				0CAA95BE25A86A0500905808 /* LaunchScreen.storyboard */,
+				0CC809D325B18ED500691B28 /* Fonts */,
 				0CAA95C125A86A0500905808 /* Info.plist */,
 			);
 			path = MarsExploration;
@@ -175,6 +185,16 @@
 				0CC529A725A984F60022DE6A /* MissionDetailsViewController.swift */,
 			);
 			path = Missions;
+			sourceTree = "<group>";
+		};
+		0CC809D325B18ED500691B28 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				0CC809D425B18EE400691B28 /* Inter-Bold.ttf */,
+				0CC809D525B18EE500691B28 /* Inter-Medium.ttf */,
+				0CC809D625B18EE500691B28 /* Inter-Regular.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		0CEC21A725AAF208000171B7 /* Shared */ = {
@@ -244,6 +264,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0CC809D825B18EE500691B28 /* Inter-Medium.ttf in Resources */,
+				0CC809D925B18EE500691B28 /* Inter-Regular.ttf in Resources */,
+				0CC809D725B18EE500691B28 /* Inter-Bold.ttf in Resources */,
 				0CAA95C025A86A0500905808 /* LaunchScreen.storyboard in Resources */,
 				0CAA95BD25A86A0500905808 /* Assets.xcassets in Resources */,
 			);
@@ -267,6 +290,7 @@
 				0C5A30DA25AB465F00A53A14 /* InfoView.swift in Sources */,
 				0CEC21A925AAF21B000171B7 /* Formatters.swift in Sources */,
 				0C60A2C925A8E0F200EFD7FF /* MissionsViewController.swift in Sources */,
+				0CEF5D3125AE43C60090FCBF /* PhotoCollectionViewCell.swift in Sources */,
 				0CEF5D2125AB85900090FCBF /* Photo.swift in Sources */,
 				0CEC21AD25AAF429000171B7 /* Extensions.swift in Sources */,
 				0CAA95D225A8780800905808 /* Mission.swift in Sources */,

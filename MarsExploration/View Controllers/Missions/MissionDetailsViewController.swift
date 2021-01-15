@@ -40,7 +40,6 @@ class MissionDetailsViewController: UIViewController {
         setupConstraints()
         
         populateData()
-        fetchData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -62,26 +61,6 @@ class MissionDetailsViewController: UIViewController {
 
         // Restore the default gestureRecognizerDelegate on the UINavigationController
         navigationController?.interactivePopGestureRecognizer?.delegate = defaultGestureRecognizerDelegate
-    }
-    
-    // MARK: Network Requests
-    
-    private func fetchData() {
-//        showActivityIndicator()
-        
-        NetworkManager.shared.fetchPhotos(for: .curiosity, and: 2000) { result in
-//            self.hideActivityIndicator()
-
-            switch result {
-            case .success(let photos):
-                print(photos.count)
-                print(photos.first?.camera.fullName)
-                print(photos.first?.url)
-            case .failure(let error):
-                print("Failed to fetch missions: \(error)")
-//                self.displayErrorView()
-            }
-        }
     }
     
     // MARK: Populate Data
