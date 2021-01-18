@@ -70,7 +70,7 @@ class MissionDetailsViewController: UIViewController {
         headerView.roverImage.image = UIImage(named: mission.roverName.lowercased())
         
         [spacerView, aboutSectionView, missionSectionView,
-         launchSectionView, landingSectionView
+         launchSectionView, landingSectionView, overviewSectionView, dividerLine
         ].forEach { missionDetailsStackView.addArrangedSubview($0) }
         
         missionDetailsStackView.setCustomSpacing(32, after: aboutSectionView)
@@ -82,7 +82,7 @@ class MissionDetailsViewController: UIViewController {
         view.addSubview(backButton)
         view.addSubview(scrollView)
         
-        [headerView, missionDetailsStackView, photosSectionView].forEach { scrollView.addSubview($0) }
+        [headerView, missionDetailsStackView, dividerLine, photosSectionView].forEach { scrollView.addSubview($0) }
         
         view.bringSubviewToFront(backButton)
     }
@@ -164,6 +164,16 @@ class MissionDetailsViewController: UIViewController {
     private lazy var missionSectionView = MissionSectionView(mission: mission)
     private lazy var launchSectionView = LaunchSectionView(mission: mission)
     private lazy var landingSectionView = LandingSectionView(mission: mission)
+    private lazy var overviewSectionView = OverviewSectionView(mission: mission)
+    
+    private let dividerLine: UIView = {
+        let view = UIView()
+        view.heightAnchor.constraint(equalToConstant: 1).isActive = true
+        view.layer.borderWidth = 1.0
+        view.layer.borderColor = UIColor(named: "orange")?.cgColor
+        view.layer.opacity = 0.1
+        return view
+    }()
     
     private let photosSectionView: PhotosSectionView = {
         let view = PhotosSectionView()

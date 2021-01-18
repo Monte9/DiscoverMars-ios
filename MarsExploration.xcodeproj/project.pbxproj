@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0C0FCA9625B584D00013D69A /* LaunchSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C0FCA9525B584D00013D69A /* LaunchSectionView.swift */; };
 		0C0FCA9A25B58A380013D69A /* LandingSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C0FCA9925B58A380013D69A /* LandingSectionView.swift */; };
+		0C0FCA9D25B590780013D69A /* OverviewSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C0FCA9C25B590780013D69A /* OverviewSectionView.swift */; };
 		0C60A2BF25A8D15100EFD7FF /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C60A2BE25A8D15100EFD7FF /* ImageView.swift */; };
 		0C60A2C925A8E0F200EFD7FF /* MissionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C60A2C825A8E0F200EFD7FF /* MissionsViewController.swift */; };
 		0CAA95B425A86A0300905808 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAA95B325A86A0300905808 /* AppDelegate.swift */; };
@@ -43,6 +44,7 @@
 /* Begin PBXFileReference section */
 		0C0FCA9525B584D00013D69A /* LaunchSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchSectionView.swift; sourceTree = "<group>"; };
 		0C0FCA9925B58A380013D69A /* LandingSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingSectionView.swift; sourceTree = "<group>"; };
+		0C0FCA9C25B590780013D69A /* OverviewSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewSectionView.swift; sourceTree = "<group>"; };
 		0C60A2BE25A8D15100EFD7FF /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
 		0C60A2C825A8E0F200EFD7FF /* MissionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionsViewController.swift; sourceTree = "<group>"; };
 		0CAA95B025A86A0300905808 /* MarsExploration.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarsExploration.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -213,6 +215,7 @@
 				0CC809E525B5696500691B28 /* MissionSectionView.swift */,
 				0C0FCA9525B584D00013D69A /* LaunchSectionView.swift */,
 				0C0FCA9925B58A380013D69A /* LandingSectionView.swift */,
+				0C0FCA9C25B590780013D69A /* OverviewSectionView.swift */,
 				0CC809E325B5692900691B28 /* Photos Section */,
 			);
 			path = Sections;
@@ -335,6 +338,7 @@
 				0CEF5D2125AB85900090FCBF /* Photo.swift in Sources */,
 				0CEC21AD25AAF429000171B7 /* Extensions.swift in Sources */,
 				0C0FCA9A25B58A380013D69A /* LandingSectionView.swift in Sources */,
+				0C0FCA9D25B590780013D69A /* OverviewSectionView.swift in Sources */,
 				0CAA95D225A8780800905808 /* Mission.swift in Sources */,
 				0CC809DE25B1916900691B28 /* AboutSectionView.swift in Sources */,
 				0C60A2BF25A8D15100EFD7FF /* ImageView.swift in Sources */,
