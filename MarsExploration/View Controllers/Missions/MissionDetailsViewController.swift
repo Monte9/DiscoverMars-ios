@@ -69,8 +69,9 @@ class MissionDetailsViewController: UIViewController {
         // Add roverImage to headerView
         headerView.roverImage.image = UIImage(named: mission.roverName.lowercased())
         
-        [spacerView, aboutSectionView, missionSectionView,
-         launchSectionView, landingSectionView, overviewSectionView, dividerLine
+        [spacerView, aboutSectionView,
+         missionSectionView, launchSectionView, landingSectionView,
+         overviewSectionView, dividerLine
         ].forEach { missionDetailsStackView.addArrangedSubview($0) }
         
         missionDetailsStackView.setCustomSpacing(32, after: aboutSectionView)

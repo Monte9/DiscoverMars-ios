@@ -11,6 +11,7 @@ class Mission: NSObject, Decodable {
     
     // Mission Overview
     let overview: String
+    let fullOverview: String
     let missionName: String
     let roverName: String
     let roverImage: String
@@ -42,12 +43,14 @@ class Mission: NSObject, Decodable {
         case totalPhotos = "total_photos"
     }
     
-    init(overview: String, missionName: String, roverName: String, roverImage: String,
+    init(overview: String, fullOverview: String,
+         missionName: String, roverName: String, roverImage: String,
          status: String, maxDate: String,
          launchDate: String, launchVehicle: String, launchLocation: String,
          landingDate: String, landingSite: String,
          maxSol: Int, totalPhotos: Int) {
         self.overview = overview
+        self.fullOverview = fullOverview
         self.missionName = missionName
         self.roverName = roverName
         self.roverImage = roverImage
@@ -73,6 +76,9 @@ class Mission: NSObject, Decodable {
         
         // Mission Overview
         overview = rover.missionOverview()
+        
+        // Mission Overview Expanded
+        fullOverview = rover.missionOverviewExpanded()
         
         // Mission Name based on Rover
         missionName = rover.missionName()
