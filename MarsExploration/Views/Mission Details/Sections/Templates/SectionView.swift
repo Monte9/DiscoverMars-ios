@@ -1,24 +1,22 @@
 //
-//  InfoView.swift
+//  SectionView.swift
 //  MarsExploration
 //
-//  Created by Monte Thakkar on 1/10/21.
+//  Created by Monte Thakkar on 1/18/21.
 //
 
 import Foundation
 import UIKit
 
-class InfoView: UIView {
+class SectionView: UIView {
     
     // MARK: Initialization
-    
     private let title: String
-    private let subtitle: String
+    private let rows: [UIView]
     
-    init(title: String, subtitle: String) {
+    init(title: String, rows: [UIView]) {
         self.title = title
-        self.subtitle = subtitle
-        
+        self.rows = rows
         super.init(frame: .zero)
         
         setupViews()
@@ -33,8 +31,10 @@ class InfoView: UIView {
     
     private func setupViews() {
         addSubview(stackView)
+        stackView.addArrangedSubview(sectionLabel)
+        stackView.addArrangedSubview(dividerLine)
         
-        [titleLabel, subtitleLabel].forEach { stackView.addArrangedSubview($0) }
+        rows.forEach { stackView.addArrangedSubview($0) }
     }
     
     // MARK: Setup Constraints
@@ -44,37 +44,37 @@ class InfoView: UIView {
             stackView.topAnchor.constraint(equalTo: topAnchor),
             stackView.bottomAnchor.constraint(equalTo: bottomAnchor),
             stackView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            stackView.trailingAnchor.constraint(equalTo: trailingAnchor)
+            stackView.trailingAnchor.constraint(equalTo: trailingAnchor),
         ])
     }
     
     // MARK: UI Views
     
-    let stackView: UIStackView = {
+    private let stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
-        stackView.spacing = 4
-        stackView.isUserInteractionEnabled = true
+        stackView.spacing = 8
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
     
-    private lazy var titleLabel: UILabel = {
+    private lazy var sectionLabel: UILabel = {
         let label = UILabel()
         label.text = title
         label.numberOfLines = 0
         label.textColor = UIColor(named: "text")
-        label.font = UIFont(name: "Futura-Bold", size: 14)
+        label.font = UIFont(name: "Inter-Bold", size: 24)
+        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    private lazy var subtitleLabel: UILabel = {
-        let label = UILabel()
-        label.text = subtitle
-        label.numberOfLines = 0
-        label.textColor = UIColor(named: "text")
-        label.font = UIFont(name: "Futura-Medium", size: 16)
-        return label
+    private let dividerLine: UIView = {
+        let view = UIView()
+        view.heightAnchor.constraint(equalToConstant: 1).isActive = true
+        view.layer.borderWidth = 1.0
+        view.layer.borderColor = UIColor(named: "orange")?.cgColor
+        view.layer.opacity = 0.1
+        return view
     }()
     
 }

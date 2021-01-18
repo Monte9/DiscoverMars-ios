@@ -69,33 +69,10 @@ class MissionDetailsViewController: UIViewController {
         // Add roverImage to headerView
         headerView.roverImage.image = UIImage(named: mission.roverName.lowercased())
         
-        // Mission Overview
-        let typeInfoView = InfoView(title: "Mission Type".uppercased(), subtitle: "Rover: \"\(mission.roverName)\"")
-        
-        // Misson Status
-        let statusInfoView = InfoView(title: "Mission Status".uppercased(), subtitle: mission.status)
-        let lastContactInfoView = InfoView(title: "Last Contact".uppercased(), subtitle: mission.maxDate)
-        
-        // Launch Summary
-        let launchDateInfoView = InfoView(title: "Launch".uppercased(), subtitle: mission.launchDate)
-        let launchVehicleInfoView = InfoView(title: "Launch Vehicle".uppercased(), subtitle: mission.launchVehicle)
-        let launchLocationInfoView = InfoView(title: "Launch Location".uppercased(), subtitle: mission.launchLocation)
-        
-        // Landing Summary
-        let landingDateInfoView = InfoView(title: "Landing".uppercased(), subtitle: mission.landingDate)
-        let landingSiteInfoView = InfoView(title: "Landing Site".uppercased(), subtitle: mission.landingSite)
-        
-        // Mission Overview
-        let overviewInfoView = InfoView(title: "Overview".uppercased(), subtitle: mission.overview)
-        
-        [spacerView, missionLabel, typeInfoView, statusInfoView, lastContactInfoView,
-         launchDateInfoView, launchVehicleInfoView, launchLocationInfoView,
-         landingDateInfoView, landingSiteInfoView, overviewInfoView
+        [spacerView, aboutSectionView, missionSectionView
         ].forEach { stackView.addArrangedSubview($0) }
         
-        stackView.setCustomSpacing(32.0, after: lastContactInfoView)
-        stackView.setCustomSpacing(32.0, after: launchLocationInfoView)
-        stackView.setCustomSpacing(32.0, after: landingSiteInfoView)
+        stackView.setCustomSpacing(32, after: aboutSectionView)
     }
     
     // MARK: Setup Views
@@ -143,17 +120,17 @@ class MissionDetailsViewController: UIViewController {
     
     private let backButton: UIButton = {
         let button = UIButton(type: .custom)
-        button.widthAnchor.constraint(equalToConstant: 40).isActive = true
-        button.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        button.layer.cornerRadius = 20
-        button.backgroundColor = UIColor(named: "orange.light")
+        button.widthAnchor.constraint(equalToConstant: 48).isActive = true
+        button.heightAnchor.constraint(equalToConstant: 48).isActive = true
+        button.layer.cornerRadius = 24
+        button.backgroundColor = UIColor(named: "background")
         button.layer.masksToBounds = false
         button.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
         
         // Setup Back Icon Image
         let backIcon = UIImage(systemName:"chevron.left")?.withRenderingMode(.alwaysTemplate)
         button.setImage(backIcon, for: .normal)
-        button.tintColor = UIColor(named: "text")
+        button.tintColor = UIColor(named: "orange")
         
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -183,14 +160,9 @@ class MissionDetailsViewController: UIViewController {
     
     private lazy var spacerView = UIView(frame: CGRect(x: 0, y: 0, width: stackView.frame.width, height: 24))
     
-    private lazy var missionLabel: UILabel = {
-        let label = UILabel()
-        label.text = mission.missionName
-        label.numberOfLines = 0
-        label.textColor = UIColor(named: "text")
-        label.font = UIFont(name: "Futura-Medium", size: 26)
-        return label
-    }()
+    private lazy var aboutSectionView = AboutSectionView(mission: mission)
+    
+    private lazy var missionSectionView = MissionSectionView(mission: mission)
     
     private let photosSectionView: PhotosSectionView = {
         let view = PhotosSectionView()

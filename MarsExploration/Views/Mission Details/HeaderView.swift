@@ -51,7 +51,7 @@ class HeaderView: UIView {
             bottomView.trailingAnchor.constraint(equalTo: trailingAnchor),
             bottomView.bottomAnchor.constraint(equalTo: bottomAnchor),
             bottomView.heightAnchor.constraint(equalToConstant: 75),
-            roverImage.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10)
+            roverImage.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -20)
         ])
     }
     
