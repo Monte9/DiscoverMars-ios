@@ -152,8 +152,9 @@ class PhotosSectionView: UIView {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }()
-    
 }
+
+// MARK: - UICollectionViewDelegate
 
 extension PhotosSectionView: UICollectionViewDelegate {
     
@@ -162,8 +163,9 @@ extension PhotosSectionView: UICollectionViewDelegate {
         let photo = photos[indexPath.section]
         print(photo.url)
     }
-    
 }
+
+// MARK: - UICollectionViewDataSource
 
 extension PhotosSectionView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -180,28 +182,18 @@ extension PhotosSectionView: UICollectionViewDataSource {
         cell.imageView.loadImage(urlString: photo.url)
         return cell
     }
-    
 }
+
+// MARK: - UICollectionViewDelegateFlowLayout
 
 extension PhotosSectionView: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = (readableContentGuide.layoutFrame.width - 32) / 3
+        let width = (readableContentGuide.layoutFrame.width - 16) / 3
         return CGSize(width: width, height: width)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 16
     }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 16
-    }
-    
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: collectionView.bounds.width, height: 10)
-    }
-    
 }
