@@ -28,6 +28,14 @@ class SectionRow: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        NSLayoutConstraint.activate([
+            valueLabel.widthAnchor.constraint(lessThanOrEqualToConstant: frame.width * 0.7),
+        ])
+    }
+    
     // MARK: Setup Views
     
     private func setupViews() {
@@ -46,6 +54,7 @@ class SectionRow: UIView {
             valueLabel.leadingAnchor.constraint(greaterThanOrEqualTo: titleLabel.trailingAnchor, constant: 8),
             valueLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
             dividerLine.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 16),
+            dividerLine.topAnchor.constraint(equalTo: valueLabel.bottomAnchor, constant: 16),
             dividerLine.leadingAnchor.constraint(equalTo: leadingAnchor),
             dividerLine.trailingAnchor.constraint(equalTo: trailingAnchor),
             dividerLine.bottomAnchor.constraint(equalTo: bottomAnchor)

@@ -1,5 +1,5 @@
 //
-//  MissionSectionView.swift
+//  LaunchSectionView.swift
 //  MarsExploration
 //
 //  Created by Monte Thakkar on 1/18/21.
@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class MissionSectionView: UIView {
+class LaunchSectionView: UIView {
     
     // MARK: Initialization
     
@@ -46,13 +46,10 @@ class MissionSectionView: UIView {
     
     // MARK: UI Views
     
-    private lazy var missionRow = SectionRow(title: "Status", value: mission.status)
-    private lazy var nameRow = SectionRow(title: "Name", value: mission.missionName)
-    private lazy var typeRow = SectionRow(title: "Type", value: "Rover: \"\(mission.roverName)\"")
-    private lazy var lastContactRow = SectionRow(title: "Last Contact", value: mission.maxDate)
-    private lazy var vehicleRow = SectionRow(title: "Vehicle", value: mission.launchVehicle)
+    private lazy var dateRow = SectionRow(title: "Date", value: mission.launchDate)
+    private lazy var locationRow = SectionRow(title: "Location", value: mission.launchLocation)
     
-    private lazy var sectionRows = [missionRow, nameRow, typeRow, lastContactRow, vehicleRow]
-    private lazy var sectionView = SectionView(title: "Mission", rows: sectionRows)
+    private lazy var sectionRows = [dateRow, locationRow]
+    private lazy var sectionView = SectionView(title: "Launch", rows: sectionRows)
     
 }

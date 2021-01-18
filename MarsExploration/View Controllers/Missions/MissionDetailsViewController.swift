@@ -69,10 +69,11 @@ class MissionDetailsViewController: UIViewController {
         // Add roverImage to headerView
         headerView.roverImage.image = UIImage(named: mission.roverName.lowercased())
         
-        [spacerView, aboutSectionView, missionSectionView
-        ].forEach { stackView.addArrangedSubview($0) }
+        [spacerView, aboutSectionView, missionSectionView,
+         launchSectionView, landingSectionView
+        ].forEach { missionDetailsStackView.addArrangedSubview($0) }
         
-        stackView.setCustomSpacing(32, after: aboutSectionView)
+        missionDetailsStackView.setCustomSpacing(32, after: aboutSectionView)
     }
     
     // MARK: Setup Views
@@ -80,9 +81,8 @@ class MissionDetailsViewController: UIViewController {
     private func setupViews() {
         view.addSubview(backButton)
         view.addSubview(scrollView)
-        scrollView.addSubview(headerView)
-        scrollView.addSubview(stackView)
-        scrollView.addSubview(photosSectionView)
+        
+        [headerView, missionDetailsStackView, photosSectionView].forEach { scrollView.addSubview($0) }
         
         view.bringSubviewToFront(backButton)
     }
@@ -100,10 +100,10 @@ class MissionDetailsViewController: UIViewController {
             headerView.topAnchor.constraint(equalTo: scrollView.topAnchor),
             headerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             headerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            stackView.topAnchor.constraint(equalTo: headerView.bottomAnchor),
-            stackView.leadingAnchor.constraint(equalTo: view.readableContentGuide.leadingAnchor),
-            stackView.trailingAnchor.constraint(equalTo: view.readableContentGuide.trailingAnchor),
-            photosSectionView.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 24),
+            missionDetailsStackView.topAnchor.constraint(equalTo: headerView.bottomAnchor),
+            missionDetailsStackView.leadingAnchor.constraint(equalTo: view.readableContentGuide.leadingAnchor),
+            missionDetailsStackView.trailingAnchor.constraint(equalTo: view.readableContentGuide.trailingAnchor),
+            photosSectionView.topAnchor.constraint(equalTo: missionDetailsStackView.bottomAnchor, constant: 24),
             photosSectionView.leadingAnchor.constraint(equalTo: view.readableContentGuide.leadingAnchor),
             photosSectionView.trailingAnchor.constraint(equalTo: view.readableContentGuide.trailingAnchor),
             photosSectionView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
@@ -149,7 +149,7 @@ class MissionDetailsViewController: UIViewController {
         return view
     }()
     
-    private let stackView: UIStackView = {
+    private let missionDetailsStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.spacing = 16
@@ -158,11 +158,12 @@ class MissionDetailsViewController: UIViewController {
         return stackView
     }()
     
-    private lazy var spacerView = UIView(frame: CGRect(x: 0, y: 0, width: stackView.frame.width, height: 24))
+    private lazy var spacerView = UIView(frame: CGRect(x: 0, y: 0, width: missionDetailsStackView.frame.width, height: 24))
     
     private lazy var aboutSectionView = AboutSectionView(mission: mission)
-    
     private lazy var missionSectionView = MissionSectionView(mission: mission)
+    private lazy var launchSectionView = LaunchSectionView(mission: mission)
+    private lazy var landingSectionView = LandingSectionView(mission: mission)
     
     private let photosSectionView: PhotosSectionView = {
         let view = PhotosSectionView()

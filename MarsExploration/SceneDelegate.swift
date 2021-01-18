@@ -44,29 +44,23 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Customize TabBar appearance
         rootTabBarController.tabBar.barTintColor = UIColor(named: "background")
         
-        // Setup TabBarItem for Mission Tab
-        rootTabBarController.tabBar.items?[0].title = "Missions"
-        rootTabBarController.tabBar.items?[0].setTitleTextAttributes(
-            [
-                NSAttributedString.Key.font: UIFont(name: "Futura-Medium", size: 24)!,
-                NSAttributedString.Key.foregroundColor: UIColor.init(named: "orange")!
-            ],
-            for: .normal
-        )
+        // Setup TabBarItem Appearance
+        UITabBarItem.appearance().setTitleTextAttributes([
+            NSAttributedString.Key.font: UIFont(name: "Inter-Medium", size: 24)!,
+            NSAttributedString.Key.foregroundColor: UIColor.init(named: "orange")!
+        ], for: .normal)
+        UITabBarItem.appearance().setTitleTextAttributes([
+            NSAttributedString.Key.font: UIFont(name: "Inter-Medium", size: 24)!,
+            NSAttributedString.Key.foregroundColor: UIColor.init(named: "orange")!
+        ], for: .selected)
         
-        // Setup TabBarItem for Mission Tab
+        // Setup TabBarItem Labels
+        rootTabBarController.tabBar.items?[0].title = "Missions"
         rootTabBarController.tabBar.items?[1].title = "Mars"
-        rootTabBarController.tabBar.items?[1].setTitleTextAttributes(
-            [
-                NSAttributedString.Key.font: UIFont(name: "Futura-Medium", size: 24)!,
-                NSAttributedString.Key.foregroundColor: UIColor.init(named: "orange")!,
-            ],
-            for: .normal
-        )
         
         window?.rootViewController = rootTabBarController
         window?.makeKeyAndVisible()
-        window?.tintColor = UIColor(named: "martianRed")
+        window?.tintColor = UIColor(named: "orange")
     }
     
     func sceneDidDisconnect(_ scene: UIScene) {

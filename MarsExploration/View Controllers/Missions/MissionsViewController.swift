@@ -200,7 +200,7 @@ class MissionsViewController: UIViewController {
     private lazy var retryButton: UIButton = {
         let button = UIButton()
         button.setTitle("RETRY", for: .normal)
-        button.setTitleColor(UIColor(named: "martianRed"), for: .normal)
+        button.setTitleColor(UIColor(named: "orange"), for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 16)
         button.addTarget(self, action: #selector(retryNetworkRequest), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false

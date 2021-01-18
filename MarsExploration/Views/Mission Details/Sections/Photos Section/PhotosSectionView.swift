@@ -126,10 +126,10 @@ class PhotosSectionView: UIView {
     
     private let headerLabel: UILabel = {
         let label = UILabel()
-        label.text = "Photos".uppercased()
+        label.text = "Photos"
         label.numberOfLines = 0
         label.textColor = UIColor(named: "text")
-        label.font = UIFont(name: "Futura-Bold", size: 14)
+        label.font = UIFont(name: "Inter-Bold", size: 24)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -139,7 +139,7 @@ class PhotosSectionView: UIView {
         label.text = "Unable to Connect"
         label.numberOfLines = 0
         label.textColor = UIColor(named: "text")
-        label.font = UIFont(name: "Futura-Medium", size: 16)
+        label.font = UIFont(name: "Inter-Medium", size: 16)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
