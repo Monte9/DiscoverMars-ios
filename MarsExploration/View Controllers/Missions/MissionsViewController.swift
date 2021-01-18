@@ -154,6 +154,7 @@ class MissionsViewController: UIViewController {
         let missionCard = MissionCard(for: mission)
         
         missionCard.roverLabel.text = mission.roverName
+        missionCard.missionLabel.text = mission.missionName
         
         // Add roverImage
         missionCard.roverImage.image = UIImage(named: mission.roverName.lowercased())

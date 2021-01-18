@@ -37,8 +37,8 @@ class MissionCard: UIControl {
         super.layoutSubviews()
         
         NSLayoutConstraint.activate([
-            roverImage.widthAnchor.constraint(equalToConstant: frame.width * 0.9),
-            roverImage.heightAnchor.constraint(equalToConstant: frame.height * 0.9),
+            roverImage.widthAnchor.constraint(equalToConstant: frame.width * 0.7),
+            roverImage.heightAnchor.constraint(equalToConstant: frame.height * 0.7),
             roverImage.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: frame.width/6.7),
         ])
     }
@@ -48,8 +48,9 @@ class MissionCard: UIControl {
     private func setupViews() {
         addSubview(containerView)
         containerView.addSubview(bottomView)
-        containerView.addSubview(roverLabel)
         containerView.addSubview(roverImage)
+        containerView.addSubview(roverLabel)
+        containerView.addSubview(missionLabel)
     }
     
     // MARK: Setup Constraints
@@ -63,10 +64,14 @@ class MissionCard: UIControl {
             bottomView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
             bottomView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
             bottomView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
-            bottomView.heightAnchor.constraint(equalToConstant: 83),
-            roverLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 24),
+            roverLabel.topAnchor.constraint(equalTo: bottomView.topAnchor, constant: 30),
             roverLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 24),
-            roverImage.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: 5)
+            roverLabel.trailingAnchor.constraint(lessThanOrEqualTo: containerView.trailingAnchor, constant: -24),
+            missionLabel.topAnchor.constraint(equalTo: roverLabel.bottomAnchor, constant: 4),
+            missionLabel.bottomAnchor.constraint(equalTo: bottomView.bottomAnchor, constant: -24),
+            missionLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 24),
+            missionLabel.trailingAnchor.constraint(lessThanOrEqualTo: containerView.trailingAnchor, constant: -24),
+            roverImage.bottomAnchor.constraint(equalTo: missionLabel.topAnchor, constant: 20)
         ])
     }
     
@@ -98,7 +103,18 @@ class MissionCard: UIControl {
         let label = UILabel()
         label.numberOfLines = 0
         label.textColor = UIColor(named: "cream")
-        label.font = UIFont(name: "Futura-Medium", size: 36)
+        label.font = UIFont(name: "Inter-Bold", size: 32)
+        label.isUserInteractionEnabled = false
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    let missionLabel: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 0
+        label.textColor = UIColor(named: "cream")
+        label.font = UIFont(name: "Inter-Medium", size: 16)
+        label.layer.opacity = 0.6
         label.isUserInteractionEnabled = false
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
