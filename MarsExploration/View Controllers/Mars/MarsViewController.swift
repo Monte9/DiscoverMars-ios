@@ -67,5 +67,4 @@ class MarsViewController: UIViewController {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
-    
 }

@@ -93,7 +93,8 @@
 			isa = PBXGroup;
 			children = (
 				0CEF5D2D25AE29DB0090FCBF /* HeaderView.swift */,
-				0CC809E125B5691200691B28 /* Sections */,
+				0CC809E125B5691200691B28 /* Info Sections */,
+				0CC809E325B5692900691B28 /* Photos Section */,
 			);
 			path = "Mission Details";
 			sourceTree = "<group>";
@@ -144,8 +145,8 @@
 			isa = PBXGroup;
 			children = (
 				0CAA95D925A87A5500905808 /* RequestPath.swift */,
-				0CAA95CC25A8776400905808 /* NetworkManager.swift */,
 				0CBC4C0D25A87CEE00D68545 /* NetworkManagerError.swift */,
+				0CAA95CC25A8776400905808 /* NetworkManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -173,7 +174,6 @@
 		0CBC4C1325A8925900D68545 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				0C60A2BE25A8D15100EFD7FF /* ImageView.swift */,
 				0C5A30D825AB462F00A53A14 /* Mission */,
 				0C5A30D725AB458900A53A14 /* Mission Details */,
 			);
@@ -207,7 +207,7 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
-		0CC809E125B5691200691B28 /* Sections */ = {
+		0CC809E125B5691200691B28 /* Info Sections */ = {
 			isa = PBXGroup;
 			children = (
 				0CC809E825B56D1700691B28 /* Templates */,
@@ -216,16 +216,15 @@
 				0C0FCA9525B584D00013D69A /* LaunchSectionView.swift */,
 				0C0FCA9925B58A380013D69A /* LandingSectionView.swift */,
 				0C0FCA9C25B590780013D69A /* OverviewSectionView.swift */,
-				0CC809E325B5692900691B28 /* Photos Section */,
 			);
-			path = Sections;
+			path = "Info Sections";
 			sourceTree = "<group>";
 		};
 		0CC809E325B5692900691B28 /* Photos Section */ = {
 			isa = PBXGroup;
 			children = (
-				0CEF5D1825AB63550090FCBF /* PhotosSectionView.swift */,
 				0CEF5D3025AE43C60090FCBF /* PhotoCollectionViewCell.swift */,
+				0CEF5D1825AB63550090FCBF /* PhotosSectionView.swift */,
 			);
 			path = "Photos Section";
 			sourceTree = "<group>";
@@ -242,6 +241,7 @@
 		0CEC21A725AAF208000171B7 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				0C60A2BE25A8D15100EFD7FF /* ImageView.swift */,
 				0CEC21AC25AAF429000171B7 /* Extensions.swift */,
 				0CEC21A825AAF21B000171B7 /* Formatters.swift */,
 				0CEF5D2A25ADD5AC0090FCBF /* InteractivePopRecognizer.swift */,

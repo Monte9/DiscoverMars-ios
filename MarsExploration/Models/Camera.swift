@@ -30,5 +30,4 @@ class Camera: NSObject, Decodable {
         // Camera Full Name
         fullName = try container.decode(String.self, forKey: .fullName)
     }
-    
 }

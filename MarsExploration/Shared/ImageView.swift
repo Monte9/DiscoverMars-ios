@@ -55,5 +55,4 @@ class ImageView: UIImageView {
         
         task.resume()
     }
-    
 }

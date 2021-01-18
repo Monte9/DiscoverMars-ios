@@ -21,7 +21,6 @@ extension UINavigationController {
         statusBarView.backgroundColor = backgroundColor
         view.addSubview(statusBarView)
     }
-    
 }
 
 extension String {
@@ -35,7 +34,6 @@ extension String {
             .trimmingCharacters(in: .whitespacesAndNewlines)
             .capitalized // If input is in llamaCase
     }
-    
 }
 
 extension Int {
@@ -46,7 +44,6 @@ extension Int {
         
         return numberFormatter.string(from: NSNumber(value:self))!
     }
-    
 }
 
 /// Shared constants used across the app
@@ -55,5 +52,4 @@ class Constants {
     static var isIpad: Bool = {
         return UIDevice.current.userInterfaceIdiom == .pad
     }()
-    
 }

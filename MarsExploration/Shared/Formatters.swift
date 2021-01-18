@@ -20,5 +20,4 @@ class Formatters {
         dateFormatter.dateFormat = "MMM dd, yyyy"
         return  dateFormatter.string(from: date!)
     }
-    
 }

@@ -117,5 +117,4 @@ class Mission: NSObject, Decodable {
         // Total Photos
         totalPhotos = try container.decode(Int.self, forKey: .totalPhotos)
     }
-    
 }

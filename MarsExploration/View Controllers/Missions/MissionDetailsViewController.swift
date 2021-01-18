@@ -181,5 +181,4 @@ class MissionDetailsViewController: UIViewController {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-    
 }
