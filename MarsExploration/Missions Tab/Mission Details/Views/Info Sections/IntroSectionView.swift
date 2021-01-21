@@ -1,5 +1,5 @@
 //
-//  RoverSectionView.swift
+//  IntroSectionView.swift
 //  MarsExploration
 //
 //  Created by Monte Thakkar on 1/15/21.
@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class AboutSectionView: UIView {
+class IntroSectionView: UIView {
     
     // MARK: Initialization
     
