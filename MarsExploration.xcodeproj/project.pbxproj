@@ -89,32 +89,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0C3BA41725B9695A00E6FB99 /* Mission Details */ = {
-			isa = PBXGroup;
-			children = (
-				0CC529A725A984F60022DE6A /* MissionDetailsViewController.swift */,
-			);
-			path = "Mission Details";
-			sourceTree = "<group>";
-		};
-		0C5A30D725AB458900A53A14 /* Mission Details */ = {
-			isa = PBXGroup;
-			children = (
-				0CEF5D2D25AE29DB0090FCBF /* HeaderView.swift */,
-				0CC809E125B5691200691B28 /* Info Sections */,
-				0CC809E325B5692900691B28 /* Photos Section */,
-			);
-			path = "Mission Details";
-			sourceTree = "<group>";
-		};
-		0C5A30D825AB462F00A53A14 /* Mission */ = {
-			isa = PBXGroup;
-			children = (
-				0CBC4C1525A8927500D68545 /* MissionCard.swift */,
-			);
-			path = Mission;
-			sourceTree = "<group>";
-		};
 		0CAA95A725A86A0300905808 = {
 			isa = PBXGroup;
 			children = (
@@ -139,8 +113,8 @@
 				0CAA95B525A86A0300905808 /* SceneDelegate.swift */,
 				0CAA95D025A877E900905808 /* Models */,
 				0CAA95CF25A877DB00905808 /* Managers */,
-				0CBC4C1225A8878F00D68545 /* View Controllers */,
-				0CBC4C1325A8925900D68545 /* Views */,
+				0CB40EED25B988CA0088B7DB /* Missions Tab */,
+				0CB40EEE25B988D10088B7DB /* Mars Tab */,
 				0CEC21A725AAF208000171B7 /* Shared */,
 				0CAA95BC25A86A0500905808 /* Assets.xcassets */,
 				0CC809D325B18ED500691B28 /* Fonts */,
@@ -170,39 +144,58 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		0CBC4C1225A8878F00D68545 /* View Controllers */ = {
+		0CB40EED25B988CA0088B7DB /* Missions Tab */ = {
 			isa = PBXGroup;
 			children = (
-				0CC529A125A9848B0022DE6A /* Mars */,
-				0CC529A225A984AE0022DE6A /* Missions */,
+				0CB40EEF25B989150088B7DB /* Missions */,
+				0CB40EF125B989390088B7DB /* Mission Details */,
 			);
-			path = "View Controllers";
+			path = "Missions Tab";
 			sourceTree = "<group>";
 		};
-		0CBC4C1325A8925900D68545 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				0C5A30D825AB462F00A53A14 /* Mission */,
-				0C5A30D725AB458900A53A14 /* Mission Details */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		0CC529A125A9848B0022DE6A /* Mars */ = {
+		0CB40EEE25B988D10088B7DB /* Mars Tab */ = {
 			isa = PBXGroup;
 			children = (
 				0CC529A325A984CF0022DE6A /* MarsViewController.swift */,
 			);
-			path = Mars;
+			path = "Mars Tab";
 			sourceTree = "<group>";
 		};
-		0CC529A225A984AE0022DE6A /* Missions */ = {
+		0CB40EEF25B989150088B7DB /* Missions */ = {
 			isa = PBXGroup;
 			children = (
+				0CB40EF025B9891E0088B7DB /* Views */,
 				0C60A2C825A8E0F200EFD7FF /* MissionsViewController.swift */,
-				0C3BA41725B9695A00E6FB99 /* Mission Details */,
 			);
 			path = Missions;
+			sourceTree = "<group>";
+		};
+		0CB40EF025B9891E0088B7DB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0CBC4C1525A8927500D68545 /* MissionCard.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		0CB40EF125B989390088B7DB /* Mission Details */ = {
+			isa = PBXGroup;
+			children = (
+				0CB40EF225B9894E0088B7DB /* Views */,
+				0CC529A725A984F60022DE6A /* MissionDetailsViewController.swift */,
+			);
+			path = "Mission Details";
+			sourceTree = "<group>";
+		};
+		0CB40EF225B9894E0088B7DB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0CC809E825B56D1700691B28 /* Templates */,
+				0CC809E125B5691200691B28 /* Info Sections */,
+				0CC809E325B5692900691B28 /* Photos Section */,
+				0CEF5D2D25AE29DB0090FCBF /* HeaderView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		0CC809D325B18ED500691B28 /* Fonts */ = {
@@ -218,7 +211,6 @@
 		0CC809E125B5691200691B28 /* Info Sections */ = {
 			isa = PBXGroup;
 			children = (
-				0CC809E825B56D1700691B28 /* Templates */,
 				0CC809DD25B1916900691B28 /* AboutSectionView.swift */,
 				0CC809E525B5696500691B28 /* MissionSectionView.swift */,
 				0C0FCA9525B584D00013D69A /* LaunchSectionView.swift */,
