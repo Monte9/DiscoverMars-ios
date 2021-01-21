@@ -30,7 +30,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let missionsViewController = MissionsViewController()
         let missionsNavigationController = UINavigationController(rootViewController: missionsViewController)
         missionsNavigationController.navigationBar.isTranslucent = false
-        missionsNavigationController.setNavigationBarHidden(true, animated: false)
         
         // Setup NavigationController
         let marsViewController = MarsViewController()

@@ -89,6 +89,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0C3BA41725B9695A00E6FB99 /* Mission Details */ = {
+			isa = PBXGroup;
+			children = (
+				0CC529A725A984F60022DE6A /* MissionDetailsViewController.swift */,
+			);
+			path = "Mission Details";
+			sourceTree = "<group>";
+		};
 		0C5A30D725AB458900A53A14 /* Mission Details */ = {
 			isa = PBXGroup;
 			children = (
@@ -192,7 +200,7 @@
 			isa = PBXGroup;
 			children = (
 				0C60A2C825A8E0F200EFD7FF /* MissionsViewController.swift */,
-				0CC529A725A984F60022DE6A /* MissionDetailsViewController.swift */,
+				0C3BA41725B9695A00E6FB99 /* Mission Details */,
 			);
 			path = Missions;
 			sourceTree = "<group>";

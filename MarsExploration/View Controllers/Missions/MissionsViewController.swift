@@ -26,6 +26,28 @@ class MissionsViewController: UIViewController {
         setupConstraints()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        // Hide the Navigation Bar
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+        
+        // Set the background color for the status bar
+        navigationController?.setStatusBar(backgroundColor: UIColor(named: "background"))
+        
+        // Set the tint and background color for the navigation bar
+        UINavigationBar.appearance().barTintColor = UIColor(named: "background")
+        UINavigationBar.appearance().tintColor = UIColor(named: "orange")
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(named: "orange") ?? .white]
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        
+        // Show the Navigation Bar
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
+    }
+    
     // MARK: Activity Indicator
     
     func showActivityIndicator() {

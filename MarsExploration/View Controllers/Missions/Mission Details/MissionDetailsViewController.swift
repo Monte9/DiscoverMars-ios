@@ -30,8 +30,8 @@ class MissionDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Set the background color for the status bar
-        navigationController?.setStatusBar(backgroundColor: UIColor(named: "orange"))
+        // Set the navigation bar title
+        title = mission.roverName
         
         // Set the background color for the view
         view.backgroundColor = UIColor.init(named: "background")
@@ -55,13 +55,6 @@ class MissionDetailsViewController: UIViewController {
             navigationController.interactivePopGestureRecognizer?.delegate = customPopRecognizer
         }
     }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-
-        // Restore the default gestureRecognizerDelegate on the UINavigationController
-        navigationController?.interactivePopGestureRecognizer?.delegate = defaultGestureRecognizerDelegate
-    }
     
     // MARK: Populate Data
     
@@ -80,20 +73,15 @@ class MissionDetailsViewController: UIViewController {
     // MARK: Setup Views
     
     private func setupViews() {
-        view.addSubview(backButton)
         view.addSubview(scrollView)
         
         [headerView, missionDetailsStackView, dividerLine, photosSectionView].forEach { scrollView.addSubview($0) }
-        
-        view.bringSubviewToFront(backButton)
     }
     
     // MARK: Setup Constraints
     
     private func setupConstraints() {
         NSLayoutConstraint.activate([
-            backButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 24),
-            backButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
             scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -111,31 +99,7 @@ class MissionDetailsViewController: UIViewController {
         ])
     }
     
-    // MARK: Actions
-    
-    @objc private func backButtonTapped(_ sender: UIButton) {
-        navigationController?.popViewController(animated: true)
-    }
-    
     // MARK: UI Views
-    
-    private let backButton: UIButton = {
-        let button = UIButton(type: .custom)
-        button.widthAnchor.constraint(equalToConstant: 48).isActive = true
-        button.heightAnchor.constraint(equalToConstant: 48).isActive = true
-        button.layer.cornerRadius = 24
-        button.backgroundColor = UIColor(named: "background")
-        button.layer.masksToBounds = false
-        button.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
-        
-        // Setup Back Icon Image
-        let backIcon = UIImage(systemName:"chevron.left")?.withRenderingMode(.alwaysTemplate)
-        button.setImage(backIcon, for: .normal)
-        button.tintColor = UIColor(named: "orange")
-        
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
     
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
