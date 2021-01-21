@@ -8,12 +8,10 @@
 // Credit: Suprianto Djamalu on 03/08/19
 // Source: https://github.com/erthru/SlidingTabsExample
 
+import Foundation
 import UIKit
 
 class SwipeableTopTabBarController: UIViewController {
-    
-    private let collectionHeader = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout.init())
-    private let collectionPage = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout.init())
     
     // MARK: Constants
         
@@ -41,64 +39,66 @@ class SwipeableTopTabBarController: UIViewController {
     private var currentPosition = 0
     private let heightHeader: CGFloat = 57
     
-    private var items = [UIViewController]()
+    // ViewControllers to be displayed in tabs
+    private var tabs = [UIViewController]()
     private var titles = [String]()
     
     // MARK: View Lifecycle
-  
-    override func viewWillLayoutSubviews() {
-      super.viewWillLayoutSubviews()
-      collectionHeader.collectionViewLayout.invalidateLayout()
-      collectionPage.collectionViewLayout.invalidateLayout()
-      
-      let pageOffset = CGPoint(
-        // for landscape mode
-        x: Int((self.view.bounds.width)) * currentPosition ,
-        y: 0
-      )
-      
-      self.collectionPage.setContentOffset(pageOffset, animated: false)
-      self.collectionPage.reloadData()
+        
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // Set CollectionHeader delegate and dataSource
+        collectionHeader.delegate = self
+        collectionHeader.dataSource = self
+
+        // Set CollectionPage delegate and dataSource
+        collectionPage.delegate = self
+        collectionPage.dataSource = self
     }
   
-    func addItem(item: UIViewController, title: String){
-        items.append(item)
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        collectionHeader.collectionViewLayout.invalidateLayout()
+        collectionPage.collectionViewLayout.invalidateLayout()
+      
+        // for landscape mode
+        let pageOffset = CGPoint(x: Int((self.view.bounds.width)) * currentPosition, y: 0)
+      
+        self.collectionPage.setContentOffset(pageOffset, animated: false)
+        self.collectionPage.reloadData()
+    }
+    
+    // MARK: Add Tab
+  
+    func addTab(viewController: UIViewController, title: String){
+        tabs.append(viewController)
         titles.append(title)
     }
     
-    func build(){
-        // view
+    // MARK: Setup Views & Constraints
+    
+    func setup(){
+        setupViews()
+        setupConstraints()
+    }
+    
+    private func setupViews() {
         view.addSubview(collectionHeader)
         view.addSubview(collectionPage)
-        
-        // collectionHeader
-        collectionHeader.translatesAutoresizingMaskIntoConstraints = false
-        collectionHeader.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        collectionHeader.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        collectionHeader.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        collectionHeader.heightAnchor.constraint(equalToConstant: heightHeader).isActive = true
-        (collectionHeader.collectionViewLayout as? UICollectionViewFlowLayout)?.scrollDirection = .horizontal
-        collectionHeader.showsHorizontalScrollIndicator = false
-        collectionHeader.backgroundColor = colorHeaderBackground
-        collectionHeader.register(TopTabBarHeaderCell.self, forCellWithReuseIdentifier: Constants.collectionHeaderIdentifier)
-        collectionHeader.delegate = self
-        collectionHeader.dataSource = self
-        collectionHeader.reloadData()
-        
-        // collectionPage
-        collectionPage.translatesAutoresizingMaskIntoConstraints = false
-        collectionPage.topAnchor.constraint(equalTo: collectionHeader.bottomAnchor).isActive = true
-        collectionPage.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        collectionPage.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        collectionPage.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        collectionPage.backgroundColor = UIColor(named: "background")
-        collectionPage.showsHorizontalScrollIndicator = false
-        (collectionPage.collectionViewLayout as? UICollectionViewFlowLayout)?.scrollDirection = .horizontal
-        collectionPage.isPagingEnabled = true
-        collectionPage.register(UICollectionViewCell.self, forCellWithReuseIdentifier: Constants.collectionPageIdentifier)
-        collectionPage.delegate = self
-        collectionPage.dataSource = self
-        collectionPage.reloadData()
+    }
+
+    private func setupConstraints() {
+        NSLayoutConstraint.activate([
+            collectionHeader.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            collectionHeader.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            collectionHeader.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            collectionHeader.heightAnchor.constraint(equalToConstant: heightHeader),
+            collectionPage.topAnchor.constraint(equalTo: collectionHeader.bottomAnchor),
+            collectionPage.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            collectionPage.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            collectionPage.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+        ])
     }
     
     // MARK: Helpers
@@ -121,6 +121,29 @@ class SwipeableTopTabBarController: UIViewController {
         }
         self.collectionPage.reloadData()
     }
+    
+    // MARK: UI Views
+     
+     private lazy var collectionHeader: UICollectionView = {
+         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout.init())
+         (collectionView.collectionViewLayout as? UICollectionViewFlowLayout)?.scrollDirection = .horizontal
+         collectionView.showsHorizontalScrollIndicator = false
+         collectionView.backgroundColor = colorHeaderBackground
+         collectionView.register(TopTabBarHeaderCell.self, forCellWithReuseIdentifier: Constants.collectionHeaderIdentifier)
+         collectionView.translatesAutoresizingMaskIntoConstraints = false
+         return collectionView
+     }()
+ 
+     private lazy var collectionPage: UICollectionView = {
+         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout.init())
+         collectionView.showsHorizontalScrollIndicator = false
+         collectionView.backgroundColor = UIColor(named: "background")
+         (collectionView.collectionViewLayout as? UICollectionViewFlowLayout)?.scrollDirection = .horizontal
+         collectionView.isPagingEnabled = true
+         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: Constants.collectionPageIdentifier)
+         collectionView.translatesAutoresizingMaskIntoConstraints = false
+         return collectionView
+     }()
 }
 
 // MARK: - UICollectionViewDelegate
@@ -148,7 +171,7 @@ extension SwipeableTopTabBarController: UICollectionViewDataSource {
             return titles.count
         }
         
-        return items.count
+        return tabs.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -168,7 +191,7 @@ extension SwipeableTopTabBarController: UICollectionViewDataSource {
         }
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.collectionPageIdentifier, for: indexPath)
-        let vc = items[indexPath.row]
+        let vc = tabs[indexPath.row]
         
         cell.addSubview(vc.view)
         
