@@ -19,11 +19,18 @@ class MissionCard: UIControl {
         super.init(frame: .zero)
         
         // Adds the shadow effect to the backgrond
+//        backgroundColor = UIColor.clear
+//        layer.shadowColor = UIColor.black.cgColor
+//        layer.shadowOffset = .zero
+//        layer.shadowOpacity = 0.2
+//        layer.shadowRadius = 20
+        
+        // Adds border radius
         backgroundColor = UIColor.clear
-        layer.shadowColor = UIColor.black.cgColor
-        layer.shadowOffset = .zero
-        layer.shadowOpacity = 0.2
-        layer.shadowRadius = 20
+        layer.borderWidth = 0.5
+        layer.borderColor = UIColor(named: "light")?.cgColor
+        layer.shadowOpacity = 0.1
+        layer.cornerRadius = 20
         
         setupViews()
         setupConstraints()
@@ -36,9 +43,11 @@ class MissionCard: UIControl {
     override func layoutSubviews() {
         super.layoutSubviews()
         
+        layer.borderColor = UIColor(named: "light")?.cgColor
+        
         NSLayoutConstraint.activate([
-            roverImage.widthAnchor.constraint(equalToConstant: frame.width * 0.7),
-            roverImage.heightAnchor.constraint(equalToConstant: frame.height * 0.7),
+            roverImage.widthAnchor.constraint(equalToConstant: frame.width * 0.8),
+            roverImage.heightAnchor.constraint(equalToConstant: frame.height * 0.8),
             roverImage.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: frame.width/6.7),
         ])
     }
@@ -64,7 +73,7 @@ class MissionCard: UIControl {
             bottomView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
             bottomView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
             bottomView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
-            roverLabel.topAnchor.constraint(equalTo: bottomView.topAnchor, constant: 30),
+            roverLabel.topAnchor.constraint(equalTo: bottomView.topAnchor, constant: 16),
             roverLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 24),
             roverLabel.trailingAnchor.constraint(lessThanOrEqualTo: containerView.trailingAnchor, constant: -24),
             missionLabel.topAnchor.constraint(equalTo: roverLabel.bottomAnchor, constant: 4),
@@ -90,7 +99,7 @@ class MissionCard: UIControl {
     
     let bottomView: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor(named: "orange.light")
+        view.backgroundColor = UIColor(named: "background")
         view.clipsToBounds = true
         view.layer.cornerRadius = 16.0
         view.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
@@ -102,8 +111,8 @@ class MissionCard: UIControl {
     let roverLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        label.textColor = UIColor(named: "cream")
-        label.font = UIFont(name: "Inter-Bold", size: 32)
+        label.textColor = UIColor(named: "orange")
+        label.font = UIFont(name: "Inter-Medium", size: 30)
         label.isUserInteractionEnabled = false
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -112,9 +121,8 @@ class MissionCard: UIControl {
     let missionLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        label.textColor = UIColor(named: "cream")
+        label.textColor = UIColor(named: "orange")
         label.font = UIFont(name: "Inter-Medium", size: 16)
-        label.layer.opacity = 0.6
         label.isUserInteractionEnabled = false
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
