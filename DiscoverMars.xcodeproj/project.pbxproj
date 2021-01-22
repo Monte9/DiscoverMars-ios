@@ -126,9 +126,8 @@
 				0CC809D325B18ED500691B28 /* Fonts */,
 				0CAA95C125A86A0500905808 /* Info.plist */,
 			);
-			name = DiscoverMars;
-			path = /Users/monte9/developer/MarsExploration/DiscoverMars;
-			sourceTree = "<absolute>";
+			path = DiscoverMars;
+			sourceTree = "<group>";
 		};
 		0CAA95CF25A877DB00905808 /* Managers */ = {
 			isa = PBXGroup;
