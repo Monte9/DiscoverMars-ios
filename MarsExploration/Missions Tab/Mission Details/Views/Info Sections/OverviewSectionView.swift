@@ -75,7 +75,7 @@ class OverviewSectionView: UIView {
             stackView.trailingAnchor.constraint(equalTo: trailingAnchor),
             readMoreButton.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 8),
             readMoreButton.centerXAnchor.constraint(equalTo: centerXAnchor),
-            readMoreButton.bottomAnchor.constraint(equalTo: bottomAnchor)
+            readMoreButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -4)
         ])
     }
     

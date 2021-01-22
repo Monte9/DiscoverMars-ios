@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C0B685525BA1B2400A44F67 /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C0B685425BA1B2400A44F67 /* PhotosViewController.swift */; };
 		0C0FCA9625B584D00013D69A /* LaunchSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C0FCA9525B584D00013D69A /* LaunchSectionView.swift */; };
 		0C0FCA9A25B58A380013D69A /* LandingSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C0FCA9925B58A380013D69A /* LandingSectionView.swift */; };
 		0C0FCA9D25B590780013D69A /* OverviewSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C0FCA9C25B590780013D69A /* OverviewSectionView.swift */; };
@@ -31,7 +32,6 @@
 		0CC809EA25B56D2700691B28 /* SectionRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC809E925B56D2700691B28 /* SectionRow.swift */; };
 		0CC809EE25B5741600691B28 /* SectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC809ED25B5741600691B28 /* SectionView.swift */; };
 		0CDA63AD25BA0A7800F7512B /* SwipeableTopTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDA63AC25BA0A7800F7512B /* SwipeableTopTabBarController.swift */; };
-		0CDA63B325BA0B5100F7512B /* SimpleItemViewControllerTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDA63B025BA0B5000F7512B /* SimpleItemViewControllerTwo.swift */; };
 		0CDA63B825BA0CB900F7512B /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDA63B725BA0CB900F7512B /* AboutViewController.swift */; };
 		0CDA63BE25BA0DAE00F7512B /* TopTabBarHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDA63BD25BA0DAE00F7512B /* TopTabBarHeaderCell.swift */; };
 		0CEC21A925AAF21B000171B7 /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEC21A825AAF21B000171B7 /* Formatters.swift */; };
@@ -46,6 +46,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0C0B685425BA1B2400A44F67 /* PhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
 		0C0FCA9525B584D00013D69A /* LaunchSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchSectionView.swift; sourceTree = "<group>"; };
 		0C0FCA9925B58A380013D69A /* LandingSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingSectionView.swift; sourceTree = "<group>"; };
 		0C0FCA9C25B590780013D69A /* OverviewSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewSectionView.swift; sourceTree = "<group>"; };
@@ -72,7 +73,6 @@
 		0CC809E925B56D2700691B28 /* SectionRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionRow.swift; sourceTree = "<group>"; };
 		0CC809ED25B5741600691B28 /* SectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionView.swift; sourceTree = "<group>"; };
 		0CDA63AC25BA0A7800F7512B /* SwipeableTopTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeableTopTabBarController.swift; sourceTree = "<group>"; };
-		0CDA63B025BA0B5000F7512B /* SimpleItemViewControllerTwo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleItemViewControllerTwo.swift; sourceTree = "<group>"; };
 		0CDA63B725BA0CB900F7512B /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		0CDA63BD25BA0DAE00F7512B /* TopTabBarHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTabBarHeaderCell.swift; sourceTree = "<group>"; };
 		0CEC21A825AAF21B000171B7 /* Formatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatters.swift; sourceTree = "<group>"; };
@@ -192,6 +192,7 @@
 				0CB40EF225B9894E0088B7DB /* Views */,
 				0CC529A725A984F60022DE6A /* MissionDetailsViewController.swift */,
 				0CDA63B725BA0CB900F7512B /* AboutViewController.swift */,
+				0C0B685425BA1B2400A44F67 /* PhotosViewController.swift */,
 			);
 			path = "Mission Details";
 			sourceTree = "<group>";
@@ -259,10 +260,9 @@
 		0CEC21A725AAF208000171B7 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				0CDA63BC25BA0D9100F7512B /* Swipeable Top TabBar */,
 				0C60A2BE25A8D15100EFD7FF /* ImageView.swift */,
 				0CEC21AC25AAF429000171B7 /* Extensions.swift */,
-				0CDA63B025BA0B5000F7512B /* SimpleItemViewControllerTwo.swift */,
-				0CDA63BC25BA0D9100F7512B /* Swipeable Top TabBar */,
 				0CEC21A825AAF21B000171B7 /* Formatters.swift */,
 				0CEF5D2A25ADD5AC0090FCBF /* InteractivePopRecognizer.swift */,
 			);
@@ -358,6 +358,7 @@
 				0CEF5D3125AE43C60090FCBF /* PhotoCollectionViewCell.swift in Sources */,
 				0CDA63B825BA0CB900F7512B /* AboutViewController.swift in Sources */,
 				0CDA63AD25BA0A7800F7512B /* SwipeableTopTabBarController.swift in Sources */,
+				0C0B685525BA1B2400A44F67 /* PhotosViewController.swift in Sources */,
 				0CEF5D2125AB85900090FCBF /* Photo.swift in Sources */,
 				0CEC21AD25AAF429000171B7 /* Extensions.swift in Sources */,
 				0C0FCA9A25B58A380013D69A /* LandingSectionView.swift in Sources */,
@@ -366,7 +367,6 @@
 				0CC809DE25B1916900691B28 /* IntroSectionView.swift in Sources */,
 				0C60A2BF25A8D15100EFD7FF /* ImageView.swift in Sources */,
 				0CEF5D2E25AE29DB0090FCBF /* HeaderView.swift in Sources */,
-				0CDA63B325BA0B5100F7512B /* SimpleItemViewControllerTwo.swift in Sources */,
 				0CEF5D2425AB85C40090FCBF /* Rover.swift in Sources */,
 				0CC809EE25B5741600691B28 /* SectionView.swift in Sources */,
 				0CBC4C0E25A87CEE00D68545 /* NetworkManagerError.swift in Sources */,

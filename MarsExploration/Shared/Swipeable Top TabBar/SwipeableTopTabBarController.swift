@@ -69,7 +69,7 @@ class SwipeableTopTabBarController: UIViewController {
         self.collectionPage.reloadData()
     }
     
-    // MARK: Add Tab
+    // MARK: Add Items
   
     func addTab(viewController: UIViewController, title: String){
         tabs.append(viewController)
@@ -91,11 +91,11 @@ class SwipeableTopTabBarController: UIViewController {
     private func setupConstraints() {
         NSLayoutConstraint.activate([
             collectionHeader.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            collectionHeader.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            collectionHeader.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            collectionHeader.leadingAnchor.constraint(equalTo: view.readableContentGuide.leadingAnchor),
+            collectionHeader.trailingAnchor.constraint(equalTo: view.readableContentGuide.trailingAnchor),
             collectionHeader.heightAnchor.constraint(equalToConstant: heightHeader),
             collectionPage.topAnchor.constraint(equalTo: collectionHeader.bottomAnchor),
-            collectionPage.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            collectionPage.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             collectionPage.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             collectionPage.trailingAnchor.constraint(equalTo: view.trailingAnchor),
         ])
@@ -190,16 +190,18 @@ extension SwipeableTopTabBarController: UICollectionViewDataSource {
             return cell
         }
         
+        let tabViewController = tabs[indexPath.row]
+        tabViewController.view.translatesAutoresizingMaskIntoConstraints = false
+        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.collectionPageIdentifier, for: indexPath)
-        let vc = tabs[indexPath.row]
+        cell.addSubview(tabViewController.view)
         
-        cell.addSubview(vc.view)
-        
-        vc.view.translatesAutoresizingMaskIntoConstraints = false
-        vc.view.topAnchor.constraint(equalTo: cell.topAnchor, constant: 28).isActive = true
-        vc.view.leadingAnchor.constraint(equalTo: cell.leadingAnchor).isActive = true
-        vc.view.trailingAnchor.constraint(equalTo: cell.trailingAnchor).isActive = true
-        vc.view.bottomAnchor.constraint(equalTo: cell.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        NSLayoutConstraint.activate([
+            tabViewController.view.topAnchor.constraint(equalTo: cell.topAnchor),
+            tabViewController.view.bottomAnchor.constraint(equalTo: cell.bottomAnchor),
+            tabViewController.view.leadingAnchor.constraint(equalTo: cell.leadingAnchor),
+            tabViewController.view.trailingAnchor.constraint(equalTo: cell.trailingAnchor),
+        ])
         
         return cell
     }
@@ -213,13 +215,13 @@ extension SwipeableTopTabBarController: UICollectionViewDelegateFlowLayout {
         if collectionView == collectionHeader {
             if tabStyle == .fixed {
                 let spacer = CGFloat(titles.count)
-                return CGSize(width: view.frame.width / spacer, height: heightHeader)
+                return CGSize(width: view.readableContentGuide.layoutFrame.width / spacer, height: heightHeader)
             } else {
                 return CGSize(width: view.frame.width * 20 / 100, height: heightHeader)
             }
         }
         
-        return CGSize(width: view.frame.width, height: view.frame.height)
+        return CGSize(width: collectionPage.bounds.size.width, height: collectionPage.bounds.size.height)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
