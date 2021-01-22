@@ -51,7 +51,7 @@
 		0C0FCA9C25B590780013D69A /* OverviewSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewSectionView.swift; sourceTree = "<group>"; };
 		0C60A2BE25A8D15100EFD7FF /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
 		0C60A2C825A8E0F200EFD7FF /* MissionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionsViewController.swift; sourceTree = "<group>"; };
-		0CAA95B025A86A0300905808 /* MarsExploration.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarsExploration.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0CAA95B025A86A0300905808 /* DiscoverMars.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DiscoverMars.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CAA95B325A86A0300905808 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0CAA95B525A86A0300905808 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		0CAA95BC25A86A0500905808 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -98,7 +98,7 @@
 		0CAA95A725A86A0300905808 = {
 			isa = PBXGroup;
 			children = (
-				0CAA95B225A86A0300905808 /* MarsExploration */,
+				0CAA95B225A86A0300905808 /* DiscoverMars */,
 				0CAA95B125A86A0300905808 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -106,12 +106,12 @@
 		0CAA95B125A86A0300905808 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0CAA95B025A86A0300905808 /* MarsExploration.app */,
+				0CAA95B025A86A0300905808 /* DiscoverMars.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		0CAA95B225A86A0300905808 /* MarsExploration */ = {
+		0CAA95B225A86A0300905808 /* DiscoverMars */ = {
 			isa = PBXGroup;
 			children = (
 				0CAA95BE25A86A0500905808 /* LaunchScreen.storyboard */,
@@ -126,8 +126,9 @@
 				0CC809D325B18ED500691B28 /* Fonts */,
 				0CAA95C125A86A0500905808 /* Info.plist */,
 			);
-			path = MarsExploration;
-			sourceTree = "<group>";
+			name = DiscoverMars;
+			path = /Users/monte9/developer/MarsExploration/DiscoverMars;
+			sourceTree = "<absolute>";
 		};
 		0CAA95CF25A877DB00905808 /* Managers */ = {
 			isa = PBXGroup;
@@ -269,9 +270,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		0CAA95AF25A86A0300905808 /* MarsExploration */ = {
+		0CAA95AF25A86A0300905808 /* DiscoverMars */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0CAA95C425A86A0500905808 /* Build configuration list for PBXNativeTarget "MarsExploration" */;
+			buildConfigurationList = 0CAA95C425A86A0500905808 /* Build configuration list for PBXNativeTarget "DiscoverMars" */;
 			buildPhases = (
 				0CAA95AC25A86A0300905808 /* Sources */,
 				0CAA95AD25A86A0300905808 /* Frameworks */,
@@ -281,9 +282,9 @@
 			);
 			dependencies = (
 			);
-			name = MarsExploration;
+			name = DiscoverMars;
 			productName = MarsExploration;
-			productReference = 0CAA95B025A86A0300905808 /* MarsExploration.app */;
+			productReference = 0CAA95B025A86A0300905808 /* DiscoverMars.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -300,7 +301,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 0CAA95AB25A86A0300905808 /* Build configuration list for PBXProject "MarsExploration" */;
+			buildConfigurationList = 0CAA95AB25A86A0300905808 /* Build configuration list for PBXProject "DiscoverMars" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -313,7 +314,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				0CAA95AF25A86A0300905808 /* MarsExploration */,
+				0CAA95AF25A86A0300905808 /* DiscoverMars */,
 			);
 		};
 /* End PBXProject section */
@@ -505,15 +506,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = C3V4QQ3VFL;
-				INFOPLIST_FILE = MarsExploration/Info.plist;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = "$(SRCROOT)/DiscoverMars/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.montethakkar.MarsExploration;
+				PRODUCT_BUNDLE_IDENTIFIER = com.montethakkar.DiscoverMars;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -523,15 +525,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = C3V4QQ3VFL;
-				INFOPLIST_FILE = MarsExploration/Info.plist;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = "$(SRCROOT)/DiscoverMars/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.montethakkar.MarsExploration;
+				PRODUCT_BUNDLE_IDENTIFIER = com.montethakkar.DiscoverMars;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -540,7 +543,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		0CAA95AB25A86A0300905808 /* Build configuration list for PBXProject "MarsExploration" */ = {
+		0CAA95AB25A86A0300905808 /* Build configuration list for PBXProject "DiscoverMars" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0CAA95C225A86A0500905808 /* Debug */,
@@ -549,7 +552,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0CAA95C425A86A0500905808 /* Build configuration list for PBXNativeTarget "MarsExploration" */ = {
+		0CAA95C425A86A0500905808 /* Build configuration list for PBXNativeTarget "DiscoverMars" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0CAA95C525A86A0500905808 /* Debug */,
