@@ -9,6 +9,9 @@ import Foundation
 
 class Mission: NSObject, Decodable {
     
+    // Rover type
+    let rover: Rover
+    
     // Mission Overview
     let overview: String
     let fullOverview: String
@@ -43,12 +46,13 @@ class Mission: NSObject, Decodable {
         case totalPhotos = "total_photos"
     }
     
-    init(overview: String, fullOverview: String,
+    init(rover: Rover, overview: String, fullOverview: String,
          missionName: String, roverName: String, roverImage: String,
          status: String, maxDate: String,
          launchDate: String, launchVehicle: String, launchLocation: String,
          landingDate: String, landingSite: String,
          maxSol: Int, totalPhotos: Int) {
+        self.rover = rover
         self.overview = overview
         self.fullOverview = fullOverview
         self.missionName = missionName
@@ -72,7 +76,7 @@ class Mission: NSObject, Decodable {
         roverName = try container.decode(String.self, forKey: .name)
         
         // Rover Type
-        let rover = Rover.init(fromRawValue: roverName.lowercased())
+        rover = Rover.init(fromRawValue: roverName.lowercased())
         
         // Mission Overview
         overview = rover.missionOverview()

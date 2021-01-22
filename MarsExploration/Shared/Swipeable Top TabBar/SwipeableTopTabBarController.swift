@@ -36,7 +36,7 @@ class SwipeableTopTabBarController: UIViewController {
     private let tabStyle = SlidingTabStyle.fixed
 
     // Set current selected position & height for the tabs
-    private var currentPosition = 0
+    private var currentPosition = 1
     private let heightHeader: CGFloat = 57
     
     // ViewControllers to be displayed in tabs

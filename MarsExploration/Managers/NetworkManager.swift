@@ -91,7 +91,7 @@ class NetworkManager {
     ///   - rover: A `Rover` instance for the photos
     ///   - sol: A `Sol` date for the photos
     ///   - completionHandler: A completion handler that returns a success or a failure result
-    func fetchPhotos(for rover: Rover, and sol: Int, completionHandler: @escaping ((Result<[Photo], Error>) -> Void)) {
+    func fetchPhotos(for rover: Rover, onSol sol: Int, completionHandler: @escaping ((Result<[Photo], Error>) -> Void)) {
         let url = URL(string: RequestPath.baseURL + RequestPath.roversURL + rover.rawValue + RequestPath.photosURL + "?" + "sol=\(sol)" + "&" + RequestPath.apiKey)!
         
         let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
