@@ -57,7 +57,7 @@ class PhotosViewController: UIViewController {
         
         activityView.startAnimating()
     }
-
+    
     func hideActivityIndicator(){
         activityView.stopAnimating()
     }
@@ -85,7 +85,8 @@ class PhotosViewController: UIViewController {
     
     private func populateData() {
         // Set the imageCount label text
-        imageCountLabel.text = "\(photos.count) Images"
+        let photoWord = singularPluralWork(word: "Image", count: photos.count)
+        imageCountLabel.text = "\(photos.count) \(photoWord)"
         
         // Setup CollectionView
         view.addSubview(collectionView)
@@ -93,7 +94,7 @@ class PhotosViewController: UIViewController {
         // Setup Constraints
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: imageCountLabel.bottomAnchor, constant: 16),
-            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -4),
             collectionView.leadingAnchor.constraint(equalTo: view.readableContentGuide.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: view.readableContentGuide.trailingAnchor),
         ])
@@ -125,6 +126,16 @@ class PhotosViewController: UIViewController {
             imageCountLabel.leadingAnchor.constraint(equalTo: view.readableContentGuide.leadingAnchor),
             imageCountLabel.trailingAnchor.constraint(equalTo: view.readableContentGuide.trailingAnchor),
         ])
+    }
+    
+    // MARK: Helpers
+    
+    private func singularPluralWork(word: String, count: Int) -> String {
+        if count > 1 {
+            return "\(word)s"
+        }
+        
+        return word
     }
     
     // MARK: UI Views
@@ -202,6 +213,6 @@ extension PhotosViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 16
+        return 12
     }
 }
