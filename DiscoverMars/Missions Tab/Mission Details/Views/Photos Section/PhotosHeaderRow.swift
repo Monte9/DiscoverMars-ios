@@ -8,9 +8,12 @@
 import Foundation
 import UIKit
 
+enum PhotoSize {
+    case large
+    case small
+}
+
 class PhotosHeaderRow: UIView {
-    
-    // MARK: Initialization
     
     var photos = [Photo]() {
         didSet {
@@ -20,11 +23,22 @@ class PhotosHeaderRow: UIView {
         }
     }
     
-    init() {
+    // MARK: Initialization
+    
+    private var photoSize: PhotoSize {
+        didSet {
+            setCurrentPhotoSize()
+        }
+    }
+    
+    init(photoSize: PhotoSize) {
+        self.photoSize = photoSize
         super.init(frame: .zero)
         
         setupViews()
         setupConstraints()
+        
+        setCurrentPhotoSize()
     }
     
     required init?(coder: NSCoder) {
@@ -37,7 +51,7 @@ class PhotosHeaderRow: UIView {
         addSubview(imageCountLabel)
         addSubview(sizeControlStackView)
         
-        [largeLabel, dividerLine, smallLabel].forEach { sizeControlStackView.addArrangedSubview($0) }
+        [largeImagesButton, dividerLine, smallImagesButton].forEach { sizeControlStackView.addArrangedSubview($0) }
     }
     
     // MARK: Setup Constraints
@@ -50,6 +64,27 @@ class PhotosHeaderRow: UIView {
             sizeControlStackView.bottomAnchor.constraint(equalTo: bottomAnchor),
             sizeControlStackView.trailingAnchor.constraint(equalTo: trailingAnchor),
         ])
+    }
+    
+    // MARK: Actions
+    
+    private func setCurrentPhotoSize() {
+        switch photoSize {
+        case .large:
+            largeImagesButton.setImage(UIImage(named: "large.image.size.selected"), for: .normal)
+            smallImagesButton.setImage(UIImage(named: "small.image.size"), for: .normal)
+        case .small:
+            smallImagesButton.setImage(UIImage(named: "small.image.size.selected"), for: .normal)
+            largeImagesButton.setImage(UIImage(named: "large.image.size"), for: .normal)
+        }
+    }
+    
+    @objc private func largeImageButtonTapped(_ sender: UIButton) {
+        photoSize = .large
+    }
+    
+    @objc private func smallImageButtonTapped(_ sender: UIButton) {
+        photoSize = .small
     }
     
     // MARK: Helpers
@@ -77,7 +112,7 @@ class PhotosHeaderRow: UIView {
     private let sizeControlStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
-        stackView.spacing = 8
+        stackView.spacing = 16
         stackView.alignment = .center
         stackView.layoutMargins = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         stackView.isLayoutMarginsRelativeArrangement = true
@@ -87,14 +122,13 @@ class PhotosHeaderRow: UIView {
         return stackView
     }()
     
-    private lazy var largeLabel: UILabel = {
-        let label = UILabel()
-        label.text = "large"
-        label.numberOfLines = 0
-        label.textColor = UIColor(named: "orange")
-        label.font = UIFont(name: "Inter-Medium", size: 16)
-        label.setContentCompressionResistancePriority(.required, for: .horizontal)
-        return label
+    private let largeImagesButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: "large.image.size"), for: .normal)
+        button.widthAnchor.constraint(equalToConstant: 24).isActive = true
+        button.heightAnchor.constraint(equalToConstant: 24).isActive = true
+        button.addTarget(self, action: #selector(largeImageButtonTapped), for: .touchUpInside)
+        return button
     }()
     
     private let dividerLine: UIView = {
@@ -106,13 +140,12 @@ class PhotosHeaderRow: UIView {
         return view
     }()
     
-    private lazy var smallLabel: UILabel = {
-        let label = UILabel()
-        label.text = "small"
-        label.numberOfLines = 0
-        label.textColor = UIColor(named: "orange")
-        label.font = UIFont(name: "Inter-Medium", size: 16)
-        label.setContentCompressionResistancePriority(.required, for: .horizontal)
-        return label
+    private let smallImagesButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: "small.image.size"), for: .normal)
+        button.widthAnchor.constraint(equalToConstant: 24).isActive = true
+        button.heightAnchor.constraint(equalToConstant: 24).isActive = true
+        button.addTarget(self, action: #selector(smallImageButtonTapped), for: .touchUpInside)
+        return button
     }()
 }

@@ -130,7 +130,7 @@ class PhotosViewController: UIViewController {
     // MARK: UI Views
     
     private lazy var photosHeaderRow: PhotosHeaderRow = {
-        let row = PhotosHeaderRow()
+        let row = PhotosHeaderRow(photoSize: .small)
         row.translatesAutoresizingMaskIntoConstraints = false
         return row
     }()
