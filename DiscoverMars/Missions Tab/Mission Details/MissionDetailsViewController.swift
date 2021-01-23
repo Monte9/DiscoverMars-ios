@@ -32,6 +32,7 @@ class MissionDetailsViewController: SwipeableTopTabBarController {
         
         // Set the navigation bar title
         title = mission.roverName
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         
         // Remove bottom line on navigation bar
         navigationController?.navigationBar.shadowImage = UIImage()

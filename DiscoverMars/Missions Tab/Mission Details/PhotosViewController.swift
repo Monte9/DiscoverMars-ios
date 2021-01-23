@@ -12,7 +12,11 @@ class PhotosViewController: UIViewController {
     
     private var activityView: UIActivityIndicatorView!
     private var photos = [Photo]()
-    private var photoSize: PhotoSize = .small
+    private var photoSize: PhotoSize = .small {
+        didSet {
+            collectionView.collectionViewLayout.invalidateLayout()
+        }
+    }
     
     // MARK: Initialization
     
@@ -131,7 +135,8 @@ class PhotosViewController: UIViewController {
     // MARK: UI Views
     
     private lazy var photosHeaderRow: PhotosHeaderRow = {
-        let row = PhotosHeaderRow(photoSize: photoSize, delegate: self)
+        let row = PhotosHeaderRow(delegate: self)
+        row.photoSize = photoSize
         row.translatesAutoresizingMaskIntoConstraints = false
         return row
     }()
@@ -163,9 +168,18 @@ class PhotosViewController: UIViewController {
 extension PhotosViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("selected photo")
-        let photo = photos[indexPath.section]
-        print(photo.url)
+        // TODO: Open image in fullscreen mode
+        let _ = photos[indexPath.section]
+        
+        if photoSize == .large {
+            photosHeaderRow.photoSize = .small
+            photoSize = .small
+        } else {
+            photosHeaderRow.photoSize = .large
+            photoSize = .large
+        }
+        
+        collectionView.scrollToItem(at: indexPath, at: .centeredVertically, animated: false)
     }
 }
 
@@ -210,6 +224,5 @@ extension PhotosViewController: PhotosHeaderRowDelegate {
     
     func photosHeaderRowDidChange(_ view: PhotosHeaderRow, photoSize: PhotoSize) {
         self.photoSize = photoSize
-        collectionView.collectionViewLayout.invalidateLayout()
     }
 }

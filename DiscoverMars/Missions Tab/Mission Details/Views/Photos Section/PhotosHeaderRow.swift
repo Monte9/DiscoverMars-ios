@@ -27,18 +27,17 @@ class PhotosHeaderRow: UIView {
         }
     }
     
-    // MARK: Initialization
-    
-    private var photoSize: PhotoSize {
+    var photoSize: PhotoSize = .small {
         didSet {
             setCurrentPhotoSize()
         }
     }
     
+    // MARK: Initialization
+    
     private var delegate: PhotosHeaderRowDelegate?
     
-    init(photoSize: PhotoSize, delegate: PhotosHeaderRowDelegate?) {
-        self.photoSize = photoSize
+    init(delegate: PhotosHeaderRowDelegate?) {
         self.delegate = delegate
         super.init(frame: .zero)
         
