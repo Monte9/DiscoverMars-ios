@@ -13,7 +13,7 @@ class PhotosViewController: UIViewController {
     private var activityView: UIActivityIndicatorView!
     private var photos = [Photo]()
     private var photoSize: PhotoSize = .small
-
+    
     // MARK: Initialization
     
     private let mission: Mission
@@ -21,11 +21,11 @@ class PhotosViewController: UIViewController {
         self.mission = mission
         super.init(nibName: nil, bundle: nil)
     }
-
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     // MARK: View Lifecycle
     
     override func viewDidLoad() {
@@ -42,7 +42,7 @@ class PhotosViewController: UIViewController {
         
         fetchPhotos()
     }
-
+    
     // MARK: Activity Indicator
     
     func showActivityIndicator() {
@@ -131,7 +131,7 @@ class PhotosViewController: UIViewController {
     // MARK: UI Views
     
     private lazy var photosHeaderRow: PhotosHeaderRow = {
-        let row = PhotosHeaderRow(photoSize: .small, delegate: self)
+        let row = PhotosHeaderRow(photoSize: photoSize, delegate: self)
         row.translatesAutoresizingMaskIntoConstraints = false
         return row
     }()
