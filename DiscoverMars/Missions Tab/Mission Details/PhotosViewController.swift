@@ -12,6 +12,7 @@ class PhotosViewController: UIViewController {
     
     private var activityView: UIActivityIndicatorView!
     private var photos = [Photo]()
+    private var photoSize: PhotoSize = .small
 
     // MARK: Initialization
     
@@ -130,7 +131,7 @@ class PhotosViewController: UIViewController {
     // MARK: UI Views
     
     private lazy var photosHeaderRow: PhotosHeaderRow = {
-        let row = PhotosHeaderRow(photoSize: .small)
+        let row = PhotosHeaderRow(photoSize: .small, delegate: self)
         row.translatesAutoresizingMaskIntoConstraints = false
         return row
     }()
@@ -193,11 +194,22 @@ extension PhotosViewController: UICollectionViewDataSource {
 extension PhotosViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = (view.readableContentGuide.layoutFrame.width)
-        return CGSize(width: width, height: width)
+        let smallImageWidth = (view.readableContentGuide.layoutFrame.width - 24) / 3
+        let largeImageWidth = (view.readableContentGuide.layoutFrame.width)
+        let size = photoSize == .small ? smallImageWidth : largeImageWidth
+        
+        return CGSize(width: size, height: size)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 16
+        return photoSize == .small ? 12 : 16
+    }
+}
+
+extension PhotosViewController: PhotosHeaderRowDelegate {
+    
+    func photosHeaderRowDidChange(_ view: PhotosHeaderRow, photoSize: PhotoSize) {
+        self.photoSize = photoSize
+        collectionView.collectionViewLayout.invalidateLayout()
     }
 }

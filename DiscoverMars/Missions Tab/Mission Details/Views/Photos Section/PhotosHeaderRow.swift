@@ -13,6 +13,10 @@ enum PhotoSize {
     case small
 }
 
+protocol PhotosHeaderRowDelegate: class {
+    func photosHeaderRowDidChange(_ view: PhotosHeaderRow, photoSize: PhotoSize)
+}
+
 class PhotosHeaderRow: UIView {
     
     var photos = [Photo]() {
@@ -31,8 +35,11 @@ class PhotosHeaderRow: UIView {
         }
     }
     
-    init(photoSize: PhotoSize) {
+    private var delegate: PhotosHeaderRowDelegate?
+    
+    init(photoSize: PhotoSize, delegate: PhotosHeaderRowDelegate?) {
         self.photoSize = photoSize
+        self.delegate = delegate
         super.init(frame: .zero)
         
         setupViews()
@@ -81,10 +88,12 @@ class PhotosHeaderRow: UIView {
     
     @objc private func largeImageButtonTapped(_ sender: UIButton) {
         photoSize = .large
+        delegate?.photosHeaderRowDidChange(self, photoSize: .large)
     }
     
     @objc private func smallImageButtonTapped(_ sender: UIButton) {
         photoSize = .small
+        delegate?.photosHeaderRowDidChange(self, photoSize: .small)
     }
     
     // MARK: Helpers
