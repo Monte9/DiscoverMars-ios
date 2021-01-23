@@ -46,7 +46,7 @@ class PhotosViewController: UIViewController {
     // MARK: Activity Indicator
     
     func showActivityIndicator() {
-        activityView = UIActivityIndicatorView(style: .medium)
+        activityView = UIActivityIndicatorView(style: .large)
         activityView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(activityView)
         
