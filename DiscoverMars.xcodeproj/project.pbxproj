@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C071E5F25BB69E300F2349E /* PhotosHeaderRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C071E5E25BB69E300F2349E /* PhotosHeaderRow.swift */; };
 		0C0B685525BA1B2400A44F67 /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C0B685425BA1B2400A44F67 /* PhotosViewController.swift */; };
 		0C0FCA9625B584D00013D69A /* LaunchSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C0FCA9525B584D00013D69A /* LaunchSectionView.swift */; };
 		0C0FCA9A25B58A380013D69A /* LandingSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C0FCA9925B58A380013D69A /* LandingSectionView.swift */; };
@@ -45,6 +46,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0C071E5E25BB69E300F2349E /* PhotosHeaderRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosHeaderRow.swift; sourceTree = "<group>"; };
 		0C0B685425BA1B2400A44F67 /* PhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
 		0C0FCA9525B584D00013D69A /* LaunchSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchSectionView.swift; sourceTree = "<group>"; };
 		0C0FCA9925B58A380013D69A /* LandingSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingSectionView.swift; sourceTree = "<group>"; };
@@ -232,6 +234,7 @@
 			isa = PBXGroup;
 			children = (
 				0CEF5D3025AE43C60090FCBF /* PhotoCollectionViewCell.swift */,
+				0C071E5E25BB69E300F2349E /* PhotosHeaderRow.swift */,
 			);
 			path = "Photos Section";
 			sourceTree = "<group>";
@@ -351,6 +354,7 @@
 				0CEF5D2B25ADD5AC0090FCBF /* InteractivePopRecognizer.swift in Sources */,
 				0CAA95B425A86A0300905808 /* AppDelegate.swift in Sources */,
 				0CEC21A925AAF21B000171B7 /* Formatters.swift in Sources */,
+				0C071E5F25BB69E300F2349E /* PhotosHeaderRow.swift in Sources */,
 				0C60A2C925A8E0F200EFD7FF /* MissionsViewController.swift in Sources */,
 				0CEF5D3125AE43C60090FCBF /* PhotoCollectionViewCell.swift in Sources */,
 				0CDA63B825BA0CB900F7512B /* AboutViewController.swift in Sources */,

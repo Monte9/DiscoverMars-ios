@@ -84,16 +84,15 @@ class PhotosViewController: UIViewController {
     // MARK: Populate Data
     
     private func populateData() {
-        // Set the imageCount label text
-        let photoWord = singularPluralWork(word: "Image", count: photos.count)
-        imageCountLabel.text = "\(photos.count) \(photoWord)"
+        // Set the photos on the HeaderRow
+        photosHeaderRow.photos = photos
         
         // Setup CollectionView
         view.addSubview(collectionView)
 
         // Setup Constraints
         NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: imageCountLabel.bottomAnchor, constant: 16),
+            collectionView.topAnchor.constraint(equalTo: photosHeaderRow.bottomAnchor, constant: 16),
             collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -4),
             collectionView.leadingAnchor.constraint(equalTo: view.readableContentGuide.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: view.readableContentGuide.trailingAnchor),
@@ -115,39 +114,25 @@ class PhotosViewController: UIViewController {
     // MARK: Setup Views
     
     private func setupViews() {
-        view.addSubview(imageCountLabel)
+        view.addSubview(photosHeaderRow)
     }
     
     // MARK: Setup Constraints
     
     private func setupConstraints() {
         NSLayoutConstraint.activate([
-            imageCountLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 16),
-            imageCountLabel.leadingAnchor.constraint(equalTo: view.readableContentGuide.leadingAnchor),
-            imageCountLabel.trailingAnchor.constraint(equalTo: view.readableContentGuide.trailingAnchor),
+            photosHeaderRow.topAnchor.constraint(equalTo: view.topAnchor, constant: 16),
+            photosHeaderRow.leadingAnchor.constraint(equalTo: view.readableContentGuide.leadingAnchor),
+            photosHeaderRow.trailingAnchor.constraint(equalTo: view.readableContentGuide.trailingAnchor),
         ])
-    }
-    
-    // MARK: Helpers
-    
-    private func singularPluralWork(word: String, count: Int) -> String {
-        if count > 1 {
-            return "\(word)s"
-        }
-        
-        return word
     }
     
     // MARK: UI Views
     
-    private lazy var imageCountLabel: UILabel = {
-        let label = UILabel()
-        label.text = "- Images"
-        label.numberOfLines = 0
-        label.textColor = UIColor(named: "orange")
-        label.font = UIFont(name: "Inter-Medium", size: 16)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
+    private lazy var photosHeaderRow: PhotosHeaderRow = {
+        let row = PhotosHeaderRow()
+        row.translatesAutoresizingMaskIntoConstraints = false
+        return row
     }()
     
     private let errorLabel: UILabel = {
@@ -208,11 +193,11 @@ extension PhotosViewController: UICollectionViewDataSource {
 extension PhotosViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = (view.readableContentGuide.layoutFrame.width - 24) / 3
+        let width = (view.readableContentGuide.layoutFrame.width)
         return CGSize(width: width, height: width)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 12
+        return 16
     }
 }
