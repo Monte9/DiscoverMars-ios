@@ -24,17 +24,7 @@ class PhotosViewController: UIViewController {
     init(for mission: Mission) {
         self.mission = mission
         super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    // MARK: View Lifecycle
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
+        
         // Set the background color for the view
         view.backgroundColor = UIColor.init(named: "background")
 
@@ -45,6 +35,10 @@ class PhotosViewController: UIViewController {
         setupConstraints()
         
         fetchPhotos()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     // MARK: Activity Indicator
@@ -157,7 +151,6 @@ class PhotosViewController: UIViewController {
         collectionView.collectionViewLayout = layout
         collectionView.register(PhotoCollectionViewCell.self, forCellWithReuseIdentifier: PhotoCollectionViewCell.identifier)
         collectionView.backgroundColor = .clear
-        collectionView.showsVerticalScrollIndicator = false
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }()
