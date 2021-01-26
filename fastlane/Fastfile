@@ -1,0 +1,44 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:ios)
+
+platform :ios do
+  desc "Push a new beta build to TestFlight"
+  lane :beta do
+    # Increment Build and Version
+    increment_version_number(
+      bump_type: "minor"
+    )
+    new_version_number = get_version_number
+
+    # Build app and upload to TestFlight
+    build_app(scheme: "DiscoverMars")
+    upload_to_testflight(
+      username: "monte.thakkar@icloud.com",
+      app_identifier: "com.montethakkar.DiscoverMarsApp",
+      itc_provider: "T2FX8L2M4K", # Same as Developer Portal Team ID
+      notify_external_testers: true,
+      skip_waiting_for_build_processing: true
+    )
+
+    # Commit version bump and push to git
+    commit_version_bump(
+      message: "Released new build with version #{new_version_number}",
+      xcodeproj: "DiscoverMars.xcodeproj"
+    )
+    push_to_git_remote
+  end
+end

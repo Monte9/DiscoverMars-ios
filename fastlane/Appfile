@@ -1,0 +1,9 @@
+# For more information about the Appfile, see:
+# https://docs.fastlane.tools/advanced/#appfile
+
+app_identifier("com.montethakkar.DiscoverMarsApp") # The bundle identifier of your app
+
+itc_team_id("122615458") # App Store Connect Team ID
+team_id("T2FX8L2M4K") # Developer Portal Team ID
+
+apple_id("monte.thakkar@icloud.com") # Your Apple email address
