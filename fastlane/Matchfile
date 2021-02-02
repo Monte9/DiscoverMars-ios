@@ -1,0 +1,14 @@
+git_url "git@github.com:Monte9/DiscoverMars.git"
+git_branch "appstore"
+clone_branch_directly true
+readonly true
+
+# Default to development, but can be appstore, adhoc or development
+type "appstore"
+team_id "T2FX8L2M4K"
+
+app_identifier "com.montethakkar.DiscoverMarsApp"
+username "monte.thakkar@icloud.com"
+# match password - discovermarsapp
+
+# bundle exec fastlane match
