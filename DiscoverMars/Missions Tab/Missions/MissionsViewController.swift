@@ -29,11 +29,11 @@ class MissionsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
-        // Hide the Navigation Bar
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
+        // Remove the title from the back button
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         
-        // Set the background color for the status bar
-        navigationController?.setStatusBar(backgroundColor: UIColor(named: "background"))
+        // Hide the Navigation Bar
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
         
         // Set the tint and background color for the navigation bar
         UINavigationBar.appearance().barTintColor = UIColor(named: "background")
@@ -44,8 +44,8 @@ class MissionsViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
         
-        // Show the Navigation Bar
-        self.navigationController?.setNavigationBarHidden(false, animated: false)
+        // Show the Navigation Bar for all Child VCs
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
     // MARK: Activity Indicator

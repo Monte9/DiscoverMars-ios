@@ -55,6 +55,11 @@ class SwipeableTopTabBarController: UIViewController {
         // Set CollectionPage delegate and dataSource
         collectionPage.delegate = self
         collectionPage.dataSource = self
+        
+        // Prevents the iOS swipe right gesture to conflict with the UICollectionView Horizontal swipe gesture
+        if let popGestureRecognizer = navigationController?.interactivePopGestureRecognizer {
+            collectionPage.panGestureRecognizer.require(toFail: popGestureRecognizer)
+        }
     }
   
     override func viewWillLayoutSubviews() {

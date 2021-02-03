@@ -32,7 +32,6 @@ class MissionDetailsViewController: SwipeableTopTabBarController {
         
         // Set the navigation bar title
         title = mission.roverName
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         
         // Remove bottom line on navigation bar
         navigationController?.navigationBar.shadowImage = UIImage()
@@ -45,16 +44,23 @@ class MissionDetailsViewController: SwipeableTopTabBarController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
+        
         // Enable swipe back gesture from child VC to root VC
         if let navigationController = navigationController {
             // Saves the default gestureRecognizerDelegate of the UINavigationController so it can be restored later
             defaultGestureRecognizerDelegate = navigationController.interactivePopGestureRecognizer?.delegate
 
-            // Set the custom gestureRecognizerDelegate on the UINavigationController to enable swipe back gesture for RN Screens
+            // Set the custom gestureRecognizerDelegate on the UINavigationController to enable swipe back gesture
             customPopRecognizer = InteractivePopRecognizer(navController: navigationController)
             navigationController.interactivePopGestureRecognizer?.delegate = customPopRecognizer
         }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        
+        // Hide the Navigation Bar
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
     // MARK: Setup Views

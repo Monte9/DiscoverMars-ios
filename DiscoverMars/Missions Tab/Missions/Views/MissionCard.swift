@@ -18,18 +18,18 @@ class MissionCard: UIControl {
         self.mission = mission
         super.init(frame: .zero)
         
-        // Adds the shadow effect to the backgrond
-//        backgroundColor = UIColor.clear
-//        layer.shadowColor = UIColor.black.cgColor
-//        layer.shadowOffset = .zero
-//        layer.shadowOpacity = 0.2
-//        layer.shadowRadius = 20
+        // Add drop shadow effect to the background
+        backgroundColor = UIColor.clear
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowOffset = .zero
+        layer.shadowOpacity = 0.3
+        layer.shadowRadius = 20
         
         // Adds border radius
-        backgroundColor = UIColor.clear
         layer.borderWidth = 0.5
         layer.borderColor = UIColor(named: "light")?.cgColor
-        layer.shadowOpacity = 0.1
+        
+        // Adds corder radius
         layer.cornerRadius = 20
         
         setupViews()

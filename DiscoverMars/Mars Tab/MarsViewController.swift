@@ -15,18 +15,31 @@ class MarsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.init(named: "background")
-        navigationItem.title = "About Mars"
         
         setupViews()
         setupConstraints()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        // Remove the title from the back button
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        
+        // Hide the Navigation Bar
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
+        
+        // Set the tint and background color for the navigation bar
+        UINavigationBar.appearance().barTintColor = UIColor(named: "background")
+        UINavigationBar.appearance().tintColor = UIColor(named: "orange")
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(named: "orange") ?? .white]
+    }
     
     override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
+        super.viewWillDisappear(true)
         
-        // Remove the Back Button Label for all Child VCs
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        // Show the Navigation Bar for all Child VCs
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
     // MARK: Setup Views
