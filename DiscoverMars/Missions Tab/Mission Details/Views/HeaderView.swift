@@ -70,5 +70,4 @@ class HeaderView: UIView {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
-    
 }

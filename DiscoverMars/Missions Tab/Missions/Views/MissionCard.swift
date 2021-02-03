@@ -22,7 +22,7 @@ class MissionCard: UIControl {
         backgroundColor = UIColor.clear
         layer.shadowColor = UIColor.black.cgColor
         layer.shadowOffset = .zero
-        layer.shadowOpacity = 0.3
+        layer.shadowOpacity = 0.2
         layer.shadowRadius = 20
         
         // Adds border radius
@@ -89,7 +89,7 @@ class MissionCard: UIControl {
     private lazy var containerView: UIView = {
         let view = UIView()
         view.frame = bounds
-        view.backgroundColor = UIColor(named: "orange")
+        view.backgroundColor = UIColor(named: "color.10")
         view.layer.cornerRadius = 16
         view.layer.masksToBounds = true
         view.isUserInteractionEnabled = false
@@ -99,7 +99,7 @@ class MissionCard: UIControl {
     
     let bottomView: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor(named: "background")
+        view.backgroundColor = UIColor(named: "color.100")
         view.clipsToBounds = true
         view.layer.cornerRadius = 16.0
         view.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
