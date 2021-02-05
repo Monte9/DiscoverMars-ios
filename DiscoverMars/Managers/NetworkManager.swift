@@ -82,7 +82,7 @@ class NetworkManager {
                 completionHandler(.failure(error))
             }
         }
-
+        
         task.resume()
     }
     
@@ -116,10 +116,10 @@ class NetworkManager {
                     completionHandler(.failure(NetworkManagerError.missingData))
                     return
                 }
-
+                
                 let photosData = try JSONSerialization.data(withJSONObject: photosJSON, options: .prettyPrinted)
                 let photos = try JSONDecoder().decode([Photo].self, from: photosData)
-
+                
                 DispatchQueue.main.async {
                     completionHandler(.success(photos))
                 }
@@ -127,7 +127,7 @@ class NetworkManager {
                 completionHandler(.failure(error))
             }
         }
-
+        
         task.resume()
     }
 }

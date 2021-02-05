@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import NYTPhotoViewer
 
 class PhotosViewController: UIViewController {
     
@@ -17,6 +18,8 @@ class PhotosViewController: UIViewController {
             collectionView.collectionViewLayout.invalidateLayout()
         }
     }
+    
+    private var photoViewerCoordinator: PhotoViewerCoordinator?
     
     // MARK: Initialization
     
@@ -164,15 +167,25 @@ extension PhotosViewController: UICollectionViewDelegate {
         // TODO: Open image in fullscreen mode
         let _ = photos[indexPath.section]
         
-        if photoSize == .large {
-            photosHeaderRow.photoSize = .small
-            photoSize = .small
-        } else {
-            photosHeaderRow.photoSize = .large
-            photoSize = .large
-        }
+        let coordinator = PhotoViewerCoordinator(photos: photos)
+        photoViewerCoordinator = coordinator
+
+        let photosViewController = coordinator.photoViewer
+        photosViewController.delegate = self
+        present(photosViewController, animated: true, completion: nil)
         
-        collectionView.scrollToItem(at: indexPath, at: .centeredVertically, animated: false)
+//        NYTPhotosViewController *photosViewController = [[NYTPhotosViewController alloc] initWithPhotos:photos];
+//        [self presentViewController:photosViewController animated:YES completion:nil];
+        
+//        if photoSize == .large {
+//            photosHeaderRow.photoSize = .small
+//            photoSize = .small
+//        } else {
+//            photosHeaderRow.photoSize = .large
+//            photoSize = .large
+//        }
+//
+//        collectionView.scrollToItem(at: indexPath, at: .centeredVertically, animated: false)
     }
 }
 
@@ -213,9 +226,55 @@ extension PhotosViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
+// MARK: - PhotosHeaderRowDelegate
+
 extension PhotosViewController: PhotosHeaderRowDelegate {
     
     func photosHeaderRowDidChange(_ view: PhotosHeaderRow, photoSize: PhotoSize) {
         self.photoSize = photoSize
+    }
+}
+
+// MARK: - NYTPhotosViewControllerDelegate
+
+extension PhotosViewController: NYTPhotosViewControllerDelegate {
+    
+    func photosViewController(_ photosViewController: NYTPhotosViewController, handleActionButtonTappedFor photo: NYTPhoto) -> Bool {
+        guard UIDevice.current.userInterfaceIdiom == .pad, let photoImage = photo.image else {
+            return false
+        }
+        
+        let shareActivityViewController = UIActivityViewController(activityItems: [photoImage], applicationActivities:nil)
+        shareActivityViewController.completionWithItemsHandler = {(activityType:UIActivity.ActivityType?, completed:Bool, items:[Any]?, error:Error?) in
+            if completed {
+                photosViewController.delegate?.photosViewController!(photosViewController, actionCompletedWithActivityType: activityType?.rawValue)
+            }
+        }
+
+        shareActivityViewController.popoverPresentationController?.barButtonItem = photosViewController.rightBarButtonItem
+        photosViewController.present(shareActivityViewController, animated: true, completion: nil)
+
+        return true
+    }
+    
+//    func photosViewController(_ photosViewController: NYTPhotosViewController, referenceViewFor photo: NYTPhoto) -> UIView? {
+//        guard let box = photo as? NYTPhotoBox else { return nil }
+//
+//        return box.value.name == ReferencePhotoName ? imageButton : nil
+//    }
+
+    func photosViewControllerDidDismiss(_ photosViewController: NYTPhotosViewController) {
+        photoViewerCoordinator = nil
+    }
+
+    func photosViewController(_ photosViewController: NYTPhotosViewController, interstitialViewAt index: UInt) -> UIView? {
+        let redView = UIView(frame: CGRect(origin: .zero, size: CGSize(width: photosViewController.view.frame.width, height: 200)))
+        redView.backgroundColor = .red
+        redView.autoresizingMask = [.flexibleWidth]
+        return redView
+    }
+
+    func photosViewController(_ photosViewController: NYTPhotosViewController, didNavigateToInterstialView view: UIView, at index: UInt) {
+        view.backgroundColor = .blue
     }
 }
