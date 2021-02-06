@@ -56,7 +56,7 @@ class MissionsViewController: UIViewController {
         self.view.addSubview(activityView!)
         activityView?.startAnimating()
     }
-
+    
     func hideActivityIndicator(){
         if (activityView != nil){
             activityView?.stopAnimating()

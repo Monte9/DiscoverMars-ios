@@ -12,6 +12,8 @@ import NYTPhotoViewer
 class PhotosViewController: UIViewController {
     
     private var activityView: UIActivityIndicatorView!
+    
+    // Setup photos for the collectionView
     private var photos = [Photo]()
     private var photoSize: PhotoSize = .small {
         didSet {
@@ -19,9 +21,11 @@ class PhotosViewController: UIViewController {
         }
     }
     
-    private var selectedPhotoCellView: UIView?
+    // Setup Slideshow for the NYTPhotoViewer
+    private var slideshow = [NYTPhotoBox]()
+    private var photoViewer: NYTPhotosViewController?
     
-    private var photoViewerCoordinator: PhotoViewerCoordinator?
+    private var selectedPhotoCellView: UIView?
     
     // MARK: Initialization
     
@@ -78,6 +82,9 @@ class PhotosViewController: UIViewController {
             case .success(let photos):
                 self.photos = photos
                 self.populateData()
+                
+                // Setup slideshow from the photos
+                self.slideshow = photos.map { NYTPhotoBox($0) }
             case .failure(let error):
                 print("Failed to fetch missions: \(error)")
                 self.displayErrorView()
@@ -169,12 +176,20 @@ extension PhotosViewController: UICollectionViewDelegate {
         // Store the selectedPhoto cell so it can be referenced later on
         selectedPhotoCellView = self.collectionView.cellForItem(at: indexPath)
         
-        let coordinator = PhotoViewerCoordinator(photos: photos)
-        photoViewerCoordinator = coordinator
+        // Initialize the photoViewer with current index of the selected photo
+        photoViewer = NYTPhotosViewController(dataSource: self, initialPhotoIndex: indexPath.row, delegate: self)
         
-        let photosViewController = coordinator.photoViewer
-        photosViewController.delegate = self
-        present(photosViewController, animated: true, completion: nil)
+        // Setup the Slideshow with Image URLs
+        for photoBox in slideshow {
+            let imageView = ImageView()
+            imageView.loadImage(urlString: photoBox.value.url)
+            photoBox.image = imageView.image
+            photoViewer?.update(photoBox)
+        }
+        
+        if let photoViewer = photoViewer {
+            present(photoViewer, animated: true, completion: nil)
+        }
     }
 }
 
@@ -251,7 +266,7 @@ extension PhotosViewController: NYTPhotosViewControllerDelegate {
     }
 
     func photosViewControllerDidDismiss(_ photosViewController: NYTPhotosViewController) {
-        photoViewerCoordinator = nil
+        photoViewer = nil
     }
 
     func photosViewController(_ photosViewController: NYTPhotosViewController, interstitialViewAt index: UInt) -> UIView? {
@@ -263,5 +278,24 @@ extension PhotosViewController: NYTPhotosViewControllerDelegate {
 
     func photosViewController(_ photosViewController: NYTPhotosViewController, didNavigateToInterstialView view: UIView, at index: UInt) {
         view.backgroundColor = .blue
+    }
+}
+
+// MARK: - NYTPhotoViewerDataSource
+
+extension PhotosViewController: NYTPhotoViewerDataSource {
+
+    @objc var numberOfPhotos: NSNumber? {
+        return NSNumber(integerLiteral: slideshow.count)
+    }
+
+    @objc func index(of photo: NYTPhoto) -> Int {
+        guard let box = photo as? NYTPhotoBox else { return NSNotFound }
+        return slideshow.firstIndex(where: { $0.value.identifier == box.value.identifier }) ?? NSNotFound
+    }
+
+    @objc func photo(at index: Int) -> NYTPhoto? {
+        guard index < slideshow.count else { return nil }
+        return slideshow[index]
     }
 }

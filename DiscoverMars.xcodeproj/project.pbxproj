@@ -33,7 +33,6 @@
 		0CC809EA25B56D2700691B28 /* SectionRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC809E925B56D2700691B28 /* SectionRow.swift */; };
 		0CC809EE25B5741600691B28 /* SectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC809ED25B5741600691B28 /* SectionView.swift */; };
 		0CC97BF825CBDD7E0048BF9E /* NYTPhotoViewer in Frameworks */ = {isa = PBXBuildFile; productRef = 0CC97BF725CBDD7E0048BF9E /* NYTPhotoViewer */; };
-		0CC97C0625CD10190048BF9E /* PhotoViewerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC97C0525CD10190048BF9E /* PhotoViewerCoordinator.swift */; };
 		0CC97C1025CD10C70048BF9E /* NYTPhotoBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC97C0F25CD10C70048BF9E /* NYTPhotoBox.swift */; };
 		0CDA63AD25BA0A7800F7512B /* SwipeableTopTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDA63AC25BA0A7800F7512B /* SwipeableTopTabBarController.swift */; };
 		0CDA63B825BA0CB900F7512B /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDA63B725BA0CB900F7512B /* AboutViewController.swift */; };
@@ -76,7 +75,6 @@
 		0CC809E525B5696500691B28 /* MissionSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionSectionView.swift; sourceTree = "<group>"; };
 		0CC809E925B56D2700691B28 /* SectionRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionRow.swift; sourceTree = "<group>"; };
 		0CC809ED25B5741600691B28 /* SectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionView.swift; sourceTree = "<group>"; };
-		0CC97C0525CD10190048BF9E /* PhotoViewerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewerCoordinator.swift; sourceTree = "<group>"; };
 		0CC97C0F25CD10C70048BF9E /* NYTPhotoBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYTPhotoBox.swift; sourceTree = "<group>"; };
 		0CDA63AC25BA0A7800F7512B /* SwipeableTopTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeableTopTabBarController.swift; sourceTree = "<group>"; };
 		0CDA63B725BA0CB900F7512B /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
@@ -255,14 +253,6 @@
 			path = Templates;
 			sourceTree = "<group>";
 		};
-		0CC97C0425CD10090048BF9E /* NYT Photo Viewer */ = {
-			isa = PBXGroup;
-			children = (
-				0CC97C0525CD10190048BF9E /* PhotoViewerCoordinator.swift */,
-			);
-			path = "NYT Photo Viewer";
-			sourceTree = "<group>";
-		};
 		0CDA63BC25BA0D9100F7512B /* Swipeable Top TabBar */ = {
 			isa = PBXGroup;
 			children = (
@@ -275,7 +265,6 @@
 		0CEC21A725AAF208000171B7 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				0CC97C0425CD10090048BF9E /* NYT Photo Viewer */,
 				0CDA63BC25BA0D9100F7512B /* Swipeable Top TabBar */,
 				0C60A2BE25A8D15100EFD7FF /* ImageView.swift */,
 				0CEC21AC25AAF429000171B7 /* Extensions.swift */,
@@ -387,7 +376,6 @@
 				0CEC21AD25AAF429000171B7 /* Extensions.swift in Sources */,
 				0C0FCA9A25B58A380013D69A /* LandingSectionView.swift in Sources */,
 				0C0FCA9D25B590780013D69A /* OverviewSectionView.swift in Sources */,
-				0CC97C0625CD10190048BF9E /* PhotoViewerCoordinator.swift in Sources */,
 				0CAA95D225A8780800905808 /* Mission.swift in Sources */,
 				0CC809DE25B1916900691B28 /* IntroSectionView.swift in Sources */,
 				0C60A2BF25A8D15100EFD7FF /* ImageView.swift in Sources */,
