@@ -19,6 +19,8 @@ class PhotosViewController: UIViewController {
         }
     }
     
+    private var selectedPhotoCellView: UIView?
+    
     private var photoViewerCoordinator: PhotoViewerCoordinator?
     
     // MARK: Initialization
@@ -164,28 +166,15 @@ class PhotosViewController: UIViewController {
 extension PhotosViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        // TODO: Open image in fullscreen mode
-        let _ = photos[indexPath.section]
+        // Store the selectedPhoto cell so it can be referenced later on
+        selectedPhotoCellView = self.collectionView.cellForItem(at: indexPath)
         
         let coordinator = PhotoViewerCoordinator(photos: photos)
         photoViewerCoordinator = coordinator
-
+        
         let photosViewController = coordinator.photoViewer
         photosViewController.delegate = self
         present(photosViewController, animated: true, completion: nil)
-        
-//        NYTPhotosViewController *photosViewController = [[NYTPhotosViewController alloc] initWithPhotos:photos];
-//        [self presentViewController:photosViewController animated:YES completion:nil];
-        
-//        if photoSize == .large {
-//            photosHeaderRow.photoSize = .small
-//            photoSize = .small
-//        } else {
-//            photosHeaderRow.photoSize = .large
-//            photoSize = .large
-//        }
-//
-//        collectionView.scrollToItem(at: indexPath, at: .centeredVertically, animated: false)
     }
 }
 
@@ -257,11 +246,9 @@ extension PhotosViewController: NYTPhotosViewControllerDelegate {
         return true
     }
     
-//    func photosViewController(_ photosViewController: NYTPhotosViewController, referenceViewFor photo: NYTPhoto) -> UIView? {
-//        guard let box = photo as? NYTPhotoBox else { return nil }
-//
-//        return box.value.name == ReferencePhotoName ? imageButton : nil
-//    }
+    func photosViewController(_ photosViewController: NYTPhotosViewController, referenceViewFor photo: NYTPhoto) -> UIView? {
+        return selectedPhotoCellView
+    }
 
     func photosViewControllerDidDismiss(_ photosViewController: NYTPhotosViewController) {
         photoViewerCoordinator = nil

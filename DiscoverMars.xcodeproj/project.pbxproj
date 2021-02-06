@@ -153,6 +153,7 @@
 				0CEF5D1C25AB83D90090FCBF /* Camera.swift */,
 				0CAA95D125A8780800905808 /* Mission.swift */,
 				0CEF5D2025AB85900090FCBF /* Photo.swift */,
+				0CC97C0F25CD10C70048BF9E /* NYTPhotoBox.swift */,
 				0CEF5D2325AB85C40090FCBF /* Rover.swift */,
 			);
 			path = Models;
@@ -257,7 +258,6 @@
 		0CC97C0425CD10090048BF9E /* NYT Photo Viewer */ = {
 			isa = PBXGroup;
 			children = (
-				0CC97C0F25CD10C70048BF9E /* NYTPhotoBox.swift */,
 				0CC97C0525CD10190048BF9E /* PhotoViewerCoordinator.swift */,
 			);
 			path = "NYT Photo Viewer";

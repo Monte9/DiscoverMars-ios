@@ -159,7 +159,7 @@ class MissionsViewController: UIViewController {
     // MARK: Actions
     
     @objc func missionCardTapped(_ sender: MissionCard) {
-        let missionDetailsViewController = MissionDetailsViewController(for: sender.mission)
+        let missionDetailsViewController = PhotosViewController(for: sender.mission)
         missionDetailsViewController.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(missionDetailsViewController, animated: true)
     }

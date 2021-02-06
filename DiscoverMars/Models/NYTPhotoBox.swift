@@ -8,8 +8,10 @@
 import UIKit
 import NYTPhotoViewer
 
-/// A box allowing NYTPhotoViewer to consume Swift value types from our codebase.
+/// A data model that implements the `NYTPhoto` protocol for use with NYTPhotoViewer
 final class NYTPhotoBox: NSObject, NYTPhoto {
+    
+    // Stores the Photo object retured by the API
     let value: Photo
     
     init(_ photo: Photo) {
@@ -42,8 +44,8 @@ final class NYTPhotoBox: NSObject, NYTPhoto {
 // MARK: NSObject Equality
 
 extension NYTPhotoBox {
-    @objc
-    override func isEqual(_ object: Any?) -> Bool {
+    
+    @objc override func isEqual(_ object: Any?) -> Bool {
         guard let otherPhoto = object as? NYTPhotoBox else { return false }
         return value.identifier == otherPhoto.value.identifier
     }
