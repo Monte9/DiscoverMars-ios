@@ -7,11 +7,14 @@
 
 import Foundation
 import UIKit
+import NYTPhotoViewer
 
 class MissionDetailsViewController: SwipeableTopTabBarController {
     
     private weak var defaultGestureRecognizerDelegate: UIGestureRecognizerDelegate?
     private var customPopRecognizer: InteractivePopRecognizer?
+    
+    private var isPhotoViwerModalShown: Bool = false
     
     // MARK: Initialization
     
@@ -59,8 +62,10 @@ class MissionDetailsViewController: SwipeableTopTabBarController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
         
-        // Hide the Navigation Bar
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
+        // Hide the navigation bar only when the photoViewer Modal is not shown
+        if isPhotoViwerModalShown == false {
+            self.navigationController?.setNavigationBarHidden(true, animated: true)
+        }
     }
     
     // MARK: Setup Views
@@ -68,7 +73,21 @@ class MissionDetailsViewController: SwipeableTopTabBarController {
     private func setupViews() {
         // slidingTab
         addTab(viewController: AboutViewController(for: mission), title: "About")
-        addTab(viewController: PhotosViewController(for: mission), title: "Photos")
+        addTab(viewController: PhotosViewController(for: mission, delegate: self), title: "Photos")
         setup()
+    }
+}
+
+// MARK: - PhotosViewControllerDelegate
+
+extension MissionDetailsViewController: PhotosViewControllerDelegate {
+    
+    func didSelectPhotoCellView(from viewController: UIViewController, photoViewer: NYTPhotosViewController) {
+        isPhotoViwerModalShown = true
+        present(photoViewer, animated: true, completion: nil)
+    }
+    
+    func didDismissPhotoViewerModal(from viewController: UIViewController) {
+        isPhotoViwerModalShown = false
     }
 }

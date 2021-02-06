@@ -9,6 +9,11 @@ import Foundation
 import UIKit
 import NYTPhotoViewer
 
+protocol PhotosViewControllerDelegate: class {
+    func didSelectPhotoCellView(from viewController: UIViewController, photoViewer: NYTPhotosViewController)
+    func didDismissPhotoViewerModal(from viewController: UIViewController)
+}
+
 class PhotosViewController: UIViewController {
     
     private var activityView: UIActivityIndicatorView!
@@ -30,8 +35,10 @@ class PhotosViewController: UIViewController {
     // MARK: Initialization
     
     private let mission: Mission
-    init(for mission: Mission) {
+    private let delegate: PhotosViewControllerDelegate?
+    init(for mission: Mission, delegate: PhotosViewControllerDelegate? = nil) {
         self.mission = mission
+        self.delegate = delegate
         super.init(nibName: nil, bundle: nil)
         
         // Set the background color for the view
@@ -188,7 +195,7 @@ extension PhotosViewController: UICollectionViewDelegate {
         }
         
         if let photoViewer = photoViewer {
-            present(photoViewer, animated: true, completion: nil)
+            delegate?.didSelectPhotoCellView(from: self, photoViewer: photoViewer)
         }
     }
 }
@@ -267,6 +274,8 @@ extension PhotosViewController: NYTPhotosViewControllerDelegate {
 
     func photosViewControllerDidDismiss(_ photosViewController: NYTPhotosViewController) {
         photoViewer = nil
+        
+        delegate?.didDismissPhotoViewerModal(from: self)
     }
 
     func photosViewController(_ photosViewController: NYTPhotosViewController, interstitialViewAt index: UInt) -> UIView? {
