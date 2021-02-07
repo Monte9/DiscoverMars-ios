@@ -46,7 +46,7 @@ class HeaderView: UIView {
     
     private func setupConstraints() {
         NSLayoutConstraint.activate([
-            heightAnchor.constraint(equalToConstant: Constants.isIpad ? 300 : 200),
+            heightAnchor.constraint(equalToConstant: UIDevice.current.isIpad ? 300 : 200),
             bottomView.leadingAnchor.constraint(equalTo: leadingAnchor),
             bottomView.trailingAnchor.constraint(equalTo: trailingAnchor),
             bottomView.bottomAnchor.constraint(equalTo: bottomAnchor),

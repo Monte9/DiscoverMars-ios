@@ -58,6 +58,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         rootTabBarController.tabBar.items?[0].title = "Missions"
         rootTabBarController.tabBar.items?[1].title = "Mars"
         
+        // Set the UIOffset for the tabBarItem title based on device type
+        UITabBarItem.appearance().titlePositionAdjustment = UIOffset(horizontal: 0, vertical: tabBarTitleVerticalOffset(for: rootTabBarController))
+        
         // Add underline to the text to indicate selected tab
         UITabBar.appearance().selectionIndicatorImage = tabBarItemUnderlineImage(for: rootTabBarController)
         
@@ -132,5 +135,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         UIGraphicsEndImageContext()
         
         return image
+    }
+    
+    func tabBarTitleVerticalOffset(for rootTabBarController: UITabBarController) -> CGFloat {
+        let tabBarItemHeight: CGFloat = rootTabBarController.tabBar.frame.height
+        
+        if UIDevice.current.isIPhoneXOrBigger {
+            return -tabBarItemHeight/16
+        } else if UIDevice.current.isIpad {
+            return 0
+        } else {
+            return -tabBarItemHeight/4
+        }
     }
 }

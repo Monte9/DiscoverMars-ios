@@ -182,7 +182,7 @@ class MissionsViewController: UIViewController {
         missionCard.roverImage.image = UIImage(named: mission.roverName.lowercased())
         
         // Setup height
-        missionCard.heightAnchor.constraint(equalToConstant: Constants.isIpad ? 330 : 232).isActive = true
+        missionCard.heightAnchor.constraint(equalToConstant: UIDevice.current.isIpad ? 330 : 232).isActive = true
         
         // Setup tap action
         missionCard.isUserInteractionEnabled = true

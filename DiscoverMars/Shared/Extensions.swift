@@ -46,10 +46,15 @@ extension Int {
     }
 }
 
-/// Shared constants used across the app
-class Constants {
+extension UIDevice {
     
-    static var isIpad: Bool = {
+    var isIPhoneXOrBigger: Bool {
+        // 812.0 on iPhone X, XS
+        // 896.0 on iPhone XS Max, XR
+        return UIDevice.current.userInterfaceIdiom == .phone && UIScreen.main.bounds.height >= 812
+    }
+    
+    var isIpad: Bool {
         return UIDevice.current.userInterfaceIdiom == .pad
-    }()
+    }
 }
