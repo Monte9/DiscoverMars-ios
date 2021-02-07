@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C0394BF25D040C80084D091 /* MarsFactCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C0394BE25D040C80084D091 /* MarsFactCard.swift */; };
+		0C0394C325D043B90084D091 /* MarsFact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C0394C225D043B90084D091 /* MarsFact.swift */; };
 		0C071E5F25BB69E300F2349E /* PhotosHeaderRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C071E5E25BB69E300F2349E /* PhotosHeaderRow.swift */; };
 		0C0B685525BA1B2400A44F67 /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C0B685425BA1B2400A44F67 /* PhotosViewController.swift */; };
 		0C0FCA9625B584D00013D69A /* LaunchSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C0FCA9525B584D00013D69A /* LaunchSectionView.swift */; };
@@ -48,6 +50,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0C0394BE25D040C80084D091 /* MarsFactCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarsFactCard.swift; sourceTree = "<group>"; };
+		0C0394C225D043B90084D091 /* MarsFact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarsFact.swift; sourceTree = "<group>"; };
 		0C071E5E25BB69E300F2349E /* PhotosHeaderRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosHeaderRow.swift; sourceTree = "<group>"; };
 		0C0B685425BA1B2400A44F67 /* PhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
 		0C0FCA9525B584D00013D69A /* LaunchSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchSectionView.swift; sourceTree = "<group>"; };
@@ -101,6 +105,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0C0394BD25D040440084D091 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0C0394BE25D040C80084D091 /* MarsFactCard.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		0CAA95A725A86A0300905808 = {
 			isa = PBXGroup;
 			children = (
@@ -153,6 +165,7 @@
 				0CEF5D2025AB85900090FCBF /* Photo.swift */,
 				0CC97C0F25CD10C70048BF9E /* NYTPhotoBox.swift */,
 				0CEF5D2325AB85C40090FCBF /* Rover.swift */,
+				0C0394C225D043B90084D091 /* MarsFact.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -169,6 +182,7 @@
 		0CB40EEE25B988D10088B7DB /* Mars Tab */ = {
 			isa = PBXGroup;
 			children = (
+				0C0394BD25D040440084D091 /* Views */,
 				0CC529A325A984CF0022DE6A /* MarsViewController.swift */,
 			);
 			path = "Mars Tab";
@@ -360,6 +374,7 @@
 				0CAA95CD25A8776400905808 /* NetworkManager.swift in Sources */,
 				0CC529A825A984F60022DE6A /* MissionDetailsViewController.swift in Sources */,
 				0CDA63BE25BA0DAE00F7512B /* TopTabBarHeaderCell.swift in Sources */,
+				0C0394BF25D040C80084D091 /* MarsFactCard.swift in Sources */,
 				0CC97C1025CD10C70048BF9E /* NYTPhotoBox.swift in Sources */,
 				0CC809E625B5696500691B28 /* MissionSectionView.swift in Sources */,
 				0CC529A425A984CF0022DE6A /* MarsViewController.swift in Sources */,
@@ -377,6 +392,7 @@
 				0C0FCA9A25B58A380013D69A /* LandingSectionView.swift in Sources */,
 				0C0FCA9D25B590780013D69A /* OverviewSectionView.swift in Sources */,
 				0CAA95D225A8780800905808 /* Mission.swift in Sources */,
+				0C0394C325D043B90084D091 /* MarsFact.swift in Sources */,
 				0CC809DE25B1916900691B28 /* IntroSectionView.swift in Sources */,
 				0C60A2BF25A8D15100EFD7FF /* ImageView.swift in Sources */,
 				0CEF5D2E25AE29DB0090FCBF /* HeaderView.swift in Sources */,

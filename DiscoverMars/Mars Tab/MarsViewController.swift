@@ -14,7 +14,7 @@ class MarsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.init(named: "background")
+        view.backgroundColor = UIColor.init(named: "orange")
         
         setupViews()
         setupConstraints()
@@ -47,6 +47,28 @@ class MarsViewController: UIViewController {
     private func setupViews() {
         view.addSubview(scrollView)
         scrollView.addSubview(stackView)
+        
+        let allMarsFacts = Array(MarsFact.allCases)
+        
+        for index in 0..<allMarsFacts.count {
+            let marsFact = allMarsFacts[index]
+            
+            // Add extra padding to the top of the first card
+            if (index == 0) {
+                let spacerView = UIView(frame: CGRect(x: 0, y: 0, width: stackView.frame.width, height: 24))
+                stackView.addArrangedSubview(spacerView)
+            }
+            
+            // Setup and add MarsFactCard to the StackView
+            let marsFactCard = setupMarsFactCard(with: marsFact)
+            stackView.addArrangedSubview(marsFactCard)
+            
+            // Add extra padding to the bottom of the last card
+            if index == (allMarsFacts.count - 1) {
+                let spacerView = UIView(frame: CGRect(x: 0, y: 0, width: stackView.frame.width, height: 24))
+                stackView.addArrangedSubview(spacerView)
+            }
+        }
     }
     
     // MARK: Setup Constraints
@@ -64,10 +86,25 @@ class MarsViewController: UIViewController {
         ])
     }
     
+    // MARK: Helpers
+    
+    private func setupMarsFactCard(with marsFact: MarsFact) -> MarsFactCard {
+        let marsFactCard = MarsFactCard(for: marsFact)
+        
+        marsFactCard.roverLabel.text = marsFact.title()
+        marsFactCard.missionLabel.text = marsFact.subtitle()
+        
+        // Setup height
+        marsFactCard.heightAnchor.constraint(equalToConstant: 330).isActive = true
+        
+        return marsFactCard
+    }
+    
     // MARK: UI Views
     
     private let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
+        scrollView.showsVerticalScrollIndicator = false
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         return scrollView
     }()
@@ -75,7 +112,7 @@ class MarsViewController: UIViewController {
     private let stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
-        stackView.spacing = 16
+        stackView.spacing = 24
         stackView.isUserInteractionEnabled = true
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
