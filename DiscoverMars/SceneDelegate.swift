@@ -41,7 +41,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         rootTabBarController.viewControllers = [missionsNavigationController, marsNavigationController]
         
         // Customize TabBar appearance
-        rootTabBarController.tabBar.barTintColor = UIColor(named: "background")
+        UITabBar.appearance().barTintColor = UIColor(named: "background")
+        UITabBar.appearance().isTranslucent = false
         
         // Setup TabBarItem Appearance
         UITabBarItem.appearance().setTitleTextAttributes([
@@ -56,6 +57,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Setup TabBarItem Labels
         rootTabBarController.tabBar.items?[0].title = "Missions"
         rootTabBarController.tabBar.items?[1].title = "Mars"
+        
+        // Add underline to the text to indicate selected tab
+        UITabBar.appearance().selectionIndicatorImage = tabBarItemUnderlineImage(for: rootTabBarController)
         
         window?.rootViewController = rootTabBarController
         window?.makeKeyAndVisible()
@@ -90,4 +94,43 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // to restore the scene back to its current state.
     }
     
+    func tabBarItemUnderlineImage(for rootTabBarController: UITabBarController) -> UIImage {
+        let lineHeight: CGFloat = 2
+        
+        let tabBarItemWidth = rootTabBarController.tabBar.frame.width / 2
+        let tabBarItemHeight = rootTabBarController.tabBar.frame.height
+        let size = CGSize(width: tabBarItemWidth, height: tabBarItemHeight)
+        var titleWidth: CGFloat = 0
+        var titleHeight: CGFloat = 0
+        
+        if let font = UIFont(name: "Inter-Medium", size: 24) {
+            let fontAttributes = [NSAttributedString.Key.font: font]
+            let myText = rootTabBarController.tabBar.items?[0].title
+            let titleSize = myText?.size(withAttributes: fontAttributes)
+            titleWidth = titleSize?.width ?? tabBarItemWidth
+            titleHeight = titleSize?.height ?? tabBarItemHeight-lineHeight
+        }
+        
+        // Get the starting point for underLineRect so it's centered
+        let centerStartPoint = (tabBarItemWidth / 2) - (titleWidth / 2)
+        
+        // Setup the tabBarItemRect and underLineRect sizes
+        let tabBarItemRect = CGRect(x: 0, y: 0, width: tabBarItemWidth, height: tabBarItemHeight)
+        let underLineRect = CGRect(x: centerStartPoint, y: titleHeight + 8, width: titleWidth, height: lineHeight)
+        
+        UIGraphicsBeginImageContextWithOptions(size, false, 0)
+        
+        // Set the backgroundColor for tabBarItemRect
+        UIColor.clear.setFill()
+        UIRectFill(tabBarItemRect)
+        
+        // Set the backgroundColor for underLineRect
+        UIColor(named: "orange")?.setFill()
+        UIRectFill(underLineRect)
+        
+        let image = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        
+        return image
+    }
 }

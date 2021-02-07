@@ -128,8 +128,8 @@
 				0CB40EED25B988CA0088B7DB /* Missions Tab */,
 				0CB40EEE25B988D10088B7DB /* Mars Tab */,
 				0CEC21A725AAF208000171B7 /* Shared */,
-				0CAA95BC25A86A0500905808 /* Assets.xcassets */,
 				0CC809D325B18ED500691B28 /* Fonts */,
+				0CAA95BC25A86A0500905808 /* Assets.xcassets */,
 				0CAA95C125A86A0500905808 /* Info.plist */,
 			);
 			path = DiscoverMars;
