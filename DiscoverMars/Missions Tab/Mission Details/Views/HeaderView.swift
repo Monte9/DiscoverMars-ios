@@ -59,7 +59,7 @@ class HeaderView: UIView {
     
     private let bottomView: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor(named: "orange.light")
+        view.backgroundColor = UIColor(named: "color.10")
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()

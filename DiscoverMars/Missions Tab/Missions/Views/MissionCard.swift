@@ -27,7 +27,7 @@ class MissionCard: UIControl {
         
         // Adds border radius
         layer.borderWidth = 0.5
-        layer.borderColor = UIColor(named: "light")?.cgColor
+        layer.borderColor = UIColor(named: "background")?.cgColor
         
         // Adds corder radius
         layer.cornerRadius = 20
@@ -43,7 +43,7 @@ class MissionCard: UIControl {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        layer.borderColor = UIColor(named: "light")?.cgColor
+        layer.borderColor = UIColor(named: "background")?.cgColor
         
         NSLayoutConstraint.activate([
             roverImage.widthAnchor.constraint(equalToConstant: frame.width * 0.8),
@@ -99,7 +99,7 @@ class MissionCard: UIControl {
     
     let bottomView: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor(named: "color.100")
+        view.backgroundColor = UIColor(named: "background")
         view.clipsToBounds = true
         view.layer.cornerRadius = 16.0
         view.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
