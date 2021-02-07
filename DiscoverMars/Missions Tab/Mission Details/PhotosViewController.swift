@@ -284,6 +284,13 @@ extension PhotosViewController: NYTPhotosViewControllerDelegate {
         redView.autoresizingMask = [.flexibleWidth]
         return redView
     }
+    
+    func photosViewController(_ photosViewController: NYTPhotosViewController, didNavigateTo photo: NYTPhoto, at photoIndex: UInt) {
+        let indexPath = IndexPath(row: Int(photoIndex), section: 0)
+        
+        // Store the selectedPhoto cell so it can be referenced later on
+        selectedPhotoCellView = self.collectionView.cellForItem(at: indexPath)
+    }
 
     func photosViewController(_ photosViewController: NYTPhotosViewController, didNavigateToInterstialView view: UIView, at index: UInt) {
         view.backgroundColor = .blue
