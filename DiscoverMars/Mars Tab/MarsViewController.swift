@@ -61,6 +61,7 @@ class MarsViewController: UIViewController {
             
             // Setup and add MarsFactCard to the StackView
             let marsFactCard = setupMarsFactCard(with: marsFact)
+            marsFactCard.cardCountView.countLabel.text = "\(index + 1) - \(allMarsFacts.count)"
             stackView.addArrangedSubview(marsFactCard)
             
             // Add extra padding to the bottom of the last card
@@ -91,8 +92,8 @@ class MarsViewController: UIViewController {
     private func setupMarsFactCard(with marsFact: MarsFact) -> MarsFactCard {
         let marsFactCard = MarsFactCard(for: marsFact)
         
-        marsFactCard.roverLabel.text = marsFact.title()
-        marsFactCard.missionLabel.text = marsFact.subtitle()
+        marsFactCard.titleLabel.text = marsFact.title()
+        marsFactCard.subtitleLabel.text = marsFact.subtitle()
         
         // Setup height
         marsFactCard.heightAnchor.constraint(equalToConstant: 330).isActive = true

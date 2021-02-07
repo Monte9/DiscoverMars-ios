@@ -23,10 +23,10 @@ class MarsFactCard: UIControl {
         layer.shadowColor = UIColor.black.cgColor
         layer.shadowOffset = .zero
         layer.shadowOpacity = 0.2
-        layer.shadowRadius = 20
+        layer.shadowRadius = 5
         
         // Adds border radius
-        layer.borderWidth = 0.5
+        layer.borderWidth = 0.4
         layer.borderColor = UIColor(named: "background")?.cgColor
         
         // Adds corder radius
@@ -44,22 +44,15 @@ class MarsFactCard: UIControl {
         super.layoutSubviews()
         
         layer.borderColor = UIColor(named: "background")?.cgColor
-        
-        NSLayoutConstraint.activate([
-            roverImage.widthAnchor.constraint(equalToConstant: frame.width * 0.8),
-            roverImage.heightAnchor.constraint(equalToConstant: frame.height * 0.8),
-            roverImage.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: frame.width/6.7),
-        ])
     }
     
     // MARK: Setup Views
     
     private func setupViews() {
         addSubview(containerView)
-        containerView.addSubview(bottomView)
-        containerView.addSubview(roverImage)
-        containerView.addSubview(roverLabel)
-        containerView.addSubview(missionLabel)
+        containerView.addSubview(titleLabel)
+        containerView.addSubview(subtitleLabel)
+        containerView.addSubview(cardCountView)
     }
     
     // MARK: Setup Constraints
@@ -70,17 +63,14 @@ class MarsFactCard: UIControl {
             containerView.bottomAnchor.constraint(equalTo: bottomAnchor),
             containerView.leadingAnchor.constraint(equalTo: leadingAnchor),
             containerView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            bottomView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
-            bottomView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
-            bottomView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
-            roverLabel.topAnchor.constraint(equalTo: bottomView.topAnchor, constant: 16),
-            roverLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 24),
-            roverLabel.trailingAnchor.constraint(lessThanOrEqualTo: containerView.trailingAnchor, constant: -24),
-            missionLabel.topAnchor.constraint(equalTo: roverLabel.bottomAnchor, constant: 4),
-            missionLabel.bottomAnchor.constraint(equalTo: bottomView.bottomAnchor, constant: -24),
-            missionLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 24),
-            missionLabel.trailingAnchor.constraint(lessThanOrEqualTo: containerView.trailingAnchor, constant: -24),
-            roverImage.bottomAnchor.constraint(equalTo: missionLabel.topAnchor, constant: 20)
+            titleLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 24),
+            titleLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 24),
+            cardCountView.leadingAnchor.constraint(greaterThanOrEqualTo: titleLabel.trailingAnchor, constant: 8),
+            cardCountView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
+            cardCountView.topAnchor.constraint(equalTo: containerView.topAnchor),
+            subtitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 4),
+            subtitleLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 24),
+            subtitleLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -24)
         ])
     }
     
@@ -97,35 +87,31 @@ class MarsFactCard: UIControl {
         return view
     }()
     
-    let bottomView: UIView = {
-        let view = UIView()
-        view.backgroundColor = UIColor(named: "background")
-        view.clipsToBounds = true
-        view.layer.cornerRadius = 16.0
-        view.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
-        view.isUserInteractionEnabled = false
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-    
-    let roverLabel: UILabel = {
+    let titleLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        label.textColor = UIColor(named: "orange")
-        label.font = UIFont(name: "Inter-Medium", size: 30)
+        label.textColor = UIColor(named: "background")
+        label.font = UIFont(name: "Inter-Bold", size: 30)
         label.isUserInteractionEnabled = false
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    let missionLabel: UILabel = {
+    let subtitleLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        label.textColor = UIColor(named: "orange")
+        label.textColor = UIColor(named: "background")
+        label.layer.opacity = 0.6
         label.font = UIFont(name: "Inter-Medium", size: 16)
         label.isUserInteractionEnabled = false
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
+    }()
+    
+    let cardCountView: CardCountView = {
+        let view = CardCountView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
     }()
     
     let roverImage: ImageView = {
