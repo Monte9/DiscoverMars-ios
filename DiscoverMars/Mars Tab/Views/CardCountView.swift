@@ -46,8 +46,8 @@ class CardCountView: UIView {
     
     private func setupConstraints() {
         NSLayoutConstraint.activate([
-            countLabel.topAnchor.constraint(equalTo: topAnchor, constant: 20),
-            countLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -20),
+            countLabel.topAnchor.constraint(equalTo: topAnchor, constant: 24),
+            countLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -24),
             countLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
             countLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24)
         ])
@@ -57,7 +57,6 @@ class CardCountView: UIView {
     
     let countLabel: UILabel = {
         let label = UILabel()
-        label.numberOfLines = 0
         label.textColor = UIColor(named: "background")
         label.font = UIFont(name: "Inter-Medium", size: 16)
         label.setContentCompressionResistancePriority(.required, for: .horizontal)

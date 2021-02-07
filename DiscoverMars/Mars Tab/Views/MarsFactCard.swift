@@ -65,12 +65,12 @@ class MarsFactCard: UIControl {
             containerView.trailingAnchor.constraint(equalTo: trailingAnchor),
             titleLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 24),
             titleLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 24),
-            cardCountView.leadingAnchor.constraint(greaterThanOrEqualTo: titleLabel.trailingAnchor, constant: 8),
-            cardCountView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
+            titleLabel.trailingAnchor.constraint(lessThanOrEqualTo: cardCountView.leadingAnchor, constant: -16),
             cardCountView.topAnchor.constraint(equalTo: containerView.topAnchor),
+            cardCountView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
             subtitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 4),
             subtitleLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 24),
-            subtitleLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -24)
+            subtitleLabel.trailingAnchor.constraint(lessThanOrEqualTo: cardCountView.leadingAnchor, constant: -16)
         ])
     }
     
