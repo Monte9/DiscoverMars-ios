@@ -94,6 +94,7 @@ class MarsViewController: UIViewController {
         
         marsFactCard.titleLabel.text = marsFact.title()
         marsFactCard.subtitleLabel.text = marsFact.subtitle()
+        marsFactCard.descriptionLabel.text = marsFact.description()
         
         // Setup height
         marsFactCard.heightAnchor.constraint(equalToConstant: 330).isActive = true

@@ -53,6 +53,7 @@ class MarsFactCard: UIControl {
         containerView.addSubview(titleLabel)
         containerView.addSubview(subtitleLabel)
         containerView.addSubview(cardCountView)
+        containerView.addSubview(descriptionLabel)
     }
     
     // MARK: Setup Constraints
@@ -70,7 +71,10 @@ class MarsFactCard: UIControl {
             cardCountView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
             subtitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 4),
             subtitleLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 24),
-            subtitleLabel.trailingAnchor.constraint(lessThanOrEqualTo: cardCountView.leadingAnchor, constant: -16)
+            subtitleLabel.trailingAnchor.constraint(lessThanOrEqualTo: cardCountView.leadingAnchor, constant: -16),
+            descriptionLabel.topAnchor.constraint(equalTo: subtitleLabel.bottomAnchor, constant: 24),
+            descriptionLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 24),
+            descriptionLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -24)
         ])
     }
     
@@ -92,7 +96,6 @@ class MarsFactCard: UIControl {
         label.numberOfLines = 0
         label.textColor = UIColor(named: "background")
         label.font = UIFont(name: "Inter-Bold", size: 30)
-        label.isUserInteractionEnabled = false
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -103,7 +106,6 @@ class MarsFactCard: UIControl {
         label.textColor = UIColor(named: "background")
         label.layer.opacity = 0.6
         label.font = UIFont(name: "Inter-Medium", size: 16)
-        label.isUserInteractionEnabled = false
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -114,10 +116,18 @@ class MarsFactCard: UIControl {
         return view
     }()
     
+    let descriptionLabel: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 0
+        label.textColor = UIColor(named: "background")
+        label.font = UIFont(name: "Inter-Medium", size: 18)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     let roverImage: ImageView = {
         let imageView = ImageView()
         imageView.contentMode = .scaleAspectFill
-        imageView.isUserInteractionEnabled = false
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
