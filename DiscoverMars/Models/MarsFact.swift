@@ -73,10 +73,10 @@ enum MarsFact: String, CaseIterable {
         }
     }
     
-    func description() -> String? {
+    func description() -> String {
         switch self {
         case .size:
-            return nil
+            return ""
         case .mass:
             return ""
         case .volume:

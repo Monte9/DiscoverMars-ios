@@ -36,9 +36,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let marsNavigationController = UINavigationController(rootViewController: marsViewController)
         marsNavigationController.navigationBar.isTranslucent = false
         
-        // Setup TabBarController
+        // Setup TabBarController with VCs
         let rootTabBarController = UITabBarController()
-        rootTabBarController.viewControllers = [missionsNavigationController, marsNavigationController]
+        rootTabBarController.viewControllers = [marsNavigationController, missionsNavigationController]
+        
+        // Setup TabBarItem Labels
+        rootTabBarController.tabBar.items?[1].title = "Missions"
+        rootTabBarController.tabBar.items?[0].title = "Mars"
         
         // Customize TabBar appearance
         UITabBar.appearance().barTintColor = UIColor(named: "background")
@@ -53,10 +57,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             NSAttributedString.Key.font: UIFont(name: "Inter-Medium", size: 24)!,
             NSAttributedString.Key.foregroundColor: UIColor.init(named: "orange")!
         ], for: .selected)
-        
-        // Setup TabBarItem Labels
-        rootTabBarController.tabBar.items?[0].title = "Missions"
-        rootTabBarController.tabBar.items?[1].title = "Mars"
         
         // Set the UIOffset for the tabBarItem title based on device type
         UITabBarItem.appearance().titlePositionAdjustment = UIOffset(horizontal: 0, vertical: tabBarTitleVerticalOffset(for: rootTabBarController))

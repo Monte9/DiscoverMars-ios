@@ -10,6 +10,12 @@ import UIKit
 
 class MarsFactCard: UIControl {
     
+    var descriptionText: String = "" {
+        didSet {
+            setupDescriptionLabel()
+        }
+    }
+    
     // MARK: Initialization
     
     let fact: MarsFact
@@ -44,6 +50,10 @@ class MarsFactCard: UIControl {
         super.layoutSubviews()
         
         layer.borderColor = UIColor(named: "background")?.cgColor
+        
+        NSLayoutConstraint.activate([
+            factImage.widthAnchor.constraint(equalToConstant: 1000),
+        ])
     }
     
     // MARK: Setup Views
@@ -53,7 +63,7 @@ class MarsFactCard: UIControl {
         containerView.addSubview(titleLabel)
         containerView.addSubview(subtitleLabel)
         containerView.addSubview(cardCountView)
-        containerView.addSubview(descriptionLabel)
+        containerView.addSubview(factImage)
     }
     
     // MARK: Setup Constraints
@@ -72,9 +82,37 @@ class MarsFactCard: UIControl {
             subtitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 4),
             subtitleLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 24),
             subtitleLabel.trailingAnchor.constraint(lessThanOrEqualTo: cardCountView.leadingAnchor, constant: -16),
+        ])
+    }
+    
+    private func setupDescriptionLabel() {
+        if descriptionText.isEmpty {
+            setupViewsWithoutDescriptionLabel()
+            return
+        }
+        
+        // Add the description text
+        descriptionLabel.text = descriptionText
+        
+        // Add the label to the view
+        containerView.addSubview(descriptionLabel)
+        
+        // Setup contraints for the label
+        NSLayoutConstraint.activate([
             descriptionLabel.topAnchor.constraint(equalTo: subtitleLabel.bottomAnchor, constant: 24),
             descriptionLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 24),
-            descriptionLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -24)
+            descriptionLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -24),
+            factImage.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 24),
+            factImage.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -24),
+            factImage.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
+        ])
+    }
+    
+    private func setupViewsWithoutDescriptionLabel() {
+        NSLayoutConstraint.activate([
+            factImage.topAnchor.constraint(equalTo: subtitleLabel.bottomAnchor, constant: 24),
+            factImage.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -24),
+            factImage.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
         ])
     }
     
@@ -116,7 +154,7 @@ class MarsFactCard: UIControl {
         return view
     }()
     
-    let descriptionLabel: UILabel = {
+    private let descriptionLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
         label.textColor = UIColor(named: "background")
@@ -125,9 +163,9 @@ class MarsFactCard: UIControl {
         return label
     }()
     
-    let roverImage: ImageView = {
+    let factImage: ImageView = {
         let imageView = ImageView()
-        imageView.contentMode = .scaleAspectFill
+        imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()

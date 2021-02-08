@@ -91,14 +91,10 @@ class MarsViewController: UIViewController {
     
     private func setupMarsFactCard(with marsFact: MarsFact) -> MarsFactCard {
         let marsFactCard = MarsFactCard(for: marsFact)
-        
         marsFactCard.titleLabel.text = marsFact.title()
         marsFactCard.subtitleLabel.text = marsFact.subtitle()
-        marsFactCard.descriptionLabel.text = marsFact.description()
-        
-        // Setup height
-        marsFactCard.heightAnchor.constraint(equalToConstant: 330).isActive = true
-        
+        marsFactCard.descriptionText = marsFact.description()
+        marsFactCard.factImage.image = UIImage(named: "mars.fact.size")
         return marsFactCard
     }
     
