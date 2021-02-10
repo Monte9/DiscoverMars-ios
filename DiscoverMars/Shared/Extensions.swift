@@ -23,6 +23,22 @@ extension UINavigationController {
     }
 }
 
+extension UIImage {
+    
+    // Credit: https://stackoverflow.com/a/49335009
+    // Resized an image based on the given width
+    // Used to scale SVG images to fit on iPad
+    func resized(toWidth width: CGFloat) -> UIImage? {
+        let canvasSize = CGSize(width: width, height: CGFloat(ceil(width/size.width * size.height)))
+        UIGraphicsBeginImageContextWithOptions(canvasSize, false, scale)
+        
+        defer { UIGraphicsEndImageContext() }
+        draw(in: CGRect(origin: .zero, size: canvasSize))
+        
+        return UIGraphicsGetImageFromCurrentImageContext()
+    }
+}
+
 extension String {
     
     func titleCase() -> String {

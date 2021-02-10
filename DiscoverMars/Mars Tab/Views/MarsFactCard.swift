@@ -51,9 +51,8 @@ class MarsFactCard: UIControl {
         
         layer.borderColor = UIColor(named: "background")?.cgColor
         
-        NSLayoutConstraint.activate([
-            factImage.widthAnchor.constraint(equalToConstant: 1000),
-        ])
+        // Update the width of the factImage to work on iPad
+        factImage.image = factImage.image?.resized(toWidth: readableContentGuide.layoutFrame.width - 24)
     }
     
     // MARK: Setup Views

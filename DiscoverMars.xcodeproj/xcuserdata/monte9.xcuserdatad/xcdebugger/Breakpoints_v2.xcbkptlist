@@ -30,22 +30,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "DA0A96C7-3877-4239-AED1-CB4932BDD544"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "DiscoverMars/Mars Tab/Views/MarsFactCard.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
-            landmarkName = "layoutSubviews()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "7382180D-17B4-41FD-9A1F-11230809D726"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -53,8 +37,8 @@
             filePath = "DiscoverMars/Mars Tab/Views/MarsFactCard.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "97"
-            endingLineNumber = "97"
+            startingLineNumber = "96"
+            endingLineNumber = "96"
             landmarkName = "setupDescriptionLabel()"
             landmarkType = "7">
          </BreakpointContent>
