@@ -19,10 +19,8 @@ platform :ios do
   desc "Push a new beta build to TestFlight"
   lane :beta do
     # Increment Build and Version
-    # increment_version_number(
-    #  bump_type: "minor"
-    # )
-    #new_version_number = get_version_number
+    increment_version_number_in_xcodeproj(bump_type: "minor", target: "DiscoverMars")
+    new_version_number = get_version_number
 
     # Build app and upload to TestFlight
     build_app(scheme: "DiscoverMars")
@@ -35,10 +33,10 @@ platform :ios do
     )
 
     # Commit version bump and push to git
-    #commit_version_bump(
-    #  message: "Released new build with version #{new_version_number}",
-    #  xcodeproj: "DiscoverMars.xcodeproj"
-    #)
-    #push_to_git_remote
+    commit_version_bump(
+      message: "Released new build with version #{new_version_number}",
+      xcodeproj: "DiscoverMars.xcodeproj"
+    )
+    push_to_git_remote
   end
 end

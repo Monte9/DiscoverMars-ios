@@ -171,7 +171,7 @@ class MissionsViewController: UIViewController {
     }
     
     @objc func retryNetworkRequest(_ sender: UIButton) {
-        scrollView.subviews.map { $0.removeFromSuperview() }
+        scrollView.subviews.forEach { $0.removeFromSuperview() }
         
         fetchData()
     }
