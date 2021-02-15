@@ -168,5 +168,4 @@ class MarsFactCard: UIControl {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
-    
 }

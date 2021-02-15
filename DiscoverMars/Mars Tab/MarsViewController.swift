@@ -94,8 +94,20 @@ class MarsViewController: UIViewController {
         marsFactCard.titleLabel.text = marsFact.title()
         marsFactCard.subtitleLabel.text = marsFact.subtitle()
         marsFactCard.descriptionText = marsFact.description()
-        marsFactCard.factImage.image = UIImage(named: "mars.fact.size")
+        marsFactCard.factImage.image = UIImage(named: marsFact.imageName())
         return marsFactCard
+    }
+    
+    // Called when the user interface changes between light and dark mode
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        
+        // We re-set the image on the MarsFactCard so we get the update light/dark image
+        stackView.subviews.forEach { view in
+            if let marsFactCard = view as? MarsFactCard {
+                marsFactCard.factImage.image = UIImage(named: marsFactCard.fact.imageName())
+            }
+        }
     }
     
     // MARK: UI Views

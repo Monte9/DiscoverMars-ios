@@ -97,4 +97,29 @@ enum MarsFact: String, CaseIterable {
             return ""
         }
     }
+    
+    func imageName() -> String {
+        switch self {
+        case .size:
+            return "mars.fact.size"
+        case .mass:
+            return "mars.fact.mass"
+        case .volume:
+            return "mars.fact.size"
+        case .density:
+            return "mars.fact.size"
+        case .structure:
+            return "mars.fact.size"
+        case .distance:
+            return "mars.fact.size"
+        case .speed:
+            return "mars.fact.size"
+        case .year:
+            return "mars.fact.size"
+        case .season:
+            return "mars.fact.size"
+        case .day:
+            return "mars.fact.size"
+        }
+    }
 }

@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "mars.fact.size.svg",
+      "filename" : "mars.fact.mass.svg",
       "idiom" : "universal"
     },
     {
@@ -11,7 +11,7 @@
           "value" : "dark"
         }
       ],
-      "filename" : "mars.fact.size.dark.svg",
+      "filename" : "mars.fact.mass.dark.svg",
       "idiom" : "universal"
     }
   ],
