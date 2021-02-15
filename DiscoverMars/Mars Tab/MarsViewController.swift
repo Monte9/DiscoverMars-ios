@@ -50,7 +50,9 @@ class MarsViewController: UIViewController {
     // MARK: Setup Views
     
     private func setupViews() {
+        scrollView.delegate = self
         view.addSubview(scrollView)
+        
         scrollView.addSubview(stackView)
         
         let allMarsFacts = Array(MarsFact.allCases)
@@ -119,7 +121,6 @@ class MarsViewController: UIViewController {
     
     private let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
-        scrollView.showsVerticalScrollIndicator = false
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         return scrollView
     }()
@@ -132,4 +133,18 @@ class MarsViewController: UIViewController {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
+}
+
+// MARK: - UIScrollViewDelegate
+
+extension MarsViewController: UIScrollViewDelegate {
+    
+    // Changes the color of the scroll indicator in the UIScrollView
+    func scrollViewDidScroll(_ scrollView: UIScrollView){
+        // verticalIndicator
+        (scrollView.subviews[(scrollView.subviews.count - 1)].subviews[0]).backgroundColor = UIColor(named: "background")
+        
+        // horizontalIndicator
+        (scrollView.subviews[(scrollView.subviews.count - 2)].subviews[0]).backgroundColor = UIColor(named: "background")
+    }
 }

@@ -38,11 +38,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         // Setup TabBarController with VCs
         let rootTabBarController = UITabBarController()
-        rootTabBarController.viewControllers = [marsNavigationController, missionsNavigationController]
+        rootTabBarController.viewControllers = [missionsNavigationController, marsNavigationController]
         
         // Setup TabBarItem Labels
-        rootTabBarController.tabBar.items?[1].title = "Missions"
-        rootTabBarController.tabBar.items?[0].title = "Mars"
+        rootTabBarController.tabBar.items?[0].title = "Missions"
+        rootTabBarController.tabBar.items?[1].title = "Mars"
         
         // Customize TabBar appearance
         UITabBar.appearance().barTintColor = UIColor(named: "background")

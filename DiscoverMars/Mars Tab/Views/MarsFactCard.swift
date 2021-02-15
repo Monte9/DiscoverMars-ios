@@ -52,7 +52,8 @@ class MarsFactCard: UIControl {
         layer.borderColor = UIColor(named: "background")?.cgColor
         
         // Update the width of the factImage to work on iPad
-        factImage.image = factImage.image?.resized(toWidth: readableContentGuide.layoutFrame.width - 24)
+        let padding: CGFloat = UIDevice.current.isIpad ? 128 : 24
+        factImage.image = factImage.image?.resized(toWidth: readableContentGuide.layoutFrame.width - padding)
     }
     
     // MARK: Setup Views
