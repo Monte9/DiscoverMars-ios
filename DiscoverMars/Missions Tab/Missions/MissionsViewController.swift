@@ -48,10 +48,16 @@ class MissionsViewController: UIViewController {
         self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        let isDarkMode = UITraitCollection.current.userInterfaceStyle == .dark
+        return isDarkMode ? .darkContent : .lightContent
+    }
+    
     // MARK: Activity Indicator
     
     func showActivityIndicator() {
         activityView = UIActivityIndicatorView(style: .large)
+        activityView?.color = UIColor(named: "background")
         activityView?.center = self.view.center
         self.view.addSubview(activityView!)
         activityView?.startAnimating()

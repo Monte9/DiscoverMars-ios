@@ -42,6 +42,11 @@ class MarsViewController: UIViewController {
         self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        let isDarkMode = UITraitCollection.current.userInterfaceStyle == .dark
+        return isDarkMode ? .darkContent : .lightContent
+    }
+    
     // MARK: Setup Views
     
     private func setupViews() {

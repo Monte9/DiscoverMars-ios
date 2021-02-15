@@ -18,6 +18,10 @@ enum MarsFact: String, CaseIterable {
     case year
     case season
     case day
+    case atmosphere
+    case temperature
+    case weight
+    case moons
     
     init(fromRawValue: String) {
         self = MarsFact(rawValue: fromRawValue) ?? .size
@@ -45,6 +49,14 @@ enum MarsFact: String, CaseIterable {
             return "Season"
         case .day:
             return "Day"
+        case .atmosphere:
+            return "Atmosphere"
+        case .temperature:
+            return "Temperature"
+        case .weight:
+            return "Weight"
+        case .moons:
+            return "Moons"
         }
     }
     
@@ -70,6 +82,14 @@ enum MarsFact: String, CaseIterable {
             return "Approximate tilt"
         case .day:
             return "Approximately"
+        case .atmosphere:
+            return "Characteristics and approximate composition"
+        case .temperature:
+            return "Approximate average and high/low ranges"
+        case .weight:
+            return "Effect of gravity on matter"
+        case .moons:
+            return "Effect of gravity on matter"
         }
     }
     
@@ -95,6 +115,14 @@ enum MarsFact: String, CaseIterable {
             return "Similar tilts mean that Mars has seasons just like Earth. But, since mars’ year is almost twice as long, its seasons are longer too. Because of Mars’ elliptical orbit, some seasons are longer than others."
         case .day:
             return ""
+        case .atmosphere:
+            return "Earth’s atmosphere is over 100x denser than Mars’ atmosphere"
+        case .temperature:
+            return ""
+        case .weight:
+            return "If you weighed 100lbs on Earth, you would weigh 38lbs on Mars"
+        case .moons:
+            return ""
         }
     }
     
@@ -105,21 +133,29 @@ enum MarsFact: String, CaseIterable {
         case .mass:
             return "mars.fact.mass"
         case .volume:
-            return "mars.fact.size"
+            return "mars.fact.volume"
         case .density:
-            return "mars.fact.size"
+            return "mars.fact.density"
         case .structure:
-            return "mars.fact.size"
+            return "mars.fact.structure"
         case .distance:
-            return "mars.fact.size"
+            return "mars.fact.distance"
         case .speed:
-            return "mars.fact.size"
+            return "mars.fact.speed"
         case .year:
-            return "mars.fact.size"
+            return "mars.fact.year"
         case .season:
-            return "mars.fact.size"
+            return "mars.fact.season"
         case .day:
-            return "mars.fact.size"
+            return "mars.fact.day"
+        case .atmosphere:
+            return "mars.fact.atmosphere"
+        case .temperature:
+            return "mars.fact.temperature"
+        case .weight:
+            return "mars.fact.weight"
+        case .moons:
+            return "mars.fact.moons"
         }
     }
 }

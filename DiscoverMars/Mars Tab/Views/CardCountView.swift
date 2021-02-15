@@ -18,7 +18,7 @@ class CardCountView: UIView {
         // Adds border and corder radius
         clipsToBounds = true
         layer.borderWidth = 0.4
-        layer.borderColor = UIColor(named: "background")?.withAlphaComponent(0.6).cgColor
+        layer.borderColor = UIColor(named: "background")?.withAlphaComponent(0).cgColor
         layer.cornerRadius = 20
         layer.maskedCorners = [.layerMinXMaxYCorner]
         
@@ -33,7 +33,7 @@ class CardCountView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        layer.borderColor = UIColor(named: "background")?.withAlphaComponent(0.6).cgColor
+        layer.borderColor = UIColor(named: "background")?.withAlphaComponent(0).cgColor
     }
     
     // MARK: Setup Views
@@ -59,6 +59,7 @@ class CardCountView: UIView {
         let label = UILabel()
         label.textColor = UIColor(named: "background")
         label.font = UIFont(name: "Inter-Medium", size: 16)
+        label.layer.opacity = 0.6
         label.setContentCompressionResistancePriority(.required, for: .horizontal)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
