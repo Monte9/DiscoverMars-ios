@@ -73,4 +73,8 @@ extension UIDevice {
     var isIpad: Bool {
         return UIDevice.current.userInterfaceIdiom == .pad
     }
+    
+    var appearance: String {
+        return UITraitCollection.current.userInterfaceStyle == .dark ? "dark" : "light"
+    }
 }

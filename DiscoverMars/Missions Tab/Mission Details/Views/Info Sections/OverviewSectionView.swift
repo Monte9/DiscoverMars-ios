@@ -10,7 +10,7 @@ import UIKit
 
 class OverviewSectionView: UIView {
     
-    enum OverviewState {
+    enum OverviewState: String {
         case short
         case full
     }
@@ -87,6 +87,14 @@ class OverviewSectionView: UIView {
         } else {
             overviewState = .short
         }
+        
+        /// Track analytics event `mission_details_screen.about.overview`
+        let properties = [
+            "state": overviewState.rawValue,
+            "mission": mission.missionName,
+            "rover": mission.roverName,
+        ]
+        MixpanelAnalytics.shared.track("mission_details_screen.about.overview", with: properties)
     }
     
     // MARK: UI Views

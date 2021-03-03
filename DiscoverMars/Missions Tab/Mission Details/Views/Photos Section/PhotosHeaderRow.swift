@@ -35,9 +35,11 @@ class PhotosHeaderRow: UIView {
     
     // MARK: Initialization
     
+    private var mission: Mission
     private var delegate: PhotosHeaderRowDelegate?
     
-    init(delegate: PhotosHeaderRowDelegate?) {
+    init(mission: Mission, delegate: PhotosHeaderRowDelegate?) {
+        self.mission = mission
         self.delegate = delegate
         super.init(frame: .zero)
         
@@ -78,6 +80,8 @@ class PhotosHeaderRow: UIView {
         /// Track analytics event `mission_details_screen.photos.photo_size`
         let properties = [
             "size": photoSize.rawValue,
+            "mission": mission.missionName,
+            "rover": mission.roverName,
         ]
         MixpanelAnalytics.shared.track("mission_details_screen.photos.photo_size", with: properties)
         
