@@ -14,6 +14,13 @@ protocol PhotosViewControllerDelegate: class {
     func didDismissPhotoViewerModal(from viewController: UIViewController)
 }
 
+enum PhotoActionType: String {
+    case fullscreen
+    case dismissed
+    case slideshow
+    case share
+}
+
 class PhotosViewController: UIViewController {
     
     private var activityView: UIActivityIndicatorView!
@@ -149,7 +156,6 @@ class PhotosViewController: UIViewController {
     
     private lazy var photosHeaderRow: PhotosHeaderRow = {
         let row = PhotosHeaderRow(delegate: self)
-        row.photoSize = photoSize
         row.translatesAutoresizingMaskIntoConstraints = false
         return row
     }()
@@ -185,6 +191,14 @@ extension PhotosViewController: UICollectionViewDelegate {
         
         // Initialize the photoViewer with current index of the selected photo
         photoViewer = NYTPhotosViewController(dataSource: self, initialPhotoIndex: indexPath.row, delegate: self)
+        
+        /// Track analytics event `mission_details_screen.photos`
+        let properties = [
+            "action": PhotoActionType.fullscreen.rawValue,
+            "mission": mission.missionName,
+            "rover": mission.roverName,
+        ]
+        MixpanelAnalytics.shared.track("mission_details_screen.photos", with: properties)
         
         // Setup the Slideshow with Image URLs
         for photoBox in slideshow {
@@ -251,6 +265,15 @@ extension PhotosViewController: PhotosHeaderRowDelegate {
 extension PhotosViewController: NYTPhotosViewControllerDelegate {
     
     func photosViewController(_ photosViewController: NYTPhotosViewController, handleActionButtonTappedFor photo: NYTPhoto) -> Bool {
+        /// Track analytics event `mission_details_screen.photos`
+        let properties = [
+            "action": PhotoActionType.share.rawValue,
+            "mission": mission.missionName,
+            "rover": mission.roverName,
+        ]
+        MixpanelAnalytics.shared.track("mission_details_screen.photos", with: properties)
+        
+        // Handled iPad custom ShareSheet
         guard UIDevice.current.userInterfaceIdiom == .pad, let photoImage = photo.image else {
             return false
         }
@@ -261,10 +284,10 @@ extension PhotosViewController: NYTPhotosViewControllerDelegate {
                 photosViewController.delegate?.photosViewController!(photosViewController, actionCompletedWithActivityType: activityType?.rawValue)
             }
         }
-
+        
         shareActivityViewController.popoverPresentationController?.barButtonItem = photosViewController.rightBarButtonItem
         photosViewController.present(shareActivityViewController, animated: true, completion: nil)
-
+        
         return true
     }
     
@@ -275,25 +298,30 @@ extension PhotosViewController: NYTPhotosViewControllerDelegate {
     func photosViewControllerDidDismiss(_ photosViewController: NYTPhotosViewController) {
         photoViewer = nil
         
+        /// Track analytics event `mission_details_screen.photos`
+        let properties = [
+            "action": PhotoActionType.dismissed.rawValue,
+            "mission": mission.missionName,
+            "rover": mission.roverName,
+        ]
+        MixpanelAnalytics.shared.track("mission_details_screen.photos", with: properties)
+        
         delegate?.didDismissPhotoViewerModal(from: self)
-    }
-
-    func photosViewController(_ photosViewController: NYTPhotosViewController, interstitialViewAt index: UInt) -> UIView? {
-        let redView = UIView(frame: CGRect(origin: .zero, size: CGSize(width: photosViewController.view.frame.width, height: 200)))
-        redView.backgroundColor = .red
-        redView.autoresizingMask = [.flexibleWidth]
-        return redView
     }
     
     func photosViewController(_ photosViewController: NYTPhotosViewController, didNavigateTo photo: NYTPhoto, at photoIndex: UInt) {
         let indexPath = IndexPath(row: Int(photoIndex), section: 0)
         
+        /// Track analytics event `mission_details_screen.photos`
+        let properties = [
+            "action": PhotoActionType.slideshow.rawValue,
+            "mission": mission.missionName,
+            "rover": mission.roverName,
+        ]
+        MixpanelAnalytics.shared.track("mission_details_screen.photos", with: properties)
+        
         // Store the selectedPhoto cell so it can be referenced later on
         selectedPhotoCellView = self.collectionView.cellForItem(at: indexPath)
-    }
-
-    func photosViewController(_ photosViewController: NYTPhotosViewController, didNavigateToInterstialView view: UIView, at index: UInt) {
-        view.backgroundColor = .blue
     }
 }
 

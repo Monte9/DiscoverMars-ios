@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-enum PhotoSize {
+enum PhotoSize: String {
     case large
     case small
 }
@@ -75,6 +75,12 @@ class PhotosHeaderRow: UIView {
     // MARK: Actions
     
     private func setCurrentPhotoSize() {
+        /// Track analytics event `mission_details_screen.photos.photo_size`
+        let properties = [
+            "size": photoSize.rawValue,
+        ]
+        MixpanelAnalytics.shared.track("mission_details_screen.photos.photo_size", with: properties)
+        
         switch photoSize {
         case .large:
             largeImagesButton.setImage(UIImage(named: "large.image.size.selected"), for: .normal)
