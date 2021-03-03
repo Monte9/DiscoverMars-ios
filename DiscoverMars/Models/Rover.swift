@@ -8,13 +8,13 @@
 import Foundation
 
 enum Rover: String, CaseIterable {
+    case perseverance
     case curiosity
     case opportunity
     case spirit
-    case perseverance
     
     init(fromRawValue: String) {
-        self = Rover(rawValue: fromRawValue) ?? .curiosity
+        self = Rover(rawValue: fromRawValue) ?? .perseverance
     }
     
     func missionName() -> String {

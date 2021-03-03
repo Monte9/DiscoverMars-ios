@@ -19,7 +19,8 @@ class PhotosViewController: UIViewController {
     private var activityView: UIActivityIndicatorView!
     
     // Setup photos for the collectionView
-    private var photos = [Photo]()
+    private var photoSections: [PhotoSection] = [PhotoSection]()
+    private var photos: [Photo] = [Photo]()
     private var photoSize: PhotoSize = .small {
         didSet {
             collectionView.collectionViewLayout.invalidateLayout()
@@ -82,19 +83,30 @@ class PhotosViewController: UIViewController {
     private func fetchPhotos() {
         showActivityIndicator()
         
-        NetworkManager.shared.fetchPhotos(for: mission.rover, onSol: mission.maxSol) { result in
-            self.hideActivityIndicator()
+        for i in 0...5 {
+            let currentSol = mission.maxSol - i
             
-            switch result {
-            case .success(let photos):
-                self.photos = photos
-                self.populateData()
+            NetworkManager.shared.fetchPhotos(for: mission.rover, onSol: currentSol) { result in
+                self.hideActivityIndicator()
                 
-                // Setup slideshow from the photos
-                self.slideshow = photos.map { NYTPhotoBox($0) }
-            case .failure(let error):
-                print("Failed to fetch missions: \(error)")
-                self.displayErrorView()
+                switch result {
+                case .success(let photoSection):
+                    
+                    self.photoSections.append(photoSection)
+                    self.photos.append(contentsOf: photoSection.1)
+                    
+                    // Setup slideshow from the photos
+                    self.slideshow = self.photos.map { NYTPhotoBox($0) }
+                    
+                    // Setup CollectionView
+                    UIView.animate(withDuration: 1, delay: 1, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseInOut, animations: {
+                        self.populateData()
+                    }, completion: nil)
+                    
+                case .failure(let error):
+                    print("Failed to fetch photos for Sol \(currentSol): \(error)")
+    //                self.displayErrorView()
+                }
             }
         }
     }
@@ -110,7 +122,7 @@ class PhotosViewController: UIViewController {
 
         // Setup Constraints
         NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: photosHeaderRow.bottomAnchor, constant: 16),
+            collectionView.topAnchor.constraint(equalTo: photosHeaderRow.bottomAnchor, constant: 8),
             collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -4),
             collectionView.leadingAnchor.constraint(equalTo: view.readableContentGuide.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: view.readableContentGuide.trailingAnchor),
@@ -166,9 +178,12 @@ class PhotosViewController: UIViewController {
     
     let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
+        layout.sectionHeadersPinToVisibleBounds = true
+        layout.sectionInset = UIEdgeInsets(top: 16, left: 0, bottom: 16, right: 0)
         let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
         collectionView.collectionViewLayout = layout
         collectionView.register(PhotoCollectionViewCell.self, forCellWithReuseIdentifier: PhotoCollectionViewCell.identifier)
+        collectionView.register(PhotoCollectionViewSectionHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "header")
         collectionView.backgroundColor = .clear
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
@@ -205,11 +220,12 @@ extension PhotosViewController: UICollectionViewDelegate {
 extension PhotosViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return photos.count
+        let photoSection = photoSections[section]
+        return photoSection.1.count
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
+        return photoSections.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -217,6 +233,18 @@ extension PhotosViewController: UICollectionViewDataSource {
         let photo = photos[indexPath.item]
         cell.imageView.loadImage(urlString: photo.url)
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        if kind == UICollectionView.elementKindSectionHeader {
+            let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "header", for: indexPath) as! PhotoCollectionViewSectionHeader
+            let photoSection = photoSections[indexPath.section]
+            sectionHeader.headerLabel.text = photoSection.0
+            return sectionHeader
+        } else {
+            //No footer in this case but can add option for that
+            return UICollectionReusableView()
+        }
     }
 }
 
@@ -234,6 +262,12 @@ extension PhotosViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return photoSize == .small ? 12 : 16
+    }
+    
+    // Adds the Section Headers
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: collectionView.frame.width, height: 40)
     }
 }
 

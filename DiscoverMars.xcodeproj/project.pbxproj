@@ -14,6 +14,7 @@
 		0C0FCA9625B584D00013D69A /* LaunchSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C0FCA9525B584D00013D69A /* LaunchSectionView.swift */; };
 		0C0FCA9A25B58A380013D69A /* LandingSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C0FCA9925B58A380013D69A /* LandingSectionView.swift */; };
 		0C0FCA9D25B590780013D69A /* OverviewSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C0FCA9C25B590780013D69A /* OverviewSectionView.swift */; };
+		0C4906E425ED624100EAA0BC /* PhotoCollectionViewSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4906E325ED624100EAA0BC /* PhotoCollectionViewSectionHeader.swift */; };
 		0C49250925D06BBC00DBBB55 /* CardCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C49250825D06BBC00DBBB55 /* CardCountView.swift */; };
 		0C60A2BF25A8D15100EFD7FF /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C60A2BE25A8D15100EFD7FF /* ImageView.swift */; };
 		0C60A2C925A8E0F200EFD7FF /* MissionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C60A2C825A8E0F200EFD7FF /* MissionsViewController.swift */; };
@@ -35,7 +36,7 @@
 		0CC809E625B5696500691B28 /* MissionSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC809E525B5696500691B28 /* MissionSectionView.swift */; };
 		0CC809EA25B56D2700691B28 /* SectionRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC809E925B56D2700691B28 /* SectionRow.swift */; };
 		0CC809EE25B5741600691B28 /* SectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC809ED25B5741600691B28 /* SectionView.swift */; };
-		0CC97BF825CBDD7E0048BF9E /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 0CC97BF725CBDD7E0048BF9E /* SwiftPackageProductDependency */; };
+		0CC97BF825CBDD7E0048BF9E /* NYTPhotoViewer in Frameworks */ = {isa = PBXBuildFile; productRef = 0CC97BF725CBDD7E0048BF9E /* NYTPhotoViewer */; };
 		0CC97C1025CD10C70048BF9E /* NYTPhotoBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC97C0F25CD10C70048BF9E /* NYTPhotoBox.swift */; };
 		0CDA63AD25BA0A7800F7512B /* SwipeableTopTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDA63AC25BA0A7800F7512B /* SwipeableTopTabBarController.swift */; };
 		0CDA63B825BA0CB900F7512B /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDA63B725BA0CB900F7512B /* AboutViewController.swift */; };
@@ -58,6 +59,7 @@
 		0C0FCA9525B584D00013D69A /* LaunchSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchSectionView.swift; sourceTree = "<group>"; };
 		0C0FCA9925B58A380013D69A /* LandingSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingSectionView.swift; sourceTree = "<group>"; };
 		0C0FCA9C25B590780013D69A /* OverviewSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewSectionView.swift; sourceTree = "<group>"; };
+		0C4906E325ED624100EAA0BC /* PhotoCollectionViewSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewSectionHeader.swift; sourceTree = "<group>"; };
 		0C49250825D06BBC00DBBB55 /* CardCountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCountView.swift; sourceTree = "<group>"; };
 		0C60A2BE25A8D15100EFD7FF /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
 		0C60A2C825A8E0F200EFD7FF /* MissionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionsViewController.swift; sourceTree = "<group>"; };
@@ -100,7 +102,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0CC97BF825CBDD7E0048BF9E /* BuildFile in Frameworks */,
+				0CC97BF825CBDD7E0048BF9E /* NYTPhotoViewer in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,6 +259,7 @@
 			children = (
 				0CEF5D3025AE43C60090FCBF /* PhotoCollectionViewCell.swift */,
 				0C071E5E25BB69E300F2349E /* PhotosHeaderRow.swift */,
+				0C4906E325ED624100EAA0BC /* PhotoCollectionViewSectionHeader.swift */,
 			);
 			path = "Photos Section";
 			sourceTree = "<group>";
@@ -308,7 +311,7 @@
 			);
 			name = DiscoverMars;
 			packageProductDependencies = (
-				0CC97BF725CBDD7E0048BF9E /* SwiftPackageProductDependency */,
+				0CC97BF725CBDD7E0048BF9E /* NYTPhotoViewer */,
 			);
 			productName = MarsExploration;
 			productReference = 0CAA95B025A86A0300905808 /* DiscoverMars.app */;
@@ -338,7 +341,7 @@
 			);
 			mainGroup = 0CAA95A725A86A0300905808;
 			packageReferences = (
-				0CC97BF625CBDD7E0048BF9E /* RemoteSwiftPackageReference */,
+				0CC97BF625CBDD7E0048BF9E /* XCRemoteSwiftPackageReference "NYTPhotoViewer" */,
 			);
 			productRefGroup = 0CAA95B125A86A0300905808 /* Products */;
 			projectDirPath = "";
@@ -385,6 +388,7 @@
 				0CAA95B425A86A0300905808 /* AppDelegate.swift in Sources */,
 				0CEC21A925AAF21B000171B7 /* Formatters.swift in Sources */,
 				0C071E5F25BB69E300F2349E /* PhotosHeaderRow.swift in Sources */,
+				0C4906E425ED624100EAA0BC /* PhotoCollectionViewSectionHeader.swift in Sources */,
 				0C60A2C925A8E0F200EFD7FF /* MissionsViewController.swift in Sources */,
 				0CEF5D3125AE43C60090FCBF /* PhotoCollectionViewCell.swift in Sources */,
 				0CDA63B825BA0CB900F7512B /* AboutViewController.swift in Sources */,
@@ -607,7 +611,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		0CC97BF625CBDD7E0048BF9E /* RemoteSwiftPackageReference */ = {
+		0CC97BF625CBDD7E0048BF9E /* XCRemoteSwiftPackageReference "NYTPhotoViewer" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "git@github.com:nytimes/NYTPhotoViewer.git";
 			requirement = {
@@ -618,9 +622,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		0CC97BF725CBDD7E0048BF9E /* SwiftPackageProductDependency */ = {
+		0CC97BF725CBDD7E0048BF9E /* NYTPhotoViewer */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 0CC97BF625CBDD7E0048BF9E /* RemoteSwiftPackageReference */;
+			package = 0CC97BF625CBDD7E0048BF9E /* XCRemoteSwiftPackageReference "NYTPhotoViewer" */;
 			productName = NYTPhotoViewer;
 		};
 /* End XCSwiftPackageProductDependency section */

@@ -8,6 +8,7 @@
 import Foundation
 
 enum NetworkManagerError: Error {
+    case invalidRequest
     case noResponse
     case missingData
 }

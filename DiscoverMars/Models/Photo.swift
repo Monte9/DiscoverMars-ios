@@ -7,6 +7,8 @@
 
 import Foundation
 
+typealias PhotoSection = (String, [Photo])
+
 class Photo: NSObject, Decodable {
     let identifier: Int
     let sol: Int

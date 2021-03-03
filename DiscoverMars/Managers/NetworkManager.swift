@@ -91,7 +91,14 @@ class NetworkManager {
     ///   - rover: A `Rover` instance for the photos
     ///   - sol: A `Sol` date for the photos
     ///   - completionHandler: A completion handler that returns a success or a failure result
-    func fetchPhotos(for rover: Rover, onSol sol: Int, completionHandler: @escaping ((Result<[Photo], Error>) -> Void)) {
+    func fetchPhotos(for rover: Rover, onSol sol: Int, completionHandler: @escaping ((Result<PhotoSection, Error>) -> Void)) {
+        
+        guard sol > 0 else {
+            print("Invalid sol provided: \(sol)")
+            completionHandler(.failure(NetworkManagerError.invalidRequest))
+            return
+        }
+        
         let url = URL(string: RequestPath.baseURL + RequestPath.roversURL + rover.rawValue + RequestPath.photosURL + "?" + "sol=\(sol)" + "&" + RequestPath.apiKey)!
         
         let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
@@ -119,9 +126,18 @@ class NetworkManager {
                 
                 let photosData = try JSONSerialization.data(withJSONObject: photosJSON, options: .prettyPrinted)
                 let photos = try JSONDecoder().decode([Photo].self, from: photosData)
+                let photoSection = ("Sol \(sol.withCommas())", photos) as PhotoSection
+                
+                // Make sure that Sol has atleast 1 photo
+                guard photos.count > 0 else {
+                    DispatchQueue.main.async {
+                        completionHandler(.failure(NetworkManagerError.missingData))
+                    }
+                    return
+                }
                 
                 DispatchQueue.main.async {
-                    completionHandler(.success(photos))
+                    completionHandler(.success(photoSection))
                 }
             } catch {
                 completionHandler(.failure(error))
