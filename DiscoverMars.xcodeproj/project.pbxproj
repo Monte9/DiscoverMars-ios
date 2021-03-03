@@ -41,6 +41,7 @@
 		0CDA63B825BA0CB900F7512B /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDA63B725BA0CB900F7512B /* AboutViewController.swift */; };
 		0CDA63BE25BA0DAE00F7512B /* TopTabBarHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDA63BD25BA0DAE00F7512B /* TopTabBarHeaderCell.swift */; };
 		0CEBEEF425EF98F200DE4790 /* Mixpanel in Frameworks */ = {isa = PBXBuildFile; productRef = 0CEBEEF325EF98F200DE4790 /* Mixpanel */; };
+		0CEBEEF825EF9CC300DE4790 /* MixpanelAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEBEEF725EF9CC300DE4790 /* MixpanelAnalytics.swift */; };
 		0CEC21A925AAF21B000171B7 /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEC21A825AAF21B000171B7 /* Formatters.swift */; };
 		0CEC21AD25AAF429000171B7 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEC21AC25AAF429000171B7 /* Extensions.swift */; };
 		0CEF5D1D25AB83D90090FCBF /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEF5D1C25AB83D90090FCBF /* Camera.swift */; };
@@ -86,6 +87,7 @@
 		0CDA63AC25BA0A7800F7512B /* SwipeableTopTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeableTopTabBarController.swift; sourceTree = "<group>"; };
 		0CDA63B725BA0CB900F7512B /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		0CDA63BD25BA0DAE00F7512B /* TopTabBarHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTabBarHeaderCell.swift; sourceTree = "<group>"; };
+		0CEBEEF725EF9CC300DE4790 /* MixpanelAnalytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MixpanelAnalytics.swift; sourceTree = "<group>"; };
 		0CEC21A825AAF21B000171B7 /* Formatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatters.swift; sourceTree = "<group>"; };
 		0CEC21AC25AAF429000171B7 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		0CEF5D1C25AB83D90090FCBF /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 				0CAA95BE25A86A0500905808 /* LaunchScreen.storyboard */,
 				0CAA95B325A86A0300905808 /* AppDelegate.swift */,
 				0CAA95B525A86A0300905808 /* SceneDelegate.swift */,
+				0CEBEEF625EF9CB100DE4790 /* Analytics */,
 				0CAA95D025A877E900905808 /* Models */,
 				0CAA95CF25A877DB00905808 /* Managers */,
 				0CB40EED25B988CA0088B7DB /* Missions Tab */,
@@ -281,6 +284,14 @@
 			path = "Swipeable Top TabBar";
 			sourceTree = "<group>";
 		};
+		0CEBEEF625EF9CB100DE4790 /* Analytics */ = {
+			isa = PBXGroup;
+			children = (
+				0CEBEEF725EF9CC300DE4790 /* MixpanelAnalytics.swift */,
+			);
+			path = Analytics;
+			sourceTree = "<group>";
+		};
 		0CEC21A725AAF208000171B7 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
@@ -381,6 +392,7 @@
 				0CAA95CD25A8776400905808 /* NetworkManager.swift in Sources */,
 				0CC529A825A984F60022DE6A /* MissionDetailsViewController.swift in Sources */,
 				0CDA63BE25BA0DAE00F7512B /* TopTabBarHeaderCell.swift in Sources */,
+				0CEBEEF825EF9CC300DE4790 /* MixpanelAnalytics.swift in Sources */,
 				0C0394BF25D040C80084D091 /* MarsFactCard.swift in Sources */,
 				0CC97C1025CD10C70048BF9E /* NYTPhotoBox.swift in Sources */,
 				0CC809E625B5696500691B28 /* MissionSectionView.swift in Sources */,
