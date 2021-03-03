@@ -11,6 +11,15 @@
         }
       },
       {
+        "package": "Mixpanel",
+        "repositoryURL": "git@github.com:mixpanel/mixpanel-swift.git",
+        "state": {
+          "branch": null,
+          "revision": "1e45e0e676a7a49ec44f326c3a1f33888baf0c7c",
+          "version": "2.9.0"
+        }
+      },
+      {
         "package": "NYTPhotoViewer",
         "repositoryURL": "git@github.com:nytimes/NYTPhotoViewer.git",
         "state": {

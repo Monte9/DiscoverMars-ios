@@ -6,12 +6,16 @@
 //
 
 import UIKit
+import Mixpanel
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        // Setup Mixpanel Analytics tracking
+        Mixpanel.initialize(token: "ff89f373a77211f077fc33e080313d16")
+        
         return true
     }
     

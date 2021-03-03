@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import Mixpanel
 
 class MissionsViewController: UIViewController {
     
@@ -165,6 +166,15 @@ class MissionsViewController: UIViewController {
     // MARK: Actions
     
     @objc func missionCardTapped(_ sender: MissionCard) {
+        /// Track `mission_screen.mission_card.tapped` analytics event
+        Mixpanel.mainInstance().track(
+            event: "mission_screen.mission_card.tapped",
+            properties: [
+                "mission" : sender.mission.missionName,
+                "rover": sender.mission.roverName
+            ]
+        )
+        
         let missionDetailsViewController = MissionDetailsViewController(for: sender.mission)
         missionDetailsViewController.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(missionDetailsViewController, animated: true)
