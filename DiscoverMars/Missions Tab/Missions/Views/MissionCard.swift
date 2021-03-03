@@ -23,7 +23,7 @@ class MissionCard: UIControl {
         layer.shadowColor = UIColor.black.cgColor
         layer.shadowOffset = .zero
         layer.shadowOpacity = 0.2
-        layer.shadowRadius = 20
+        layer.shadowRadius = 5
         
         // Adds border radius
         layer.borderWidth = 0.5
