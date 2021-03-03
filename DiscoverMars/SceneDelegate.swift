@@ -12,6 +12,7 @@ import UIKit
 // Mars Default Color Palette: https://www.color-hex.com/color-palette/7276
 // Mars Pale Color Palette: https://www.color-hex.com/color-palette/7175
 // iOS Fonts: https://gist.github.com/tadija/cb4ec0cbf0a89886d488d1d8b595d0e9
+// Create Production scheme:  https://ahadsheriff.medium.com/how-to-rename-an-xcode-project-without-losing-your-mind-88e558fb7566
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
