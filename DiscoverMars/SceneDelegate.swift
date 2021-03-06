@@ -8,11 +8,13 @@
 import UIKit
 
 // Shared Design Assets
+// Mars Photo API: https://github.com/chrisccerami/mars-photo-api
 // SF Symbols List: https://hotpot.ai/free-icons?s=sfSymbols
 // Mars Default Color Palette: https://www.color-hex.com/color-palette/7276
 // Mars Pale Color Palette: https://www.color-hex.com/color-palette/7175
 // iOS Fonts: https://gist.github.com/tadija/cb4ec0cbf0a89886d488d1d8b595d0e9
 // Create Production scheme:  https://ahadsheriff.medium.com/how-to-rename-an-xcode-project-without-losing-your-mind-88e558fb7566
+// Sending an email: https://www.hackingwithswift.com/example-code/uikit/how-to-send-an-email
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
