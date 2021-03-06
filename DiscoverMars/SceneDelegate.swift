@@ -41,7 +41,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         // Setup TabBarController with VCs
         let rootTabBarController = UITabBarController()
-        rootTabBarController.viewControllers = [missionsNavigationController, marsNavigationController]
+        rootTabBarController.viewControllers = [marsNavigationController, missionsNavigationController]
         
         // Setup TabBarItem Labels
         rootTabBarController.tabBar.items?[0].title = "Missions"

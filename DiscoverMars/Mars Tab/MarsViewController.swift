@@ -51,6 +51,7 @@ class MarsViewController: UIViewController {
     
     private func setupViews() {
         scrollView.delegate = self
+        view.addSubview(navHeaderView)
         view.addSubview(scrollView)
         
         scrollView.addSubview(stackView)
@@ -83,7 +84,10 @@ class MarsViewController: UIViewController {
     
     private func setupConstraints() {
         NSLayoutConstraint.activate([
-            scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            navHeaderView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            navHeaderView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            navHeaderView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            scrollView.topAnchor.constraint(equalTo: navHeaderView.bottomAnchor),
             scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
@@ -117,7 +121,22 @@ class MarsViewController: UIViewController {
         }
     }
     
+    // MARK: Actions
+    
+    @objc private func infoIconButtonTapped(_ sender: UIButton) {
+        let settingsNavigationController = UINavigationController(rootViewController: SettingsViewController())
+        settingsNavigationController.modalPresentationStyle = .formSheet
+        present(settingsNavigationController, animated: true, completion: nil)
+    }
+    
     // MARK: UI Views
+    
+    private let navHeaderView: NavigationHeaderView = {
+        let view = NavigationHeaderView()
+        view.rightIconButton.addTarget(self, action: #selector(infoIconButtonTapped), for: .touchUpInside)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
     
     private let scrollView: UIScrollView = {
         let scrollView = UIScrollView()

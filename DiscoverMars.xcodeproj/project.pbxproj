@@ -42,6 +42,8 @@
 		0CDA63BE25BA0DAE00F7512B /* TopTabBarHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDA63BD25BA0DAE00F7512B /* TopTabBarHeaderCell.swift */; };
 		0CEBEEF425EF98F200DE4790 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 0CEBEEF325EF98F200DE4790 /* SwiftPackageProductDependency */; };
 		0CEBEEF825EF9CC300DE4790 /* MixpanelAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEBEEF725EF9CC300DE4790 /* MixpanelAnalytics.swift */; };
+		0CEBEEFC25F1D98D00DE4790 /* NavigationHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEBEEFB25F1D98D00DE4790 /* NavigationHeaderView.swift */; };
+		0CEBEEFF25F1F0D800DE4790 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEBEEFE25F1F0D800DE4790 /* SettingsViewController.swift */; };
 		0CEC21A925AAF21B000171B7 /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEC21A825AAF21B000171B7 /* Formatters.swift */; };
 		0CEC21AD25AAF429000171B7 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEC21AC25AAF429000171B7 /* Extensions.swift */; };
 		0CEF5D1D25AB83D90090FCBF /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEF5D1C25AB83D90090FCBF /* Camera.swift */; };
@@ -88,6 +90,8 @@
 		0CDA63B725BA0CB900F7512B /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		0CDA63BD25BA0DAE00F7512B /* TopTabBarHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTabBarHeaderCell.swift; sourceTree = "<group>"; };
 		0CEBEEF725EF9CC300DE4790 /* MixpanelAnalytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MixpanelAnalytics.swift; sourceTree = "<group>"; };
+		0CEBEEFB25F1D98D00DE4790 /* NavigationHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationHeaderView.swift; sourceTree = "<group>"; };
+		0CEBEEFE25F1F0D800DE4790 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		0CEC21A825AAF21B000171B7 /* Formatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatters.swift; sourceTree = "<group>"; };
 		0CEC21AC25AAF429000171B7 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		0CEF5D1C25AB83D90090FCBF /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
@@ -116,6 +120,7 @@
 			children = (
 				0C0394BE25D040C80084D091 /* MarsFactCard.swift */,
 				0C49250825D06BBC00DBBB55 /* CardCountView.swift */,
+				0CEBEEFB25F1D98D00DE4790 /* NavigationHeaderView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -192,6 +197,7 @@
 			children = (
 				0C0394BD25D040440084D091 /* Views */,
 				0CC529A325A984CF0022DE6A /* MarsViewController.swift */,
+				0CEBEEFE25F1F0D800DE4790 /* SettingsViewController.swift */,
 			);
 			path = "Mars Tab";
 			sourceTree = "<group>";
@@ -389,6 +395,7 @@
 				0CAA95DA25A87A5500905808 /* RequestPath.swift in Sources */,
 				0C0FCA9625B584D00013D69A /* LaunchSectionView.swift in Sources */,
 				0CC809EA25B56D2700691B28 /* SectionRow.swift in Sources */,
+				0CEBEEFF25F1F0D800DE4790 /* SettingsViewController.swift in Sources */,
 				0CAA95CD25A8776400905808 /* NetworkManager.swift in Sources */,
 				0CC529A825A984F60022DE6A /* MissionDetailsViewController.swift in Sources */,
 				0CDA63BE25BA0DAE00F7512B /* TopTabBarHeaderCell.swift in Sources */,
@@ -402,6 +409,7 @@
 				0CEC21A925AAF21B000171B7 /* Formatters.swift in Sources */,
 				0C071E5F25BB69E300F2349E /* PhotosHeaderRow.swift in Sources */,
 				0C60A2C925A8E0F200EFD7FF /* MissionsViewController.swift in Sources */,
+				0CEBEEFC25F1D98D00DE4790 /* NavigationHeaderView.swift in Sources */,
 				0CEF5D3125AE43C60090FCBF /* PhotoCollectionViewCell.swift in Sources */,
 				0CDA63B825BA0CB900F7512B /* AboutViewController.swift in Sources */,
 				0CDA63AD25BA0A7800F7512B /* SwipeableTopTabBarController.swift in Sources */,
