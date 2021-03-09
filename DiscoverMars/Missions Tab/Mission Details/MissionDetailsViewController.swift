@@ -72,8 +72,8 @@ class MissionDetailsViewController: SwipeableTopTabBarController {
     
     private func setupViews() {
         // slidingTab
-        addTab(viewController: AboutViewController(for: mission), title: "About")
         addTab(viewController: PhotosViewController(for: mission, delegate: self), title: "Photos")
+        addTab(viewController: AboutViewController(for: mission), title: "About")
         setup()
     }
 }

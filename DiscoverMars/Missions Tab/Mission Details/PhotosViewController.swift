@@ -27,7 +27,7 @@ class PhotosViewController: UIViewController {
     
     // Setup photos for the collectionView
     private var photos = [Photo]()
-    private var photoSize: PhotoSize = .small {
+    private var photoSize: PhotoSize = .large {
         didSet {
             collectionView.collectionViewLayout.invalidateLayout()
         }

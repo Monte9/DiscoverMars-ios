@@ -27,7 +27,7 @@ class PhotosHeaderRow: UIView {
         }
     }
     
-    var photoSize: PhotoSize = .small {
+    var photoSize: PhotoSize = .large {
         didSet {
             setCurrentPhotoSize()
         }
