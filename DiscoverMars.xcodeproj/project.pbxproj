@@ -15,6 +15,7 @@
 		0C0FCA9A25B58A380013D69A /* LandingSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C0FCA9925B58A380013D69A /* LandingSectionView.swift */; };
 		0C0FCA9D25B590780013D69A /* OverviewSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C0FCA9C25B590780013D69A /* OverviewSectionView.swift */; };
 		0C49250925D06BBC00DBBB55 /* CardCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C49250825D06BBC00DBBB55 /* CardCountView.swift */; };
+		0C544698261B563600530E24 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C544697261B563600530E24 /* SettingsViewController.swift */; };
 		0C60A2BF25A8D15100EFD7FF /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C60A2BE25A8D15100EFD7FF /* ImageView.swift */; };
 		0C60A2C925A8E0F200EFD7FF /* MissionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C60A2C825A8E0F200EFD7FF /* MissionsViewController.swift */; };
 		0CAA95B425A86A0300905808 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAA95B325A86A0300905808 /* AppDelegate.swift */; };
@@ -35,12 +36,12 @@
 		0CC809E625B5696500691B28 /* MissionSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC809E525B5696500691B28 /* MissionSectionView.swift */; };
 		0CC809EA25B56D2700691B28 /* SectionRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC809E925B56D2700691B28 /* SectionRow.swift */; };
 		0CC809EE25B5741600691B28 /* SectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC809ED25B5741600691B28 /* SectionView.swift */; };
-		0CC97BF825CBDD7E0048BF9E /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 0CC97BF725CBDD7E0048BF9E /* SwiftPackageProductDependency */; };
+		0CC97BF825CBDD7E0048BF9E /* NYTPhotoViewer in Frameworks */ = {isa = PBXBuildFile; productRef = 0CC97BF725CBDD7E0048BF9E /* NYTPhotoViewer */; };
 		0CC97C1025CD10C70048BF9E /* NYTPhotoBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC97C0F25CD10C70048BF9E /* NYTPhotoBox.swift */; };
 		0CDA63AD25BA0A7800F7512B /* SwipeableTopTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDA63AC25BA0A7800F7512B /* SwipeableTopTabBarController.swift */; };
 		0CDA63B825BA0CB900F7512B /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDA63B725BA0CB900F7512B /* AboutViewController.swift */; };
 		0CDA63BE25BA0DAE00F7512B /* TopTabBarHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDA63BD25BA0DAE00F7512B /* TopTabBarHeaderCell.swift */; };
-		0CEBEEF425EF98F200DE4790 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 0CEBEEF325EF98F200DE4790 /* SwiftPackageProductDependency */; };
+		0CEBEEF425EF98F200DE4790 /* Mixpanel in Frameworks */ = {isa = PBXBuildFile; productRef = 0CEBEEF325EF98F200DE4790 /* Mixpanel */; };
 		0CEBEEF825EF9CC300DE4790 /* MixpanelAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEBEEF725EF9CC300DE4790 /* MixpanelAnalytics.swift */; };
 		0CEC21A925AAF21B000171B7 /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEC21A825AAF21B000171B7 /* Formatters.swift */; };
 		0CEC21AD25AAF429000171B7 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEC21AC25AAF429000171B7 /* Extensions.swift */; };
@@ -61,6 +62,7 @@
 		0C0FCA9925B58A380013D69A /* LandingSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingSectionView.swift; sourceTree = "<group>"; };
 		0C0FCA9C25B590780013D69A /* OverviewSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewSectionView.swift; sourceTree = "<group>"; };
 		0C49250825D06BBC00DBBB55 /* CardCountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCountView.swift; sourceTree = "<group>"; };
+		0C544697261B563600530E24 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		0C60A2BE25A8D15100EFD7FF /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
 		0C60A2C825A8E0F200EFD7FF /* MissionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionsViewController.swift; sourceTree = "<group>"; };
 		0CAA95B025A86A0300905808 /* DiscoverMars.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DiscoverMars.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -103,8 +105,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0CEBEEF425EF98F200DE4790 /* BuildFile in Frameworks */,
-				0CC97BF825CBDD7E0048BF9E /* BuildFile in Frameworks */,
+				0CEBEEF425EF98F200DE4790 /* Mixpanel in Frameworks */,
+				0CC97BF825CBDD7E0048BF9E /* NYTPhotoViewer in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -118,6 +120,14 @@
 				0C49250825D06BBC00DBBB55 /* CardCountView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		0C544696261B561E00530E24 /* Settings Tab */ = {
+			isa = PBXGroup;
+			children = (
+				0C544697261B563600530E24 /* SettingsViewController.swift */,
+			);
+			path = "Settings Tab";
 			sourceTree = "<group>";
 		};
 		0CAA95A725A86A0300905808 = {
@@ -147,6 +157,7 @@
 				0CAA95CF25A877DB00905808 /* Managers */,
 				0CB40EED25B988CA0088B7DB /* Missions Tab */,
 				0CB40EEE25B988D10088B7DB /* Mars Tab */,
+				0C544696261B561E00530E24 /* Settings Tab */,
 				0CEC21A725AAF208000171B7 /* Shared */,
 				0CC809D325B18ED500691B28 /* Fonts */,
 				0CAA95BC25A86A0500905808 /* Assets.xcassets */,
@@ -321,8 +332,8 @@
 			);
 			name = DiscoverMars;
 			packageProductDependencies = (
-				0CC97BF725CBDD7E0048BF9E /* SwiftPackageProductDependency */,
-				0CEBEEF325EF98F200DE4790 /* SwiftPackageProductDependency */,
+				0CC97BF725CBDD7E0048BF9E /* NYTPhotoViewer */,
+				0CEBEEF325EF98F200DE4790 /* Mixpanel */,
 			);
 			productName = MarsExploration;
 			productReference = 0CAA95B025A86A0300905808 /* DiscoverMars.app */;
@@ -352,8 +363,8 @@
 			);
 			mainGroup = 0CAA95A725A86A0300905808;
 			packageReferences = (
-				0CC97BF625CBDD7E0048BF9E /* RemoteSwiftPackageReference */,
-				0CEBEEF225EF98F200DE4790 /* RemoteSwiftPackageReference */,
+				0CC97BF625CBDD7E0048BF9E /* XCRemoteSwiftPackageReference "NYTPhotoViewer" */,
+				0CEBEEF225EF98F200DE4790 /* XCRemoteSwiftPackageReference "mixpanel-swift" */,
 			);
 			productRefGroup = 0CAA95B125A86A0300905808 /* Products */;
 			projectDirPath = "";
@@ -409,6 +420,7 @@
 				0CEF5D2125AB85900090FCBF /* Photo.swift in Sources */,
 				0CEC21AD25AAF429000171B7 /* Extensions.swift in Sources */,
 				0C0FCA9A25B58A380013D69A /* LandingSectionView.swift in Sources */,
+				0C544698261B563600530E24 /* SettingsViewController.swift in Sources */,
 				0C0FCA9D25B590780013D69A /* OverviewSectionView.swift in Sources */,
 				0CAA95D225A8780800905808 /* Mission.swift in Sources */,
 				0C0394C325D043B90084D091 /* MarsFact.swift in Sources */,
@@ -623,7 +635,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		0CC97BF625CBDD7E0048BF9E /* RemoteSwiftPackageReference */ = {
+		0CC97BF625CBDD7E0048BF9E /* XCRemoteSwiftPackageReference "NYTPhotoViewer" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "git@github.com:nytimes/NYTPhotoViewer.git";
 			requirement = {
@@ -631,7 +643,7 @@
 				minimumVersion = 5.0.6;
 			};
 		};
-		0CEBEEF225EF98F200DE4790 /* RemoteSwiftPackageReference */ = {
+		0CEBEEF225EF98F200DE4790 /* XCRemoteSwiftPackageReference "mixpanel-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "git@github.com:mixpanel/mixpanel-swift.git";
 			requirement = {
@@ -642,14 +654,14 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		0CC97BF725CBDD7E0048BF9E /* SwiftPackageProductDependency */ = {
+		0CC97BF725CBDD7E0048BF9E /* NYTPhotoViewer */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 0CC97BF625CBDD7E0048BF9E /* RemoteSwiftPackageReference */;
+			package = 0CC97BF625CBDD7E0048BF9E /* XCRemoteSwiftPackageReference "NYTPhotoViewer" */;
 			productName = NYTPhotoViewer;
 		};
-		0CEBEEF325EF98F200DE4790 /* SwiftPackageProductDependency */ = {
+		0CEBEEF325EF98F200DE4790 /* Mixpanel */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 0CEBEEF225EF98F200DE4790 /* RemoteSwiftPackageReference */;
+			package = 0CEBEEF225EF98F200DE4790 /* XCRemoteSwiftPackageReference "mixpanel-swift" */;
 			productName = Mixpanel;
 		};
 /* End XCSwiftPackageProductDependency section */

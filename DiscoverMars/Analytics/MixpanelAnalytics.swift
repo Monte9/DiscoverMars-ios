@@ -10,7 +10,7 @@ import Mixpanel
 
 class MixpanelAnalytics {
     
-    static let shared = MixpanelAnalytics(enabled: true)
+    static let shared = MixpanelAnalytics(enabled: false)
     
     // MARK: Initialization
     let enabled: Bool

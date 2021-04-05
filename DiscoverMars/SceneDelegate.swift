@@ -29,43 +29,50 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
         
-        // Setup NavigationController
+        // Setup Missions NavigationController
         let missionsViewController = MissionsViewController()
         let missionsNavigationController = UINavigationController(rootViewController: missionsViewController)
         missionsNavigationController.navigationBar.isTranslucent = false
         
-        // Setup NavigationController
+        // Setup Mars NavigationController
         let marsViewController = MarsViewController()
         let marsNavigationController = UINavigationController(rootViewController: marsViewController)
         marsNavigationController.navigationBar.isTranslucent = false
         
-        // Setup TabBarController with VCs
-        let rootTabBarController = UITabBarController()
-        rootTabBarController.viewControllers = [missionsNavigationController, marsNavigationController]
+        // Setup Settings NavigationController
+        let settingsViewController = SettingsViewController()
+        let settingsNavigationController = UINavigationController(rootViewController: settingsViewController)
+        marsNavigationController.navigationBar.isTranslucent = false
         
-        // Setup TabBarItem Labels
-        rootTabBarController.tabBar.items?[0].title = "Missions"
-        rootTabBarController.tabBar.items?[1].title = "Mars"
+        // Setup TabBarController with 3 ViewControllers
+        let rootTabBarController = UITabBarController()
+        rootTabBarController.viewControllers = [
+            missionsNavigationController,
+            marsNavigationController,
+            settingsNavigationController
+        ]
         
         // Customize TabBar appearance
         UITabBar.appearance().barTintColor = UIColor(named: "background")
         UITabBar.appearance().isTranslucent = false
         
-        // Setup TabBarItem Appearance
-        UITabBarItem.appearance().setTitleTextAttributes([
-            NSAttributedString.Key.font: UIFont(name: "Inter-Medium", size: 24)!,
-            NSAttributedString.Key.foregroundColor: UIColor.init(named: "orange")!
-        ], for: .normal)
-        UITabBarItem.appearance().setTitleTextAttributes([
-            NSAttributedString.Key.font: UIFont(name: "Inter-Medium", size: 24)!,
-            NSAttributedString.Key.foregroundColor: UIColor.init(named: "orange")!
-        ], for: .selected)
+        // Setup Missions TabBarItem title & images
+        rootTabBarController.tabBar.items?[0].title = nil
+        rootTabBarController.tabBar.items?[0].image = UIImage(named: "missions.tabbar.item")?.withRenderingMode(.alwaysOriginal)
+        rootTabBarController.tabBar.items?[0].selectedImage = UIImage(named: "missions.tabbar.item.selected")
+        rootTabBarController.tabBar.items?[0].imageInsets = UIEdgeInsets(top: 9, left: 0, bottom: -9, right: 0)
         
-        // Set the UIOffset for the tabBarItem title based on device type
-        UITabBarItem.appearance().titlePositionAdjustment = UIOffset(horizontal: 0, vertical: tabBarTitleVerticalOffset(for: rootTabBarController))
+        // Setup Mars TabBarItem title & images
+        rootTabBarController.tabBar.items?[1].title = nil
+        rootTabBarController.tabBar.items?[1].image = UIImage(named: "mars.tabbar.item")?.withRenderingMode(.alwaysOriginal)
+        rootTabBarController.tabBar.items?[1].selectedImage = UIImage(named: "mars.tabbar.item.selected")
+        rootTabBarController.tabBar.items?[1].imageInsets = UIEdgeInsets(top: 9, left: 0, bottom: -9, right: 0)
         
-        // Add underline to the text to indicate selected tab
-        UITabBar.appearance().selectionIndicatorImage = tabBarItemUnderlineImage(for: rootTabBarController)
+        // Setup Settings TabBarItem title & images
+        rootTabBarController.tabBar.items?[2].title = nil
+        rootTabBarController.tabBar.items?[2].image = UIImage(named: "settings.tabbar.item")?.withRenderingMode(.alwaysOriginal)
+        rootTabBarController.tabBar.items?[2].selectedImage = UIImage(named: "settings.tabbar.item.selected")
+        rootTabBarController.tabBar.items?[2].imageInsets = UIEdgeInsets(top: 9, left: 0, bottom: -9, right: 0)
         
         window?.rootViewController = rootTabBarController
         window?.makeKeyAndVisible()
@@ -98,57 +105,5 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Called as the scene transitions from the foreground to the background.
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
-    }
-    
-    func tabBarItemUnderlineImage(for rootTabBarController: UITabBarController) -> UIImage {
-        let lineHeight: CGFloat = 2
-        
-        let tabBarItemWidth = rootTabBarController.tabBar.frame.width / 2
-        let tabBarItemHeight = rootTabBarController.tabBar.frame.height
-        let size = CGSize(width: tabBarItemWidth, height: tabBarItemHeight)
-        var titleWidth: CGFloat = 0
-        var titleHeight: CGFloat = 0
-        
-        if let font = UIFont(name: "Inter-Medium", size: 24) {
-            let fontAttributes = [NSAttributedString.Key.font: font]
-            let myText = rootTabBarController.tabBar.items?[0].title
-            let titleSize = myText?.size(withAttributes: fontAttributes)
-            titleWidth = titleSize?.width ?? tabBarItemWidth
-            titleHeight = titleSize?.height ?? tabBarItemHeight-lineHeight
-        }
-        
-        // Get the starting point for underLineRect so it's centered
-        let centerStartPoint = (tabBarItemWidth / 2) - (titleWidth / 2)
-        
-        // Setup the tabBarItemRect and underLineRect sizes
-        let tabBarItemRect = CGRect(x: 0, y: 0, width: tabBarItemWidth, height: tabBarItemHeight)
-        let underLineRect = CGRect(x: centerStartPoint, y: titleHeight + 8, width: titleWidth, height: lineHeight)
-        
-        UIGraphicsBeginImageContextWithOptions(size, false, 0)
-        
-        // Set the backgroundColor for tabBarItemRect
-        UIColor.clear.setFill()
-        UIRectFill(tabBarItemRect)
-        
-        // Set the backgroundColor for underLineRect
-        UIColor(named: "orange")?.setFill()
-        UIRectFill(underLineRect)
-        
-        let image = UIGraphicsGetImageFromCurrentImageContext()!
-        UIGraphicsEndImageContext()
-        
-        return image
-    }
-    
-    func tabBarTitleVerticalOffset(for rootTabBarController: UITabBarController) -> CGFloat {
-        let tabBarItemHeight: CGFloat = rootTabBarController.tabBar.frame.height
-        
-        if UIDevice.current.isIPhoneXOrBigger {
-            return -tabBarItemHeight/16
-        } else if UIDevice.current.isIpad {
-            return 0
-        } else {
-            return -tabBarItemHeight/4
-        }
     }
 }
