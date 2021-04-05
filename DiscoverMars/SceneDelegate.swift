@@ -56,23 +56,36 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         UITabBar.appearance().barTintColor = UIColor(named: "background")
         UITabBar.appearance().isTranslucent = false
         
+        // Custom title for TabBarItem
+        let title = UIDevice.current.isIpad ? "" : nil
+        
+        // Custom image offset for TabBarItem
+        let offset: CGFloat = UIDevice.current.isIPhoneXOrBigger ? 9 : 5
+        let edgeInset = UIEdgeInsets(top: offset, left: 0, bottom: -offset, right: 0)
+        
         // Setup Missions TabBarItem title & images
-        rootTabBarController.tabBar.items?[0].title = nil
+        rootTabBarController.tabBar.items?[0].title = title
         rootTabBarController.tabBar.items?[0].image = UIImage(named: "missions.tabbar.item")?.withRenderingMode(.alwaysOriginal)
         rootTabBarController.tabBar.items?[0].selectedImage = UIImage(named: "missions.tabbar.item.selected")
-        rootTabBarController.tabBar.items?[0].imageInsets = UIEdgeInsets(top: 9, left: 0, bottom: -9, right: 0)
+        if !UIDevice.current.isIpad {
+            rootTabBarController.tabBar.items?[0].imageInsets = edgeInset
+        }
         
         // Setup Mars TabBarItem title & images
-        rootTabBarController.tabBar.items?[1].title = nil
+        rootTabBarController.tabBar.items?[1].title = title
         rootTabBarController.tabBar.items?[1].image = UIImage(named: "mars.tabbar.item")?.withRenderingMode(.alwaysOriginal)
         rootTabBarController.tabBar.items?[1].selectedImage = UIImage(named: "mars.tabbar.item.selected")
-        rootTabBarController.tabBar.items?[1].imageInsets = UIEdgeInsets(top: 9, left: 0, bottom: -9, right: 0)
+        if !UIDevice.current.isIpad {
+            rootTabBarController.tabBar.items?[1].imageInsets = edgeInset
+        }
         
         // Setup Settings TabBarItem title & images
-        rootTabBarController.tabBar.items?[2].title = nil
+        rootTabBarController.tabBar.items?[2].title = title
         rootTabBarController.tabBar.items?[2].image = UIImage(named: "settings.tabbar.item")?.withRenderingMode(.alwaysOriginal)
         rootTabBarController.tabBar.items?[2].selectedImage = UIImage(named: "settings.tabbar.item.selected")
-        rootTabBarController.tabBar.items?[2].imageInsets = UIEdgeInsets(top: 9, left: 0, bottom: -9, right: 0)
+        if !UIDevice.current.isIpad {
+            rootTabBarController.tabBar.items?[2].imageInsets = edgeInset
+        }
         
         window?.rootViewController = rootTabBarController
         window?.makeKeyAndVisible()
