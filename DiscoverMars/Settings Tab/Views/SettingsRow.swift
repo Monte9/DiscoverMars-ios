@@ -29,8 +29,6 @@ class SettingsRow: UIControl {
         setupViews()
         setupConstraints()
         
-//        updateSubtitleLabel()
-        
         // Setup tap animation by default
         setupAnimations()
     }

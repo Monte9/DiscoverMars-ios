@@ -18,6 +18,7 @@
 		0C544698261B563600530E24 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C544697261B563600530E24 /* SettingsViewController.swift */; };
 		0C54469D261B5BF400530E24 /* SettingsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C54469C261B5BF400530E24 /* SettingsRow.swift */; };
 		0C5446A1261C0F9100530E24 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5446A0261C0F9100530E24 /* Settings.swift */; };
+		0C5446A4261C20ED00530E24 /* SettingsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5446A3261C20ED00530E24 /* SettingsSection.swift */; };
 		0C60A2BF25A8D15100EFD7FF /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C60A2BE25A8D15100EFD7FF /* ImageView.swift */; };
 		0C60A2C925A8E0F200EFD7FF /* MissionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C60A2C825A8E0F200EFD7FF /* MissionsViewController.swift */; };
 		0CAA95B425A86A0300905808 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAA95B325A86A0300905808 /* AppDelegate.swift */; };
@@ -67,6 +68,7 @@
 		0C544697261B563600530E24 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		0C54469C261B5BF400530E24 /* SettingsRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRow.swift; sourceTree = "<group>"; };
 		0C5446A0261C0F9100530E24 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		0C5446A3261C20ED00530E24 /* SettingsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSection.swift; sourceTree = "<group>"; };
 		0C60A2BE25A8D15100EFD7FF /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
 		0C60A2C825A8E0F200EFD7FF /* MissionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionsViewController.swift; sourceTree = "<group>"; };
 		0CAA95B025A86A0300905808 /* DiscoverMars.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DiscoverMars.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -139,6 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				0C54469C261B5BF400530E24 /* SettingsRow.swift */,
+				0C5446A3261C20ED00530E24 /* SettingsSection.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -447,6 +450,7 @@
 				0CEF5D2425AB85C40090FCBF /* Rover.swift in Sources */,
 				0CC809EE25B5741600691B28 /* SectionView.swift in Sources */,
 				0CBC4C0E25A87CEE00D68545 /* NetworkManagerError.swift in Sources */,
+				0C5446A4261C20ED00530E24 /* SettingsSection.swift in Sources */,
 				0CAA95B625A86A0300905808 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
