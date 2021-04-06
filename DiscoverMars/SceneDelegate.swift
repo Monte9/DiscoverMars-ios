@@ -47,9 +47,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Setup TabBarController with 3 ViewControllers
         let rootTabBarController = UITabBarController()
         rootTabBarController.viewControllers = [
+            settingsNavigationController,
             missionsNavigationController,
             marsNavigationController,
-            settingsNavigationController
         ]
         
         // Customize TabBar appearance

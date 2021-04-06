@@ -16,6 +16,8 @@
 		0C0FCA9D25B590780013D69A /* OverviewSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C0FCA9C25B590780013D69A /* OverviewSectionView.swift */; };
 		0C49250925D06BBC00DBBB55 /* CardCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C49250825D06BBC00DBBB55 /* CardCountView.swift */; };
 		0C544698261B563600530E24 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C544697261B563600530E24 /* SettingsViewController.swift */; };
+		0C54469D261B5BF400530E24 /* SettingsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C54469C261B5BF400530E24 /* SettingsRow.swift */; };
+		0C5446A1261C0F9100530E24 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5446A0261C0F9100530E24 /* Settings.swift */; };
 		0C60A2BF25A8D15100EFD7FF /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C60A2BE25A8D15100EFD7FF /* ImageView.swift */; };
 		0C60A2C925A8E0F200EFD7FF /* MissionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C60A2C825A8E0F200EFD7FF /* MissionsViewController.swift */; };
 		0CAA95B425A86A0300905808 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAA95B325A86A0300905808 /* AppDelegate.swift */; };
@@ -63,6 +65,8 @@
 		0C0FCA9C25B590780013D69A /* OverviewSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewSectionView.swift; sourceTree = "<group>"; };
 		0C49250825D06BBC00DBBB55 /* CardCountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCountView.swift; sourceTree = "<group>"; };
 		0C544697261B563600530E24 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		0C54469C261B5BF400530E24 /* SettingsRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRow.swift; sourceTree = "<group>"; };
+		0C5446A0261C0F9100530E24 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		0C60A2BE25A8D15100EFD7FF /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
 		0C60A2C825A8E0F200EFD7FF /* MissionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionsViewController.swift; sourceTree = "<group>"; };
 		0CAA95B025A86A0300905808 /* DiscoverMars.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DiscoverMars.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -125,9 +129,18 @@
 		0C544696261B561E00530E24 /* Settings Tab */ = {
 			isa = PBXGroup;
 			children = (
+				0C54469B261B5BE000530E24 /* Views */,
 				0C544697261B563600530E24 /* SettingsViewController.swift */,
 			);
 			path = "Settings Tab";
+			sourceTree = "<group>";
+		};
+		0C54469B261B5BE000530E24 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0C54469C261B5BF400530E24 /* SettingsRow.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		0CAA95A725A86A0300905808 = {
@@ -185,6 +198,7 @@
 				0CC97C0F25CD10C70048BF9E /* NYTPhotoBox.swift */,
 				0CEF5D2325AB85C40090FCBF /* Rover.swift */,
 				0C0394C225D043B90084D091 /* MarsFact.swift */,
+				0C5446A0261C0F9100530E24 /* Settings.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -410,12 +424,14 @@
 				0CC529A425A984CF0022DE6A /* MarsViewController.swift in Sources */,
 				0CEF5D2B25ADD5AC0090FCBF /* InteractivePopRecognizer.swift in Sources */,
 				0CAA95B425A86A0300905808 /* AppDelegate.swift in Sources */,
+				0C5446A1261C0F9100530E24 /* Settings.swift in Sources */,
 				0CEC21A925AAF21B000171B7 /* Formatters.swift in Sources */,
 				0C071E5F25BB69E300F2349E /* PhotosHeaderRow.swift in Sources */,
 				0C60A2C925A8E0F200EFD7FF /* MissionsViewController.swift in Sources */,
 				0CEF5D3125AE43C60090FCBF /* PhotoCollectionViewCell.swift in Sources */,
 				0CDA63B825BA0CB900F7512B /* AboutViewController.swift in Sources */,
 				0CDA63AD25BA0A7800F7512B /* SwipeableTopTabBarController.swift in Sources */,
+				0C54469D261B5BF400530E24 /* SettingsRow.swift in Sources */,
 				0C0B685525BA1B2400A44F67 /* PhotosViewController.swift in Sources */,
 				0CEF5D2125AB85900090FCBF /* Photo.swift in Sources */,
 				0CEC21AD25AAF429000171B7 /* Extensions.swift in Sources */,

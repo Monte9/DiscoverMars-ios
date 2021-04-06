@@ -10,6 +10,12 @@ import UIKit
 
 class SettingsViewController: UIViewController {
     
+    private let settings: [Setting] = [
+        Setting(title: "Monte Thakkar", subtitle: "Development", url: "https://twitter.com/MThakkar_"),
+        Setting(title: "Spencer Everett", subtitle: "Design", url: "https://twitter.com/SP3V"),
+        Setting(title: "NASA", subtitle: "API", url: "https://github.com/chrisccerami/mars-photo-api"),
+    ]
+    
     // MARK: View Lifecycle
     
     override func viewDidLoad() {
@@ -18,6 +24,8 @@ class SettingsViewController: UIViewController {
         
         setupViews()
         setupConstraints()
+        
+        setupSettingsView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -50,18 +58,53 @@ class SettingsViewController: UIViewController {
     // MARK: Setup Views
     
     private func setupViews() {
-        
+        view.addSubview(scrollView)
+        scrollView.addSubview(stackView)
     }
     
     // MARK: Setup Constraints
     
     private func setupConstraints() {
         NSLayoutConstraint.activate([
-            
+            scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            stackView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            stackView.leadingAnchor.constraint(equalTo: view.readableContentGuide.leadingAnchor),
+            stackView.trailingAnchor.constraint(equalTo: view.readableContentGuide.trailingAnchor),
         ])
+    }
+    
+    private func setupSettingsView() {
+        settings.forEach { setting in
+            let settingsRow = SettingsRow()
+            settingsRow.titleLabel.text = setting.title
+            if let subtitle = setting.subtitle, !subtitle.isEmpty {
+                settingsRow.shouldDisplaySubtitle = true
+                settingsRow.subtitleLabel.text = setting.subtitle
+            }
+            
+            stackView.addArrangedSubview(settingsRow)
+        }
     }
     
     // MARK: UI Views
     
+    private let scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.showsVerticalScrollIndicator = false
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        return scrollView
+    }()
     
+    private let stackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.spacing = 24
+        stackView.isUserInteractionEnabled = true
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        return stackView
+    }()
 }
