@@ -28,6 +28,11 @@ class SettingsRow: UIControl {
         
         setupViews()
         setupConstraints()
+        
+//        updateSubtitleLabel()
+        
+        // Setup tap animation by default
+        setupAnimations()
     }
     
     required init?(coder: NSCoder) {
@@ -45,6 +50,7 @@ class SettingsRow: UIControl {
     private func setupViews() {
         addSubview(containerView)
         containerView.addSubview(titleLabel)
+        containerView.addSubview(openLinkImage)
     }
     
     // MARK: Setup Constraints
@@ -68,10 +74,21 @@ class SettingsRow: UIControl {
             NSLayoutConstraint.activate([
                 subtitleLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 16),
                 subtitleLabel.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -16),
-                subtitleLabel.leadingAnchor.constraint(equalTo: titleLabel.trailingAnchor, constant: 8),
-                subtitleLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -24),
+                subtitleLabel.leadingAnchor.constraint(lessThanOrEqualTo: titleLabel.trailingAnchor, constant: 8),
+                openLinkImage.leadingAnchor.constraint(greaterThanOrEqualTo: subtitleLabel.trailingAnchor, constant: 8),
+            ])
+        } else {
+            NSLayoutConstraint.activate([
+                openLinkImage.leadingAnchor.constraint(greaterThanOrEqualTo: titleLabel.trailingAnchor, constant: 8),
             ])
         }
+        
+        NSLayoutConstraint.activate([
+            openLinkImage.centerYAnchor.constraint(equalTo: containerView.centerYAnchor),
+            openLinkImage.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -24),
+            openLinkImage.widthAnchor.constraint(equalToConstant: 8),
+            openLinkImage.heightAnchor.constraint(equalToConstant: 8),
+        ])
     }
     
     // MARK: UI Views
@@ -90,8 +107,6 @@ class SettingsRow: UIControl {
     let titleLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        label.backgroundColor = .red
-        label.sizeToFit()
         label.textColor = UIColor(named: "background")
         label.font = UIFont(name: "Inter-Medium", size: 16)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -101,11 +116,18 @@ class SettingsRow: UIControl {
     let subtitleLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        label.backgroundColor = .blue
         label.textColor = UIColor(named: "background")
         label.layer.opacity = 0.6
         label.font = UIFont(name: "Inter-Medium", size: 16)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
+    }()
+    
+    let openLinkImage: ImageView = {
+        let imageView = ImageView()
+        imageView.contentMode = .scaleAspectFit
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.image = UIImage(named: "open.link")?.withTintColor(UIColor(named: "background") ?? .white)
+        return imageView
     }()
 }

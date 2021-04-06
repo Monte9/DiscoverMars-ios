@@ -14,6 +14,9 @@ class SettingsViewController: UIViewController {
         Setting(title: "Monte Thakkar", subtitle: "Development", url: "https://twitter.com/MThakkar_"),
         Setting(title: "Spencer Everett", subtitle: "Design", url: "https://twitter.com/SP3V"),
         Setting(title: "NASA", subtitle: "API", url: "https://github.com/chrisccerami/mars-photo-api"),
+        Setting(title: "Share Discover Mars", url: "https://github.com/chrisccerami/mars-photo-api"),
+        Setting(title: "Follow us on Twitter", url: "https://github.com/chrisccerami/mars-photo-api"),
+        Setting(title: "Contact us", url: "https://github.com/chrisccerami/mars-photo-api"),
     ]
     
     // MARK: View Lifecycle
@@ -84,6 +87,8 @@ class SettingsViewController: UIViewController {
             if let subtitle = setting.subtitle, !subtitle.isEmpty {
                 settingsRow.shouldDisplaySubtitle = true
                 settingsRow.subtitleLabel.text = setting.subtitle
+            } else {
+                settingsRow.shouldDisplaySubtitle = false
             }
             
             stackView.addArrangedSubview(settingsRow)
@@ -102,7 +107,7 @@ class SettingsViewController: UIViewController {
     private let stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
-        stackView.spacing = 24
+        stackView.spacing = 12
         stackView.isUserInteractionEnabled = true
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
