@@ -18,8 +18,11 @@ class SettingsRow: UIControl {
     
     // MARK: Initialization
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    let setting: Setting
+    
+    init(with setting: Setting) {
+        self.setting = setting
+        super.init(frame: .zero)
         
         // Adds border color and corder radius
         layer.borderWidth = 0.5

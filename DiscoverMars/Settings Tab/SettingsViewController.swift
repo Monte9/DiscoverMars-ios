@@ -7,22 +7,23 @@
 
 import Foundation
 import UIKit
+import MessageUI
 
 class SettingsViewController: UIViewController {
     
     private let settingsSections: KeyValuePairs = [
         "Updates": [
-            Setting(title: "See what’s new", url: "https://github.com/chrisccerami/mars-photo-api")
+            Setting(type: .whatsNew, title: "See what’s new")
         ],
         "Contributors": [
-            Setting(title: "Monte Thakkar", subtitle: "Development", url: "https://twitter.com/MThakkar_"),
-            Setting(title: "Spencer Everett", subtitle: "Design", url: "https://twitter.com/SP3V"),
-            Setting(title: "NASA", subtitle: "API", url: "https://github.com/chrisccerami/mars-photo-api"),
+            Setting(type: .monteContributor, title: "Monte Thakkar", subtitle: "Development", urlString: "https://twitter.com/MThakkar_"),
+            Setting(type: .spencerContributor, title: "Spencer Everett", subtitle: "Design", urlString: "https://twitter.com/SP3V"),
+            Setting(type: .nasaAPI, title: "NASA", subtitle: "API", urlString: "https://github.com/chrisccerami/mars-photo-api")
         ],
         "Engagement": [
-            Setting(title: "Share Discover Mars", url: "https://github.com/chrisccerami/mars-photo-api"),
-            Setting(title: "Follow us on Twitter", url: "https://github.com/chrisccerami/mars-photo-api"),
-            Setting(title: "Contact us", url: "https://github.com/chrisccerami/mars-photo-api"),
+            Setting(type: .shareApp, title: "Share Discover Mars"),
+            Setting(type: .followTwitter, title: "Follow us on Twitter", urlString: "https://twitter.com/discovermarsapp"),
+            Setting(type: .contactUs, title: "Contact us")
         ],
     ]
     
@@ -46,11 +47,6 @@ class SettingsViewController: UIViewController {
         
         // Hide the Navigation Bar
         self.navigationController?.setNavigationBarHidden(true, animated: false)
-        
-        // Set the tint and background color for the navigation bar
-        UINavigationBar.appearance().barTintColor = UIColor(named: "background")
-        UINavigationBar.appearance().tintColor = UIColor(named: "orange")
-        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(named: "orange") ?? .white]
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -99,9 +95,29 @@ class SettingsViewController: UIViewController {
     
     private func setupSettingsSections() {
         settingsSections.forEach { (sectionTitle, settings) in
-            let section = SettingsSection(settings: settings)
+            let section = SettingsSection(settings: settings, delegate: self)
             section.titleLabel.text = sectionTitle
             stackView.addArrangedSubview(section)
+        }
+    }
+    
+    // MARK: Actions
+    
+    private func presentShareSheet() {
+        let items: [Any] = ["This app lets you see images from Mars!", URL(string: "https://www.discovermars.app")!]
+        let activityViewController = UIActivityViewController(activityItems: items, applicationActivities: nil)
+        present(activityViewController, animated: true)
+    }
+    
+    func sendEmail() {
+        if MFMailComposeViewController.canSendMail() {
+            let mail = MFMailComposeViewController()
+            mail.mailComposeDelegate = self
+            mail.setToRecipients(["discovermarsapp@gmail.com"])
+            mail.setMessageBody("<p>Reching out about the Discover Mars app.</p>", isHTML: true)
+            present(mail, animated: true)
+        } else {
+            print("Unable to open Mail app for Contact us")
         }
     }
     
@@ -136,4 +152,35 @@ class SettingsViewController: UIViewController {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
+}
+
+// MARK: - SettingsSectionDelegate
+
+extension SettingsViewController: SettingsSectionDelegate {
+    
+    func didTapSection(with settingsRow: SettingsRow) {
+        if let urlString = settingsRow.setting.urlString,
+           let url = URL(string: urlString),
+           UIApplication.shared.canOpenURL(url) {
+            UIApplication.shared.open(url, options: [:])
+        } else if settingsRow.setting.type == .whatsNew {
+            let navController = UINavigationController(rootViewController: WhatsNewViewController())
+            present(navController, animated: true, completion: nil)
+        } else if settingsRow.setting.type == .shareApp {
+            presentShareSheet()
+        } else if settingsRow.setting.type == .contactUs {
+            sendEmail()
+        } else {
+            print("missing Setting url or invalid type")
+        }
+    }
+}
+
+// MARK: - MFMailComposeViewControllerDelegate
+
+extension SettingsViewController: MFMailComposeViewControllerDelegate {
+    
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true)
+    }
 }
