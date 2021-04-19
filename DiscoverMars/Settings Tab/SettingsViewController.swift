@@ -104,7 +104,7 @@ class SettingsViewController: UIViewController {
     // MARK: Actions
     
     private func presentShareSheet() {
-        let items: [Any] = ["This app lets you see images from Mars!", URL(string: "https://www.discovermars.app")!]
+        let items: [Any] = ["Check out the Discover Mars app. It lets you see images on Mars!", URL(string: "https://www.discovermars.app")!]
         let activityViewController = UIActivityViewController(activityItems: items, applicationActivities: nil)
         present(activityViewController, animated: true)
     }

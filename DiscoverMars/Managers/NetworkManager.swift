@@ -35,7 +35,7 @@ class NetworkManager {
         
         missionsDispatchGroup.notify(queue: .main) {
             if missions.count == Rover.allCases.count {
-                completionHandler(.success(missions))
+                completionHandler(.success(Mission.sortedOrder(missions)))
             } else {
                 completionHandler(.failure(NetworkManagerError.missingData))
             }

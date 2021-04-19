@@ -76,11 +76,11 @@ class MissionsViewController: UIViewController {
         
         NetworkManager.shared.fetchMissions() { result in
             self.hideActivityIndicator()
-
+            
             switch result {
             case .success(let missions):
                 self.missions = missions
-
+                
                 self.populateData()
             case .failure(let error):
                 print("Failed to fetch missions: \(error)")
@@ -188,7 +188,7 @@ class MissionsViewController: UIViewController {
     private func setupMissionCard(for mission: Mission) -> MissionCard {
         let missionCard = MissionCard(for: mission)
         
-        missionCard.roverLabel.text = mission.roverName
+        missionCard.roverLabel.text = mission.rover.shortName
         missionCard.missionLabel.text = mission.missionName
         
         // Add roverImage

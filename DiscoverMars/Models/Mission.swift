@@ -79,16 +79,16 @@ class Mission: NSObject, Decodable {
         rover = Rover.init(fromRawValue: roverName.lowercased())
         
         // Mission Overview
-        overview = rover.missionOverview()
+        overview = rover.missionOverview
         
         // Mission Overview Expanded
-        fullOverview = rover.missionOverviewExpanded()
+        fullOverview = rover.missionOverviewExpanded
         
         // Mission Name based on Rover
-        missionName = rover.missionName()
+        missionName = rover.missionName
         
         // Rover Image based on Rover
-        roverImage = rover.roverImage()
+        roverImage = rover.roverImage
         
         // Status
         let statusString = try container.decode(String.self, forKey: .status)
@@ -103,22 +103,28 @@ class Mission: NSObject, Decodable {
         launchDate = Formatters.convertDateFormater(launchDateString)
         
         // Launch Vehicle
-        launchVehicle = rover.launchVehicle()
+        launchVehicle = rover.launchVehicle
         
         // Launch Location
-        launchLocation = rover.launchLocation()
+        launchLocation = rover.launchLocation
         
         // Landing Date
         let landingDateString = try container.decode(String.self, forKey: .landingDate)
         landingDate = Formatters.convertDateFormater(landingDateString)
         
         // Landing Site
-        landingSite = rover.landingSite()
+        landingSite = rover.landingSite
         
         // Max Sol
         maxSol = try container.decode(Int.self, forKey: .maxSol)
         
         // Total Photos
         totalPhotos = try container.decode(Int.self, forKey: .totalPhotos)
+    }
+    
+    // MARK: - Sort Method
+    
+    static func sortedOrder(_ missions: [Mission]) -> [Mission] {
+        return missions.sorted(by: { $0.rover.id < $1.rover.id })
     }
 }
