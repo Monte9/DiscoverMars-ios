@@ -76,5 +76,4 @@ class SectionView: UIView {
         view.layer.opacity = 0.1
         return view
     }()
-    
 }

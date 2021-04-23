@@ -22,6 +22,7 @@
 		0C5446A4261C20ED00530E24 /* SettingsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5446A3261C20ED00530E24 /* SettingsSection.swift */; };
 		0C60A2BF25A8D15100EFD7FF /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C60A2BE25A8D15100EFD7FF /* ImageView.swift */; };
 		0C60A2C925A8E0F200EFD7FF /* MissionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C60A2C825A8E0F200EFD7FF /* MissionsViewController.swift */; };
+		0C9C6FA12632930400381CF5 /* WhatsNewSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9C6FA02632930400381CF5 /* WhatsNewSection.swift */; };
 		0CAA95B425A86A0300905808 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAA95B325A86A0300905808 /* AppDelegate.swift */; };
 		0CAA95B625A86A0300905808 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAA95B525A86A0300905808 /* SceneDelegate.swift */; };
 		0CAA95BD25A86A0500905808 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CAA95BC25A86A0500905808 /* Assets.xcassets */; };
@@ -73,6 +74,7 @@
 		0C5446A3261C20ED00530E24 /* SettingsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSection.swift; sourceTree = "<group>"; };
 		0C60A2BE25A8D15100EFD7FF /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
 		0C60A2C825A8E0F200EFD7FF /* MissionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionsViewController.swift; sourceTree = "<group>"; };
+		0C9C6FA02632930400381CF5 /* WhatsNewSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsNewSection.swift; sourceTree = "<group>"; };
 		0CAA95B025A86A0300905808 /* DiscoverMars.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DiscoverMars.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CAA95B325A86A0300905808 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0CAA95B525A86A0300905808 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 			children = (
 				0C54469C261B5BF400530E24 /* SettingsRow.swift */,
 				0C5446A3261C20ED00530E24 /* SettingsSection.swift */,
+				0C9C6FA02632930400381CF5 /* WhatsNewSection.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -439,6 +442,7 @@
 				0CDA63B825BA0CB900F7512B /* AboutViewController.swift in Sources */,
 				0CDA63AD25BA0A7800F7512B /* SwipeableTopTabBarController.swift in Sources */,
 				0C54469D261B5BF400530E24 /* SettingsRow.swift in Sources */,
+				0C9C6FA12632930400381CF5 /* WhatsNewSection.swift in Sources */,
 				0C0B685525BA1B2400A44F67 /* PhotosViewController.swift in Sources */,
 				0CEF5D2125AB85900090FCBF /* Photo.swift in Sources */,
 				0CEC21AD25AAF429000171B7 /* Extensions.swift in Sources */,
