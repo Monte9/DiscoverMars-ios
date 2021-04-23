@@ -23,6 +23,7 @@
 		0C60A2BF25A8D15100EFD7FF /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C60A2BE25A8D15100EFD7FF /* ImageView.swift */; };
 		0C60A2C925A8E0F200EFD7FF /* MissionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C60A2C825A8E0F200EFD7FF /* MissionsViewController.swift */; };
 		0C9C6FA12632930400381CF5 /* WhatsNewSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9C6FA02632930400381CF5 /* WhatsNewSection.swift */; };
+		0C9C6FA4263298AE00381CF5 /* WhatsNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9C6FA3263298AE00381CF5 /* WhatsNew.swift */; };
 		0CAA95B425A86A0300905808 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAA95B325A86A0300905808 /* AppDelegate.swift */; };
 		0CAA95B625A86A0300905808 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAA95B525A86A0300905808 /* SceneDelegate.swift */; };
 		0CAA95BD25A86A0500905808 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CAA95BC25A86A0500905808 /* Assets.xcassets */; };
@@ -75,6 +76,7 @@
 		0C60A2BE25A8D15100EFD7FF /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
 		0C60A2C825A8E0F200EFD7FF /* MissionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionsViewController.swift; sourceTree = "<group>"; };
 		0C9C6FA02632930400381CF5 /* WhatsNewSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsNewSection.swift; sourceTree = "<group>"; };
+		0C9C6FA3263298AE00381CF5 /* WhatsNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsNew.swift; sourceTree = "<group>"; };
 		0CAA95B025A86A0300905808 /* DiscoverMars.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DiscoverMars.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CAA95B325A86A0300905808 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0CAA95B525A86A0300905808 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -208,6 +210,7 @@
 				0CEF5D2325AB85C40090FCBF /* Rover.swift */,
 				0C0394C225D043B90084D091 /* MarsFact.swift */,
 				0C5446A0261C0F9100530E24 /* Settings.swift */,
+				0C9C6FA3263298AE00381CF5 /* WhatsNew.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -426,6 +429,7 @@
 				0CAA95CD25A8776400905808 /* NetworkManager.swift in Sources */,
 				0CC529A825A984F60022DE6A /* MissionDetailsViewController.swift in Sources */,
 				0CDA63BE25BA0DAE00F7512B /* TopTabBarHeaderCell.swift in Sources */,
+				0C9C6FA4263298AE00381CF5 /* WhatsNew.swift in Sources */,
 				0CEBEEF825EF9CC300DE4790 /* MixpanelAnalytics.swift in Sources */,
 				0C0394BF25D040C80084D091 /* MarsFactCard.swift in Sources */,
 				0CC97C1025CD10C70048BF9E /* NYTPhotoBox.swift in Sources */,

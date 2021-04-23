@@ -9,15 +9,41 @@ import UIKit
 
 class WhatsNewSection: UIStackView {
     
+    var isLastSection: Bool = false {
+        didSet {
+            if isLastSection {
+                removeArrangedSubview(dividerLine)
+            } else {
+                addArrangedSubview(dividerLine)
+            }
+        }
+    }
+    
     // MARK: Initialization
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    private let section: WhatsNew
+    
+    init(section: WhatsNew) {
+        self.section = section
+        
+        super.init(frame: .zero)
         
         axis = .vertical
         spacing = 16
         
+        if section.type == .summaryOnly {
+            addArrangedSubview(summaryLabel)
+            addArrangedSubview(dividerLine)
+            
+            summaryLabel.text = section.summary
+            return
+        }
+        
         setupViews()
+        
+        numberLabel.text = section.number
+        titleLabel.text = section.title
+        summaryLabel.text = section.summary
     }
     
     required init(coder: NSCoder) {
@@ -27,39 +53,36 @@ class WhatsNewSection: UIStackView {
     // MARK: Setup Views
     
     private func setupViews() {
-        addArrangedSubview(sectionNumber)
+        addArrangedSubview(numberLabel)
         addArrangedSubview(titleLabel)
         addArrangedSubview(summaryLabel)
         addArrangedSubview(dividerLine)
         
-        setCustomSpacing(4, after: sectionNumber)
+        setCustomSpacing(4, after: numberLabel)
     }
     
     // MARK: UI Views
     
-    let sectionNumber: UILabel = {
+    private let numberLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        label.text = "01"
         label.layer.opacity = 0.5
         label.textColor = UIColor(named: "orange")
         label.font = UIFont(name: "Inter-Medium", size: 24)
         return label
     }()
     
-    let titleLabel: UILabel = {
+    private let titleLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        label.text = "Custom Icons"
         label.textColor = UIColor(named: "orange")
         label.font = UIFont(name: "Inter-Bold", size: 24)
         return label
     }()
     
-    let summaryLabel: UILabel = {
+    private let summaryLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        label.text = "Here’s a quick digest of some of the changes in Version 1.09.10 that we wanted you to know about beyond bug fixes and performance improvements."
         label.textColor = UIColor(named: "orange")
         label.font = UIFont(name: "Inter-Regular", size: 18)
         return label

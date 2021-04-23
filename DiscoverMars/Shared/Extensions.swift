@@ -108,4 +108,8 @@ extension UIDevice {
     var appearance: String {
         return UITraitCollection.current.userInterfaceStyle == .dark ? "dark" : "light"
     }
+    
+    var appVersion: String {
+        return Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.0"
+    }
 }
