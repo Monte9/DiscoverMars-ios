@@ -106,6 +106,13 @@ class SettingsViewController: UIViewController {
     private func presentShareSheet() {
         let items: [Any] = ["Check out the Discover Mars app. It lets you see images on Mars!", URL(string: "https://www.discovermars.app")!]
         let activityViewController = UIActivityViewController(activityItems: items, applicationActivities: nil)
+        
+        if let popoverController = activityViewController.popoverPresentationController {
+            popoverController.sourceView = self.view
+            popoverController.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0)
+            popoverController.permittedArrowDirections = []
+        }
+
         present(activityViewController, animated: true)
     }
     

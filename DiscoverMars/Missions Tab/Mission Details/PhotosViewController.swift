@@ -165,7 +165,7 @@ class PhotosViewController: UIViewController {
         label.text = "Unable to Connect"
         label.numberOfLines = 0
         label.textColor = UIColor(named: "orange")
-        label.font = UIFont(name: "Inter-Medium", size: 16)
+        label.font = UIFont(name: "Inter-Bold", size: 24)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()

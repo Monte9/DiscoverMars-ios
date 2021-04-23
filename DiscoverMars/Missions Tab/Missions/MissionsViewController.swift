@@ -134,14 +134,11 @@ class MissionsViewController: UIViewController {
     
     private func displayErrorView() {
         scrollView.addSubview(errorTitleLabel)
-        scrollView.addSubview(retryButton)
         
         // Setup Constraints
         NSLayoutConstraint.activate([
             errorTitleLabel.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
             errorTitleLabel.centerYAnchor.constraint(equalTo: scrollView.centerYAnchor),
-            retryButton.topAnchor.constraint(equalTo: errorTitleLabel.bottomAnchor, constant: 4),
-            retryButton.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
         ])
     }
     
@@ -226,19 +223,9 @@ class MissionsViewController: UIViewController {
         let label = UILabel()
         label.text = "Unable to Connect"
         label.numberOfLines = 0
-        label.textColor = UIColor(named: "text")
-        label.font = .systemFont(ofSize: 20)
+        label.textColor = UIColor(named: "background")
+        label.font = UIFont(name: "Inter-Bold", size: 24)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
-    }()
-    
-    private lazy var retryButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("RETRY", for: .normal)
-        button.setTitleColor(UIColor(named: "orange"), for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: 16)
-        button.addTarget(self, action: #selector(retryNetworkRequest), for: .touchUpInside)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
     }()
 }

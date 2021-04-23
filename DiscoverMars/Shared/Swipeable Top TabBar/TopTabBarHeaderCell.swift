@@ -53,7 +53,7 @@ class TopTabBarHeaderCell: UICollectionViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         label.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        label.font = UIFont.boldSystemFont(ofSize: 18)
+        label.font = UIFont(name: "Inter-Medium", size: 18)
         
         // Indicator
         indicator.translatesAutoresizingMaskIntoConstraints = false
