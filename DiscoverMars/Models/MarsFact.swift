@@ -89,7 +89,7 @@ enum MarsFact: String, CaseIterable {
         case .weight:
             return "Effect of gravity on matter"
         case .moons:
-            return "Effect of gravity on matter"
+            return "Mars has two moons"
         }
     }
     
