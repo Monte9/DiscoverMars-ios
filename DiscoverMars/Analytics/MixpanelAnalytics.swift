@@ -23,14 +23,22 @@ class MixpanelAnalytics {
     
     /// Track Mixpanel event with `String` key and `[String: String]` propeties
     func track(_ event: String, with properties: [String: String]? = nil) {
-        let containsPropeties: String = properties != nil ? " with properties" : ""
+        var containsPropeties: String = ""
+        
+        if let properties = properties, !properties.isEmpty {
+            containsPropeties = " with properties"
+        }
+        
+        // Print the Mixpanel event to the console
         print("Tracking Mixpanel analytics event\(containsPropeties): \(event)")
         
+        // Only track if Mixpanel tracking is enabled
         guard enabled else {
             print("Tracking Mixpanel analytics: DISABLED")
             return
         }
         
+        // Track event on Mixpanel
         Mixpanel.mainInstance().track(
             event: event,
             properties: properties
