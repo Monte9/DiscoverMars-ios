@@ -13,8 +13,8 @@ class WhatsNewViewController: UIViewController {
     private let whatsNewSections = [
         WhatsNew(type: .summaryOnly, number: nil, title: nil, summary: "The Discover Mars app provides easy access to images taken on Mars by the NASA Mars rovers.\n\nHere’s a quick digest of some of the changes in Version \(UIDevice().appVersion) that we wanted you to know about beyond bug fixes and performance improvements."),
         WhatsNew(type: .all, number: "01", title: "Images from Perseverance Rover", summary: "View latest images taken on Mars by the Perseverance, Curiosity, Opportunity, and Spirit rovers."),
-        WhatsNew(type: .all, number: "02", title: "Immersive Photo Viewing Experience", summary: "Tapping on a photo launches it in slideshow mode to view the full high-defintion image. You can double tap to zoom into an photo or tap on the Share icon to save images directly onto your iPhone."),
-        WhatsNew(type: .all, number: "03", title: "Learn About Mars", summary: "The Mars tab provides interesting visuals about various aspect of Mars such as it's atmosphere, gravity, temperature and much more."),
+        WhatsNew(type: .all, number: "02", title: "Immersive Photo Viewing Experience", summary: "Tapping on a photo launches it in slideshow mode to view the full high-definition image. You can double-tap to zoom into a photo or tap on the Share icon to save images directly onto your iPhone."),
+        WhatsNew(type: .all, number: "03", title: "Learn About Mars", summary: "The Mars tab provides interesting visuals about Mars, such as its atmosphere, gravity, temperature, and much more."),
         WhatsNew(type: .summaryOnly, number: "04", title: "", summary: "Please send us any feedback you have: discovermarsapp@gmail.com\n\nAs always, thank you! And discover on.\n\n❤️ Spencer & Monte 🚀"),
     ]
     

@@ -121,7 +121,7 @@ class SettingsViewController: UIViewController {
             let mail = MFMailComposeViewController()
             mail.mailComposeDelegate = self
             mail.setToRecipients(["discovermarsapp@gmail.com"])
-            mail.setMessageBody("<p>Reching out about the Discover Mars app.</p>", isHTML: true)
+            mail.setMessageBody("<p>Reaching out about the Discover Mars app.</p>", isHTML: true)
             present(mail, animated: true)
         } else {
             print("Unable to open Mail app for Contact us")
