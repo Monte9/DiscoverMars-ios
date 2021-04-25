@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum SettingType {
+enum SettingType: String {
     case whatsNew
     case monteContributor
     case spencerContributor

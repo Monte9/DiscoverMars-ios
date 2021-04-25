@@ -166,6 +166,12 @@ class SettingsViewController: UIViewController {
 extension SettingsViewController: SettingsSectionDelegate {
     
     func didTapSection(with settingsRow: SettingsRow) {
+        /// Track analytics event `settings_screen.section`
+        let properties = [
+            "action": settingsRow.setting.type.rawValue,
+        ]
+        MixpanelAnalytics.shared.track("settings_screen.row", with: properties)
+        
         if let urlString = settingsRow.setting.urlString,
            let url = URL(string: urlString),
            UIApplication.shared.canOpenURL(url) {
