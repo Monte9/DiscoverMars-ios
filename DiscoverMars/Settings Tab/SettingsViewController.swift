@@ -104,7 +104,7 @@ class SettingsViewController: UIViewController {
     // MARK: Actions
     
     private func presentShareSheet() {
-        let items: [Any] = ["Check out the Discover Mars app. It lets you see images on Mars!", URL(string: "https://www.discovermars.app")!]
+        let items: [Any] = ["Check out the Discover Mars app. It lets you view images from Mars!", URL(string: "https://apps.apple.com/us/app/discover-mars/id1550710909")!]
         let activityViewController = UIActivityViewController(activityItems: items, applicationActivities: nil)
         
         if let popoverController = activityViewController.popoverPresentationController {
