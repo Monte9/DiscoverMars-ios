@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import NYTPhotoViewer
 
-protocol PhotosViewControllerDelegate: class {
+protocol PhotosViewControllerDelegate: AnyObject {
     func didSelectPhotoCellView(from viewController: UIViewController, photoViewer: NYTPhotosViewController)
     func didDismissPhotoViewerModal(from viewController: UIViewController)
 }

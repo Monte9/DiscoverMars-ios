@@ -13,7 +13,7 @@ enum PhotoSize: String {
     case small
 }
 
-protocol PhotosHeaderRowDelegate: class {
+protocol PhotosHeaderRowDelegate: AnyObject {
     func photosHeaderRowDidChange(_ view: PhotosHeaderRow, photoSize: PhotoSize)
 }
 
