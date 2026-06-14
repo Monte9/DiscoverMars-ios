@@ -93,3 +93,12 @@ iOSInjectionProject/
 # Bundle Gems
 
 vendor/
+
+# Secrets — provide your own (see Secrets.example.xcconfig and the README).
+# The committed *.example.xcconfig holds placeholders only; real keys live here.
+DiscoverMars/Secrets.xcconfig
+
+# fastlane environment files (Apple ID, match git url, etc.)
+fastlane/.env
+fastlane/.env.default
+fastlane/.env.local

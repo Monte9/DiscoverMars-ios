@@ -25,7 +25,7 @@ platform :ios do
     # Build app and upload to TestFlight
     build_app(scheme: "DiscoverMars")
     upload_to_testflight(
-      username: "monte.thakkar@icloud.com",
+      username: ENV["FASTLANE_APPLE_ID"],
       app_identifier: "com.montethakkar.DiscoverMarsApp",
       itc_provider: "T2FX8L2M4K", # Same as Developer Portal Team ID
       notify_external_testers: true,

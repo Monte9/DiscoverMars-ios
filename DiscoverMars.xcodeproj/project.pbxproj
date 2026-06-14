@@ -60,6 +60,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AAAA0001000000000000C0F1 /* Secrets.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Secrets.xcconfig; sourceTree = "<group>"; };
+		AAAA0002000000000000C0F1 /* Secrets.example.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Secrets.example.xcconfig; sourceTree = "<group>"; };
 		0C0394BE25D040C80084D091 /* MarsFactCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarsFactCard.swift; sourceTree = "<group>"; };
 		0C0394C225D043B90084D091 /* MarsFact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarsFact.swift; sourceTree = "<group>"; };
 		0C071E5E25BB69E300F2349E /* PhotosHeaderRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosHeaderRow.swift; sourceTree = "<group>"; };
@@ -186,6 +188,8 @@
 				0CC809D325B18ED500691B28 /* Fonts */,
 				0CAA95BC25A86A0500905808 /* Assets.xcassets */,
 				0CAA95C125A86A0500905808 /* Info.plist */,
+				AAAA0001000000000000C0F1 /* Secrets.xcconfig */,
+				AAAA0002000000000000C0F1 /* Secrets.example.xcconfig */,
 			);
 			path = DiscoverMars;
 			sourceTree = "<group>";
@@ -599,6 +603,7 @@
 		};
 		0CAA95C525A86A0500905808 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AAAA0001000000000000C0F1 /* Secrets.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -622,6 +627,7 @@
 		};
 		0CAA95C625A86A0500905808 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AAAA0001000000000000C0F1 /* Secrets.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";

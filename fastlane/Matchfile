@@ -1,4 +1,6 @@
-git_url "git@github.com:Monte9/DiscoverMars.git"
+# The match certificates repo is read from the environment so it is not committed.
+# Set MATCH_GIT_URL in fastlane/.env (git-ignored) — see fastlane/.env.example.
+git_url ENV["MATCH_GIT_URL"]
 git_branch "appstore"
 clone_branch_directly true
 readonly true
@@ -8,7 +10,9 @@ type "appstore"
 team_id "T2FX8L2M4K"
 
 app_identifier "com.montethakkar.DiscoverMarsApp"
-username "monte.thakkar@icloud.com"
-# match password - discovermarsapp
+username ENV["FASTLANE_APPLE_ID"]
+
+# The match encryption passphrase must NOT be stored in the repo.
+# Provide it at runtime via the MATCH_PASSWORD environment variable.
 
 # bundle exec fastlane match

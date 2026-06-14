@@ -6,4 +6,6 @@ app_identifier("com.montethakkar.DiscoverMarsApp") # The bundle identifier of yo
 itc_team_id("122615458") # App Store Connect Team ID
 team_id("T2FX8L2M4K") # Developer Portal Team ID
 
-apple_id("monte.thakkar@icloud.com") # Your Apple email address
+# Apple ID is read from the environment so it is not committed.
+# Set it in fastlane/.env (git-ignored) — see fastlane/.env.example.
+apple_id(ENV["FASTLANE_APPLE_ID"]) # Your Apple email address

@@ -17,8 +17,9 @@ class MixpanelAnalytics {
     init(enabled: Bool) {
         self.enabled = enabled
         
-        // Setup Mixpanel Analytics tracking
-        Mixpanel.initialize(token: "ff89f373a77211f077fc33e080313d16")
+        // Setup Mixpanel Analytics tracking. Token is injected at build time
+        // from `Secrets.xcconfig` -> `Info.plist` (see README "Configuration").
+        Mixpanel.initialize(token: AppSecrets.mixpanelToken)
     }
     
     /// Track Mixpanel event with `String` key and `[String: String]` propeties
