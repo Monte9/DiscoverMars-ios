@@ -4,9 +4,17 @@
 
 [**discovermars.webflow.io**](https://discovermars.webflow.io/) · [**@discovermarsapp**](https://twitter.com/discovermarsapp)
 
-![Platform](https://img.shields.io/badge/platform-iOS%2013%2B-lightgrey) ![Swift](https://img.shields.io/badge/Swift-5-orange) ![UIKit](https://img.shields.io/badge/UI-UIKit-2396F3) ![Data](https://img.shields.io/badge/data-NASA%20Mars%20Photos%20API-e03c31)
+![Platform](https://img.shields.io/badge/platform-iOS%2013%2B-lightgrey) ![Swift](https://img.shields.io/badge/Swift-5-orange) ![UIKit](https://img.shields.io/badge/UI-UIKit-2396F3) ![Data](https://img.shields.io/badge/data-NASA%20Mars%20Photos%20API-e03c31) ![License: MIT](https://img.shields.io/badge/license-MIT-blue)
 
-![Discover Mars](docs/screenshots/landing-page.png)
+<p align="center">
+  <img src="docs/screenshots/hero.png" width="300" alt="Discover Mars — Missions">
+</p>
+
+<!-- Optional: drop your iOS 26 simulator screenshot at docs/screenshots/ios26-simulator.png and uncomment:
+<p align="center">
+  <img src="docs/screenshots/ios26-simulator.png" width="300" alt="Discover Mars running on iOS 26">
+</p>
+-->
 
 ## Why Discover Mars?
 
@@ -28,12 +36,6 @@ photos, all powered by NASA's open Mars Rover Photos API.
 - **Mars facts.** Swipe through bite-sized, interesting facts about the red planet.
 - **Settings & What's New.** Share the app, send feedback, follow on Twitter, and
   see what changed in each release.
-
-## Screenshots
-
-Running on the latest iOS (iPhone 17 Pro · iOS 26):
-
-![Discover Mars running on iOS 26](docs/screenshots/ios26-simulator.png)
 
 ## Tech Stack
 
@@ -105,3 +107,7 @@ bundle exec fastlane match
 
 - [Monte Thakkar](https://github.com/Monte9) — design & development
 - Spencer Everett — design & development
+
+## License
+
+[MIT](LICENSE)
