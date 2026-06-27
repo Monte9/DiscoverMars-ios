@@ -16,6 +16,21 @@
 </p>
 -->
 
+## Recent rover photos
+
+High-definition imagery taken by the Martian rovers, fetched live from NASA's [Mars Rover Photos API](https://github.com/chrisccerami/mars-photo-api):
+
+<table>
+  <tr>
+    <td><img src="docs/screenshots/rovers/rover-1.jpg" width="420" alt="Mars rover selfie"></td>
+    <td><img src="docs/screenshots/rovers/rover-2.jpg" width="420" alt="Mars surface"></td>
+  </tr>
+  <tr>
+    <td><img src="docs/screenshots/rovers/rover-3.jpg" width="420" alt="Mars terrain"></td>
+    <td><img src="docs/screenshots/rovers/rover-4.jpg" width="420" alt="Mars landscape"></td>
+  </tr>
+</table>
+
 ## Why Discover Mars?
 
 Discover Mars makes it fun and easy to learn about the red planet and to browse the
